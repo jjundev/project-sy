@@ -68,8 +68,11 @@
     <div class="ws-toolbar__group">
       <span class="ws-toolbar__label">단원 선택:</span>
       <a href="worksheet.html" class="ws-toolbar__btn" id="btn-sample">샘플</a>
-      <a href="worksheet.html?part=1" class="ws-toolbar__btn" id="btn-part1">Part 1 (함수의 극한)</a>
-      <a href="worksheet.html?part=2" class="ws-toolbar__btn" id="btn-part2">Part 2 (미분계수)</a>
+      <a href="worksheet.html?part=1" class="ws-toolbar__btn" id="btn-part1">프린트 1 (극한)</a>
+      <a href="worksheet.html?part=2" class="ws-toolbar__btn" id="btn-part2">프린트 2 (미분)</a>
+      <a href="worksheet.html?part=tb1" class="ws-toolbar__btn" id="btn-tb1">교과서 1 (극한/연속)</a>
+      <a href="worksheet.html?part=tb2" class="ws-toolbar__btn" id="btn-tb2">교과서 2 (미분계수/도함수)</a>
+      <a href="worksheet.html?part=tb3" class="ws-toolbar__btn" id="btn-tb3">교과서 3 (도함수 활용)</a>
     </div>
     <div class="ws-toolbar__sep" aria-hidden="true"></div>
     <div class="ws-toolbar__group">
@@ -114,6 +117,12 @@
     scriptSrc = '../data/problems_part1.js';
   } else if (part === '2' || part === 'part2') {
     scriptSrc = '../data/problems_part2.js';
+  } else if (part === 'tb1' || part === 'textbook1' || part === 'tbpart1') {
+    scriptSrc = '../data/textbook_part1.js';
+  } else if (part === 'tb2' || part === 'textbook2' || part === 'tbpart2') {
+    scriptSrc = '../data/textbook_part2.js';
+  } else if (part === 'tb3' || part === 'textbook3' || part === 'tbpart3') {
+    scriptSrc = '../data/textbook_part3.js';
   }
   document.write('<script src="' + scriptSrc + '"><\/script>');
 })();
@@ -150,6 +159,9 @@
   var btnSample = document.getElementById('btn-sample');
   var btnPart1 = document.getElementById('btn-part1');
   var btnPart2 = document.getElementById('btn-part2');
+  var btnTb1 = document.getElementById('btn-tb1');
+  var btnTb2 = document.getElementById('btn-tb2');
+  var btnTb3 = document.getElementById('btn-tb3');
   var btnModeProblem = document.getElementById('btn-mode-problem');
   var btnModeSolution = document.getElementById('btn-mode-solution');
   var toggleAnswers = document.getElementById('toggle-answers');
@@ -159,6 +171,12 @@
     if (btnPart1) btnPart1.classList.add('is-active');
   } else if (part === '2' || part === 'part2') {
     if (btnPart2) btnPart2.classList.add('is-active');
+  } else if (part === 'tb1' || part === 'textbook1') {
+    if (btnTb1) btnTb1.classList.add('is-active');
+  } else if (part === 'tb2' || part === 'textbook2') {
+    if (btnTb2) btnTb2.classList.add('is-active');
+  } else if (part === 'tb3' || part === 'textbook3') {
+    if (btnTb3) btnTb3.classList.add('is-active');
   } else {
     if (btnSample) btnSample.classList.add('is-active');
   }
@@ -172,6 +190,9 @@
   function getCanonicalPart() {
     if (part === '1' || part === 'part1') return '1';
     if (part === '2' || part === 'part2') return '2';
+    if (part === 'tb1' || part === 'textbook1') return 'tb1';
+    if (part === 'tb2' || part === 'textbook2') return 'tb2';
+    if (part === 'tb3' || part === 'textbook3') return 'tb3';
     return '';
   }
 
@@ -189,6 +210,9 @@
     if (btnSample) btnSample.href = makeUrl('', isSolution, hasAnswers);
     if (btnPart1) btnPart1.href = makeUrl('1', isSolution, hasAnswers);
     if (btnPart2) btnPart2.href = makeUrl('2', isSolution, hasAnswers);
+    if (btnTb1) btnTb1.href = makeUrl('tb1', isSolution, hasAnswers);
+    if (btnTb2) btnTb2.href = makeUrl('tb2', isSolution, hasAnswers);
+    if (btnTb3) btnTb3.href = makeUrl('tb3', isSolution, hasAnswers);
     if (btnModeProblem) btnModeProblem.href = makeUrl(cPart, false, hasAnswers);
     if (btnModeSolution) btnModeSolution.href = makeUrl(cPart, true, hasAnswers);
   }
@@ -403,7 +427,8 @@
     /* 2. 문제 제시부 */
     var body = el('div', 'card__body');
     if (p.question) {
-      var q = el('p', 'card__question', p.question);
+      var qText = String(p.question || '').replace(/\\n(?![a-zA-Z])/g, '\n');
+      var q = el('p', 'card__question', qText);
       renderInlineMath(q);
       body.appendChild(q);
     }
@@ -424,7 +449,13 @@
         var item = el('li', 'sub');
         item.appendChild(el('span', 'sub__no', '(' + (s.no != null ? s.no : i + 1) + ')'));
         var sf = el('div', 'sub__formula');
-        renderFormula(sf, s.formula || '', true);
+        var formText = s.formula || '';
+        if (formText.indexOf('$') !== -1 || /[가-힣]/.test(formText)) {
+          sf.textContent = formText;
+          renderInlineMath(sf);
+        } else {
+          renderFormula(sf, formText, true);
+        }
         item.appendChild(sf);
         list.appendChild(item);
       });

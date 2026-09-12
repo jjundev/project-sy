@@ -33,17 +33,38 @@ CHROME_PATHS = [
 PARTS_CONFIG = {
     1: {
         "part_key": "1",
-        "title": "Part 1 (함수의 극한과 연속)",
+        "title": "Part 1 (함수의 극한과 연속 - 프린트)",
         "without_answers_filename": "서영이_수학II_Part1_함수의극한과연속.pdf",
         "with_answers_filename": "서영이_수학II_Part1_함수의극한과연속_정답포함.pdf",
         "solution_filename": "서영이_수학II_Part1_함수의극한과연속_해설지.pdf",
     },
     2: {
         "part_key": "2",
-        "title": "Part 2 (미분계수와 도함수)",
+        "title": "Part 2 (미분계수와 도함수 - 프린트)",
         "without_answers_filename": "서영이_수학II_Part2_미분계수와도함수.pdf",
         "with_answers_filename": "서영이_수학II_Part2_미분계수와도함수_정답포함.pdf",
         "solution_filename": "서영이_수학II_Part2_미분계수와도함수_해설지.pdf",
+    },
+    "tb1": {
+        "part_key": "tb1",
+        "title": "교과서 Part 1 (I. 함수의 극한과 연속)",
+        "without_answers_filename": "서영이_교과서_Part1_함수의극한과연속.pdf",
+        "with_answers_filename": "서영이_교과서_Part1_함수의극한과연속_정답포함.pdf",
+        "solution_filename": "서영이_교과서_Part1_함수의극한과연속_해설지.pdf",
+    },
+    "tb2": {
+        "part_key": "tb2",
+        "title": "교과서 Part 2 (II. 미분계수와 도함수)",
+        "without_answers_filename": "서영이_교과서_Part2_미분계수와도함수.pdf",
+        "with_answers_filename": "서영이_교과서_Part2_미분계수와도함수_정답포함.pdf",
+        "solution_filename": "서영이_교과서_Part2_미분계수와도함수_해설지.pdf",
+    },
+    "tb3": {
+        "part_key": "tb3",
+        "title": "교과서 Part 3 (II. 도함수의 활용)",
+        "without_answers_filename": "서영이_교과서_Part3_도함수의활용.pdf",
+        "with_answers_filename": "서영이_교과서_Part3_도함수의활용_정답포함.pdf",
+        "solution_filename": "서영이_교과서_Part3_도함수의활용_해설지.pdf",
     },
 }
 
@@ -190,9 +211,9 @@ def main():
     parser.add_argument(
         "target",
         nargs="?",
-        default="all",
-        choices=["part1", "part2", "solution", "solutions", "all", "1", "2"],
-        help="생성할 대상: part1, part2, solution, all (기본값: all)",
+        default="tb",
+        choices=["part1", "part2", "tb1", "tb2", "tb3", "tb", "textbook", "solution", "solutions", "all", "1", "2"],
+        help="생성할 대상: part1, part2, tb1, tb2, tb3, tb(교과서 전수), solution, all (기본값: tb)",
     )
 
     ans_group = parser.add_mutually_exclusive_group()
@@ -227,39 +248,35 @@ def main():
     # 작업 목록 구성: (part_num, with_answers, is_solution, filename)
     tasks = []
 
+    def add_part_tasks(p_key):
+        cfg = PARTS_CONFIG[p_key]
+        if args.solution:
+            tasks.append((p_key, True, True, cfg["solution_filename"]))
+        elif args.with_answers:
+            tasks.append((p_key, True, False, cfg["with_answers_filename"]))
+        elif args.no_answers:
+            tasks.append((p_key, False, False, cfg["without_answers_filename"]))
+        else:
+            # 기본 모드: 문제지 + 해설지 2종 세트 생성
+            tasks.append((p_key, False, False, cfg["without_answers_filename"]))
+            tasks.append((p_key, True, True, cfg["solution_filename"]))
+
     if args.target in ("solution", "solutions"):
-        for part_num in [1, 2]:
-            cfg = PARTS_CONFIG[part_num]
-            tasks.append((part_num, True, True, cfg["solution_filename"]))
+        for part_key in [1, 2, "tb1", "tb2", "tb3"]:
+            cfg = PARTS_CONFIG[part_key]
+            tasks.append((part_key, True, True, cfg["solution_filename"]))
     elif args.target in ("part1", "1"):
-        cfg = PARTS_CONFIG[1]
-        if args.solution:
-            tasks.append((1, True, True, cfg["solution_filename"]))
-        elif args.with_answers:
-            tasks.append((1, True, False, cfg["with_answers_filename"]))
-        else:
-            tasks.append((1, False, False, cfg["without_answers_filename"]))
+        add_part_tasks(1)
     elif args.target in ("part2", "2"):
-        cfg = PARTS_CONFIG[2]
-        if args.solution:
-            tasks.append((2, True, True, cfg["solution_filename"]))
-        elif args.with_answers:
-            tasks.append((2, True, False, cfg["with_answers_filename"]))
-        else:
-            tasks.append((2, False, False, cfg["without_answers_filename"]))
+        add_part_tasks(2)
+    elif args.target in ("tb1", "tb2", "tb3"):
+        add_part_tasks(args.target)
+    elif args.target in ("tb", "textbook"):
+        for part_key in ["tb1", "tb2", "tb3"]:
+            add_part_tasks(part_key)
     else:  # all
-        for part_num in [1, 2]:
-            cfg = PARTS_CONFIG[part_num]
-            if args.solution:
-                tasks.append((part_num, True, True, cfg["solution_filename"]))
-            elif args.with_answers:
-                tasks.append((part_num, True, False, cfg["with_answers_filename"]))
-            elif args.no_answers:
-                tasks.append((part_num, False, False, cfg["without_answers_filename"]))
-            else:
-                # 'all' 기본 모드: 문제지 2종 + 해설지 2종 (총 4종) 일괄 생성
-                tasks.append((part_num, False, False, cfg["without_answers_filename"]))
-                tasks.append((part_num, True, True, cfg["solution_filename"]))
+        for part_key in [1, 2, "tb1", "tb2", "tb3"]:
+            add_part_tasks(part_key)
 
     print(f"총 {len(tasks)}개 PDF 빌드 예정\n" + "-" * 50)
 

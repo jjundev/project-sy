@@ -302,6 +302,7 @@ p, ol { margin: 0; padding: 0; }
 .card__question {
   word-break: keep-all;
   overflow-wrap: anywhere;
+  white-space: pre-line;
 }
 
 .card__formula {
@@ -329,7 +330,7 @@ p, ol { margin: 0; padding: 0; }
 
 .sub {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 6px;
   min-width: 0;
 }
@@ -338,12 +339,15 @@ p, ol { margin: 0; padding: 0; }
   flex: none;
   font-weight: 600;
   color: var(--c-charcoal);
+  line-height: 1.5;
 }
 
 .sub__formula {
   flex: 1 1 0;
   min-width: 0;
   overflow: visible;
+  word-break: keep-all;
+  line-height: 1.5;
 }
 
 .sub__formula .katex-display { margin: 0; text-align: left; }
