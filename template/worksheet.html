@@ -287,6 +287,29 @@
     return String(n).padStart(2, '0');
   }
 
+  function fixKaTeXSvgOverflow(rootNode) {
+    if (!rootNode) return;
+    var svgs = rootNode.querySelectorAll ? rootNode.querySelectorAll('.hide-tail svg') : [];
+    for (var i = 0; i < svgs.length; i++) {
+      var svg = svgs[i];
+      var w = svg.getAttribute('width');
+      if (w && w.indexOf('400em') !== -1) {
+        svg.setAttribute('width', '25em');
+      }
+      var vb = svg.getAttribute('viewBox');
+      if (vb && vb.indexOf('400000') !== -1) {
+        svg.setAttribute('viewBox', vb.replace(/400000/g, '25000'));
+      }
+      var paths = svg.querySelectorAll('path');
+      for (var j = 0; j < paths.length; j++) {
+        var d = paths[j].getAttribute('d');
+        if (d && d.indexOf('400000') !== -1) {
+          paths[j].setAttribute('d', d.replace(/([hH]-?)400000/g, '$125000'));
+        }
+      }
+    }
+  }
+
   function renderFormula(target, tex, displayMode) {
     if (window.katex) {
       try {
@@ -296,6 +319,7 @@
           errorColor: TEX_ERROR_COLOR,
           strict: 'ignore'
         });
+        fixKaTeXSvgOverflow(target);
         return;
       } catch (err) { /* 아래 원본 LaTeX 로 대체 */ }
     }
@@ -311,6 +335,7 @@
       errorColor: TEX_ERROR_COLOR,
       strict: 'ignore'
     });
+    fixKaTeXSvgOverflow(node);
   }
 
   /* "수학 II - 함수의 극한 실전 대비" → 과목 칩 + 제목 */
@@ -752,6 +777,7 @@
     }
 
     root.appendChild(frag);
+    fixKaTeXSvgOverflow(root);
 
     if (meta.title) {
       var suffix = '';
