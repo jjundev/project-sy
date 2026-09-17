@@ -152,6 +152,8 @@
   var part = (params.get('part') || '').toLowerCase();
   var isSolution = params.get('mode') === 'solution' || params.get('solution') === '1';
   var hasAnswers = params.get('answers') === '1' || params.get('answers') === 'true';
+  var studentParam = params.get('student');
+  var noStudentParam = params.get('nostudent') === '1' || params.get('nostudent') === 'true' || params.get('no_student') === '1';
 
   var root = document.getElementById('worksheet');
   var data = window.WORKSHEET_DATA;
@@ -368,10 +370,14 @@
     header.appendChild(titleBox);
 
     var info = el('div', 'ws-header__info od-row od-fixed od-nowrap');
-    info.appendChild(el('span', 'ws-student', meta.student));
-    info.appendChild(sep());
-    info.appendChild(el('span', 'ws-date', meta.date));
-    info.appendChild(sep());
+    if (meta.student && meta.student.trim()) {
+      info.appendChild(el('span', 'ws-student', meta.student.trim()));
+      info.appendChild(sep());
+    }
+    if (meta.date && meta.date.trim()) {
+      info.appendChild(el('span', 'ws-date', meta.date.trim()));
+      info.appendChild(sep());
+    }
     var confirm = el('span', 'ws-confirm od-row');
     confirm.appendChild(el('span', '', '확인'));
     var box = el('span', 'ws-confirm__box od-fixed');
@@ -607,10 +613,14 @@
     header.appendChild(titleBox);
 
     var info = el('div', 'ws-header__info od-row od-fixed od-nowrap');
-    info.appendChild(el('span', 'ws-student', meta.student || ''));
-    info.appendChild(sep());
-    info.appendChild(el('span', 'ws-date', meta.date || ''));
-    info.appendChild(sep());
+    if (meta.student && meta.student.trim()) {
+      info.appendChild(el('span', 'ws-student', meta.student.trim()));
+      info.appendChild(sep());
+    }
+    if (meta.date && meta.date.trim()) {
+      info.appendChild(el('span', 'ws-date', meta.date.trim()));
+      info.appendChild(sep());
+    }
     var confirm = el('span', 'ws-confirm od-row');
     confirm.appendChild(el('span', '', '득점'));
     var scoreBox = el('span', 'ws-confirm__box ws-confirm__box--score od-fixed');
@@ -706,7 +716,10 @@
     var review = el('div', 'ws-ans-review od-stack');
 
     var reviewHeader = el('div', 'ws-ans-review__header od-row');
-    reviewHeader.appendChild(el('span', 'ws-ans-review__tag', '서영이 맞춤 3단계 알고리즘 점검 & 오답 노트'));
+    var reviewTagText = (meta.student && meta.student.trim())
+      ? (meta.student.trim() + ' 맞춤 3단계 알고리즘 점검 & 오답 노트')
+      : '3단계 알고리즘 점검 & 오답 노트';
+    reviewHeader.appendChild(el('span', 'ws-ans-review__tag', reviewTagText));
     review.appendChild(reviewHeader);
 
     var checklist = el('div', 'ws-ans-checklist');
@@ -763,7 +776,12 @@
       return;
     }
 
-    var meta = data.meta || {};
+    var meta = Object.assign({}, data.meta || {});
+    if (noStudentParam) {
+      meta.student = '';
+    } else if (studentParam !== null) {
+      meta.student = studentParam;
+    }
     var problems = data.problems;
     var total = Math.ceil(problems.length / PER_SHEET);
     var frag = document.createDocumentFragment();
@@ -786,7 +804,7 @@
       } else if (hasAnswers) {
         suffix = ' (정답표 포함)';
       }
-      document.title = meta.title + (meta.student ? ' — ' + meta.student : '') + suffix;
+      document.title = meta.title + (meta.student && meta.student.trim() ? ' — ' + meta.student.trim() : '') + suffix;
     }
   }
 

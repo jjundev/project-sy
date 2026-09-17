@@ -1,9 +1,9 @@
 """
 tests/test_problems_data.py
 
-서영이 수학 II 문제지 데이터 검증기.
+수학 II 문제지 데이터 검증기.
 JavaScript 파일(window.WORKSHEET_DATA = { ... };)을 파싱하여
-메타데이터, 2x2 A4 인쇄 규격(4의 배수), 필수 필드, 서영이 전용 교수법 힌트 키워드를 검증합니다.
+메타데이터, 2x2 A4 인쇄 규격(4의 배수), 필수 필드, 3단계 알고리즘 교수법 힌트 키워드를 검증합니다.
 """
 
 import json
@@ -27,7 +27,8 @@ PEDAGOGY_KEYWORDS = [
     "절댓값",
 ]
 
-REQUIRED_META_KEYS = ["title", "subtitle", "student", "date"]
+REQUIRED_META_KEYS = ["title", "subtitle", "date"]
+OPTIONAL_META_KEYS = ["student", "cheer"]
 
 REQUIRED_PROBLEM_KEYS = {
     "id",
@@ -104,6 +105,12 @@ def validate_data(data: dict, source_name: str = "<data>") -> dict:
             f"{source_name}: 'meta.{key}' must be a non-empty string."
         )
 
+    # student 필드는 선택적 (인자로 주어지지 않은 경우 빈 문자열 또는 생략 가능)
+    if "student" in meta and meta["student"] is not None:
+        assert isinstance(meta["student"], str), (
+            f"{source_name}: 'meta.student' must be a string."
+        )
+
     # 2. 문제 배열 기본 검증
     assert "problems" in data and isinstance(data["problems"], list), (
         f"{source_name}: 'problems' must be a list."
@@ -134,7 +141,7 @@ def validate_data(data: dict, source_name: str = "<data>") -> dict:
             f"{source_name}: Problem {pid} 'subQuestions' must be a list."
         )
 
-        # 서영이 전용 교수법 힌트 검증: tip이 비어있지 않다면 지정된 핵심 키워드 최소 1개 이상 포함
+        # 3단계 알고리즘 교수법 힌트 검증: tip이 비어있지 않다면 지정된 핵심 키워드 최소 1개 이상 포함
         tip = p.get("tip")
         if tip and isinstance(tip, str) and tip.strip():
             matched_kw = [kw for kw in PEDAGOGY_KEYWORDS if kw in tip]
@@ -220,7 +227,27 @@ class TestProblemsData(unittest.TestCase):
 
     def test_empty_meta_field_raises(self):
         data = self._get_base_valid_data()
+        data["meta"]["title"] = "   "
+        with self.assertRaises(AssertionError):
+            validate_data(data)
+
+    def test_empty_student_allowed(self):
+        data = self._get_base_valid_data()
+        data["meta"]["student"] = ""
+        validated = validate_data(data)
+        self.assertEqual(validated["meta"]["student"], "")
+
         data["meta"]["student"] = "   "
+        validated = validate_data(data)
+        self.assertEqual(validated["meta"]["student"], "   ")
+
+        del data["meta"]["student"]
+        validated = validate_data(data)
+        self.assertNotIn("student", validated["meta"])
+
+    def test_invalid_student_type_raises(self):
+        data = self._get_base_valid_data()
+        data["meta"]["student"] = 12345
         with self.assertRaises(AssertionError):
             validate_data(data)
 

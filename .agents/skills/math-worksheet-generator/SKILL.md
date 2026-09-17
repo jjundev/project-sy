@@ -18,6 +18,22 @@ digraph math_worksheet_flow {
 
 ---
 
+## 🎯 Input Arguments & Student Name Handling (이름 인자 처리 규칙)
+
+사용자가 `/math-worksheet-generator [인자...]` 또는 대화로 호출할 때 학생 이름 인자 전달 여부에 따라 다음과 같이 엄격히 분기합니다:
+
+| 구분 | 이름을 인자(args)로 전달한 경우 | 이름을 인자(args)로 주지 않은 경우 (기본값) |
+|---|---|---|
+| **예시** | `/math-worksheet print.pdf 홍길동` | `/math-worksheet print.pdf` |
+| **`meta.student`** | 전달된 이름 (예: `"홍길동"`) | **`""` (빈 문자열 또는 생략)** |
+| **헤더 표기** | `홍길동 | 2026. 09. 12 | 확인 [ ]` | **`2026. 09. 12 | 확인 [ ]` (이름/구분자 미표기)** |
+| **이름 임의 생성** | 명시된 이름 사용 | **어떠한 가상의 이름이나 "서영이" 등도 표기하지 않음** |
+| **`meta.cheer`** | `"{학생명}의 완벽한 내신 1등급을 응원합니다 ✨"` | `"완벽한 내신 1등급을 응원합니다 ✨"` |
+| **해설지 태그** | `"{학생명} 맞춤 3단계 알고리즘 점검 & 오답 노트"` | `"3단계 알고리즘 점검 & 오답 노트"` |
+| **산출물 PDF** | `<학생명>_<과목>_<단원명>.pdf` | `<과목>_<단원명>.pdf` (학생명 접두사 없음) |
+
+---
+
 ## Step 1: Scaffold Workspace & Assets
 
 > [!NOTE]
@@ -102,7 +118,7 @@ python3 -m unittest tests/test_problems_data.py
   - `len(problems) % 4 == 0`
   - Even count of KaTeX `$` delimiters in all strings (`count % 2 == 0`)
   - No empty labels or contents
-  - Mandatory metadata (`title`, `subtitle`, `student`, `date`)
+  - Required metadata (`title`, `subtitle`, `date`), and optional `student` (인자 미제공 시 빈 문자열 허용)
 - **Completion Criterion**: Test suite passes with exit code 0 (`PASS: ... is valid`).
 
 ---
@@ -117,8 +133,10 @@ python3 generate_pdf.py all
 ```
 
 - **Deliverables (`output/`)**:
-  - `<학생명>_<과목>_<단원명>.pdf` (문제지 — 5mm 도트 모눈 풀이 공간 제공)
-  - `<학생명>_<과목>_<단원명>_해설지.pdf` (해설지 — 단계별 풀이 조판 + 강조 정답란 + 빠른 정답표 부록)
+  - **이름 인자 제공 시**: `<학생명>_<과목>_<단원명>.pdf` / `<학생명>_<과목>_<단원명>_해설지.pdf`
+  - **이름 인자 미제공 시**: `<과목>_<단원명>.pdf` / `<과목>_<단원명>_해설지.pdf` (학생명 접두사 제외)
+  - 문제지 — 5mm 도트 모눈 풀이 공간 제공
+  - 해설지 — 단계별 풀이 조판 + 강조 정답란 + 빠른 정답표 부록
 
 ### Visual Quality Inspection
 Render pages with `pdftoppm` to inspect key cards:

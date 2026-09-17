@@ -18,9 +18,11 @@ Usage:
 
 import argparse
 import os
+import re
 import shutil
 import subprocess
 import sys
+import urllib.parse
 from pathlib import Path
 
 CHROME_PATHS = [
@@ -34,39 +36,71 @@ PARTS_CONFIG = {
     1: {
         "part_key": "1",
         "title": "Part 1 (함수의 극한과 연속 - 프린트)",
-        "without_answers_filename": "서영이_수학II_Part1_함수의극한과연속.pdf",
-        "with_answers_filename": "서영이_수학II_Part1_함수의극한과연속_정답포함.pdf",
-        "solution_filename": "서영이_수학II_Part1_함수의극한과연속_해설지.pdf",
+        "data_file": "data/problems_part1.js",
+        "base_filename": "수학II_Part1_함수의극한과연속",
     },
     2: {
         "part_key": "2",
         "title": "Part 2 (미분계수와 도함수 - 프린트)",
-        "without_answers_filename": "서영이_수학II_Part2_미분계수와도함수.pdf",
-        "with_answers_filename": "서영이_수학II_Part2_미분계수와도함수_정답포함.pdf",
-        "solution_filename": "서영이_수학II_Part2_미분계수와도함수_해설지.pdf",
+        "data_file": "data/problems_part2.js",
+        "base_filename": "수학II_Part2_미분계수와도함수",
     },
     "tb1": {
         "part_key": "tb1",
         "title": "교과서 Part 1 (I. 함수의 극한과 연속)",
-        "without_answers_filename": "서영이_교과서_Part1_함수의극한과연속.pdf",
-        "with_answers_filename": "서영이_교과서_Part1_함수의극한과연속_정답포함.pdf",
-        "solution_filename": "서영이_교과서_Part1_함수의극한과연속_해설지.pdf",
+        "data_file": "data/textbook_part1.js",
+        "base_filename": "교과서_Part1_함수의극한과연속",
     },
     "tb2": {
         "part_key": "tb2",
         "title": "교과서 Part 2 (II. 미분계수와 도함수)",
-        "without_answers_filename": "서영이_교과서_Part2_미분계수와도함수.pdf",
-        "with_answers_filename": "서영이_교과서_Part2_미분계수와도함수_정답포함.pdf",
-        "solution_filename": "서영이_교과서_Part2_미분계수와도함수_해설지.pdf",
+        "data_file": "data/textbook_part2.js",
+        "base_filename": "교과서_Part2_미분계수와도함수",
     },
     "tb3": {
         "part_key": "tb3",
         "title": "교과서 Part 3 (II. 도함수의 활용)",
-        "without_answers_filename": "서영이_교과서_Part3_도함수의활용.pdf",
-        "with_answers_filename": "서영이_교과서_Part3_도함수의활용_정답포함.pdf",
-        "solution_filename": "서영이_교과서_Part3_도함수의활용_해설지.pdf",
+        "data_file": "data/textbook_part3.js",
+        "base_filename": "교과서_Part3_도함수의활용",
     },
 }
+
+
+def extract_student_from_file(data_path: Path) -> str:
+    """JS 파일에서 meta.student 추출 (없거나 실패 시 빈 문자열 반환)"""
+    if not data_path.exists():
+        return ""
+    try:
+        content = data_path.read_text(encoding="utf-8")
+        match = re.search(r'"student"\s*:\s*"([^"]*)"', content)
+        if match:
+            val = match.group(1).strip()
+            # 하위 호환: "오서영"은 "서영이" 파일명 관례 유지
+            if val == "오서영":
+                return "서영이"
+            return val
+    except Exception:
+        pass
+    return ""
+
+
+def get_part_filenames(cfg, base_dir, student_arg=None, no_student=False):
+    """학생 이름 지정 여부에 따른 산출물 파일명 생성"""
+    if no_student:
+        student = ""
+    elif student_arg is not None:
+        student = student_arg.strip()
+    else:
+        data_path = base_dir / cfg.get("data_file", "")
+        student = extract_student_from_file(data_path)
+
+    prefix = f"{student}_" if student else ""
+    base = cfg["base_filename"]
+    return {
+        "without_answers": f"{prefix}{base}.pdf",
+        "with_answers": f"{prefix}{base}_정답포함.pdf",
+        "solution": f"{prefix}{base}_해설지.pdf",
+    }
 
 
 def get_chrome_path():
@@ -117,7 +151,7 @@ def format_bytes(size):
     return f"{size:.1f} TB"
 
 
-def build_pdf(chrome_path, base_dir, part_num, with_answers, output_filename, is_solution=False):
+def build_pdf(chrome_path, base_dir, part_num, with_answers, output_filename, is_solution=False, student_override=None, no_student=False):
     """지정된 Part 및 모드(문제지/정답표/해설지)에 따라 Headless Chrome으로 PDF 생성"""
     output_dir = base_dir / "output"
     output_dir.mkdir(parents=True, exist_ok=True)
@@ -129,6 +163,10 @@ def build_pdf(chrome_path, base_dir, part_num, with_answers, output_filename, is
         query_parts.append("mode=solution")
     if with_answers:
         query_parts.append("answers=1")
+    if no_student:
+        query_parts.append("nostudent=1")
+    elif student_override is not None:
+        query_parts.append(f"student={urllib.parse.quote(student_override)}")
 
     query = "?" + "&".join(query_parts)
     file_url = f"file://{html_path}{query}"
@@ -233,6 +271,19 @@ def main():
         help="풀이 및 빠른 정답표가 포함된 해설지 PDF 생성",
     )
 
+    parser.add_argument(
+        "--student",
+        "--name",
+        dest="student",
+        default=None,
+        help="문제지에 표기할 학생 이름 (미지정 시 데이터 파일 설정에 따르며, 없을 경우 이름 미표기)",
+    )
+    parser.add_argument(
+        "--no-student",
+        action="store_true",
+        help="학생 이름을 표기하지 않음 (데이터 파일에 이름이 있어도 제외)",
+    )
+
     args = parser.parse_args()
 
     try:
@@ -250,21 +301,23 @@ def main():
 
     def add_part_tasks(p_key):
         cfg = PARTS_CONFIG[p_key]
+        filenames = get_part_filenames(cfg, base_dir, args.student, args.no_student)
         if args.solution:
-            tasks.append((p_key, True, True, cfg["solution_filename"]))
+            tasks.append((p_key, True, True, filenames["solution"]))
         elif args.with_answers:
-            tasks.append((p_key, True, False, cfg["with_answers_filename"]))
+            tasks.append((p_key, True, False, filenames["with_answers"]))
         elif args.no_answers:
-            tasks.append((p_key, False, False, cfg["without_answers_filename"]))
+            tasks.append((p_key, False, False, filenames["without_answers"]))
         else:
             # 기본 모드: 문제지 + 해설지 2종 세트 생성
-            tasks.append((p_key, False, False, cfg["without_answers_filename"]))
-            tasks.append((p_key, True, True, cfg["solution_filename"]))
+            tasks.append((p_key, False, False, filenames["without_answers"]))
+            tasks.append((p_key, True, True, filenames["solution"]))
 
     if args.target in ("solution", "solutions"):
         for part_key in [1, 2, "tb1", "tb2", "tb3"]:
             cfg = PARTS_CONFIG[part_key]
-            tasks.append((part_key, True, True, cfg["solution_filename"]))
+            filenames = get_part_filenames(cfg, base_dir, args.student, args.no_student)
+            tasks.append((part_key, True, True, filenames["solution"]))
     elif args.target in ("part1", "1"):
         add_part_tasks(1)
     elif args.target in ("part2", "2"):
@@ -289,6 +342,8 @@ def main():
             with_answers,
             filename,
             is_solution=is_solution,
+            student_override=args.student,
+            no_student=args.no_student,
         )
         results.append(res)
 

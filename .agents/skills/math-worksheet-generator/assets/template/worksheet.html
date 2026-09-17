@@ -152,6 +152,8 @@
   var part = (params.get('part') || '').toLowerCase();
   var isSolution = params.get('mode') === 'solution' || params.get('solution') === '1';
   var hasAnswers = params.get('answers') === '1' || params.get('answers') === 'true';
+  var studentParam = params.get('student');
+  var noStudentParam = params.get('nostudent') === '1' || params.get('nostudent') === 'true' || params.get('no_student') === '1';
 
   var root = document.getElementById('worksheet');
   var data = window.WORKSHEET_DATA;
@@ -287,6 +289,29 @@
     return String(n).padStart(2, '0');
   }
 
+  function fixKaTeXSvgOverflow(rootNode) {
+    if (!rootNode) return;
+    var svgs = rootNode.querySelectorAll ? rootNode.querySelectorAll('.hide-tail svg') : [];
+    for (var i = 0; i < svgs.length; i++) {
+      var svg = svgs[i];
+      var w = svg.getAttribute('width');
+      if (w && w.indexOf('400em') !== -1) {
+        svg.setAttribute('width', '25em');
+      }
+      var vb = svg.getAttribute('viewBox');
+      if (vb && vb.indexOf('400000') !== -1) {
+        svg.setAttribute('viewBox', vb.replace(/400000/g, '25000'));
+      }
+      var paths = svg.querySelectorAll('path');
+      for (var j = 0; j < paths.length; j++) {
+        var d = paths[j].getAttribute('d');
+        if (d && d.indexOf('400000') !== -1) {
+          paths[j].setAttribute('d', d.replace(/([hH]-?)400000/g, '$125000'));
+        }
+      }
+    }
+  }
+
   function renderFormula(target, tex, displayMode) {
     if (window.katex) {
       try {
@@ -296,6 +321,7 @@
           errorColor: TEX_ERROR_COLOR,
           strict: 'ignore'
         });
+        fixKaTeXSvgOverflow(target);
         return;
       } catch (err) { /* 아래 원본 LaTeX 로 대체 */ }
     }
@@ -311,6 +337,7 @@
       errorColor: TEX_ERROR_COLOR,
       strict: 'ignore'
     });
+    fixKaTeXSvgOverflow(node);
   }
 
   /* "수학 II - 함수의 극한 실전 대비" → 과목 칩 + 제목 */
@@ -343,10 +370,14 @@
     header.appendChild(titleBox);
 
     var info = el('div', 'ws-header__info od-row od-fixed od-nowrap');
-    info.appendChild(el('span', 'ws-student', meta.student));
-    info.appendChild(sep());
-    info.appendChild(el('span', 'ws-date', meta.date));
-    info.appendChild(sep());
+    if (meta.student && meta.student.trim()) {
+      info.appendChild(el('span', 'ws-student', meta.student.trim()));
+      info.appendChild(sep());
+    }
+    if (meta.date && meta.date.trim()) {
+      info.appendChild(el('span', 'ws-date', meta.date.trim()));
+      info.appendChild(sep());
+    }
     var confirm = el('span', 'ws-confirm od-row');
     confirm.appendChild(el('span', '', '확인'));
     var box = el('span', 'ws-confirm__box od-fixed');
@@ -582,10 +613,14 @@
     header.appendChild(titleBox);
 
     var info = el('div', 'ws-header__info od-row od-fixed od-nowrap');
-    info.appendChild(el('span', 'ws-student', meta.student || ''));
-    info.appendChild(sep());
-    info.appendChild(el('span', 'ws-date', meta.date || ''));
-    info.appendChild(sep());
+    if (meta.student && meta.student.trim()) {
+      info.appendChild(el('span', 'ws-student', meta.student.trim()));
+      info.appendChild(sep());
+    }
+    if (meta.date && meta.date.trim()) {
+      info.appendChild(el('span', 'ws-date', meta.date.trim()));
+      info.appendChild(sep());
+    }
     var confirm = el('span', 'ws-confirm od-row');
     confirm.appendChild(el('span', '', '득점'));
     var scoreBox = el('span', 'ws-confirm__box ws-confirm__box--score od-fixed');
@@ -681,7 +716,10 @@
     var review = el('div', 'ws-ans-review od-stack');
 
     var reviewHeader = el('div', 'ws-ans-review__header od-row');
-    reviewHeader.appendChild(el('span', 'ws-ans-review__tag', '서영이 맞춤 3단계 알고리즘 점검 & 오답 노트'));
+    var reviewTagText = (meta.student && meta.student.trim())
+      ? (meta.student.trim() + ' 맞춤 3단계 알고리즘 점검 & 오답 노트')
+      : '3단계 알고리즘 점검 & 오답 노트';
+    reviewHeader.appendChild(el('span', 'ws-ans-review__tag', reviewTagText));
     review.appendChild(reviewHeader);
 
     var checklist = el('div', 'ws-ans-checklist');
@@ -738,7 +776,12 @@
       return;
     }
 
-    var meta = data.meta || {};
+    var meta = Object.assign({}, data.meta || {});
+    if (noStudentParam) {
+      meta.student = '';
+    } else if (studentParam !== null) {
+      meta.student = studentParam;
+    }
     var problems = data.problems;
     var total = Math.ceil(problems.length / PER_SHEET);
     var frag = document.createDocumentFragment();
@@ -752,6 +795,7 @@
     }
 
     root.appendChild(frag);
+    fixKaTeXSvgOverflow(root);
 
     if (meta.title) {
       var suffix = '';
@@ -760,7 +804,7 @@
       } else if (hasAnswers) {
         suffix = ' (정답표 포함)';
       }
-      document.title = meta.title + (meta.student ? ' — ' + meta.student : '') + suffix;
+      document.title = meta.title + (meta.student && meta.student.trim() ? ' — ' + meta.student.trim() : '') + suffix;
     }
   }
 
