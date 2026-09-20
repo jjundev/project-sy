@@ -37,7 +37,7 @@ digraph math_worksheet_flow {
 ## Step 1: Scaffold Workspace & Assets
 
 > [!NOTE]
-> In this repository (`project-sy`), the core templates, vendor fonts (`template/vendor/`), test suites (`tests/`), and the PDF build pipeline (`generate_pdf.py`) are already fully configured in the project root.
+> In this repository (`project-sy`), the core templates, vendor fonts (`template/vendor/`), test suites (`tests/`), modular PDF pipeline (`scripts/pdf/`), and the backward-compatible PDF build pipeline (`generate_pdf.py`) are already fully configured in the project root.
 
 If resetting or verifying asset integrity, the bundled assets inside this skill can be referenced:
 
@@ -47,10 +47,11 @@ SKILL_DIR=".agents/skills/math-worksheet-generator"
 # To inspect or re-sync templates/scripts if needed:
 # cp -R "$SKILL_DIR/assets/template/"* template/
 # cp "$SKILL_DIR/assets/scripts/generate_pdf.py" ./generate_pdf.py
+# mkdir -p scripts/pdf && cp -R "$SKILL_DIR/assets/scripts/pdf/"* scripts/pdf/
 # cp "$SKILL_DIR/assets/scripts/test_problems_data.py" tests/test_problems_data.py
 ```
 
-- **Completion Criterion**: `template/worksheet.html`, `template/style.css`, `generate_pdf.py`, and `tests/test_problems_data.py` are present and ready in the workspace.
+- **Completion Criterion**: `template/worksheet.html`, `template/style.css`, `generate_pdf.py`, `scripts/pdf/` (`core.py`, `config.py`, `build_<publisher>.py`, `build_all.py`), and `tests/test_problems_data.py` are present and ready in the workspace.
 
 ---
 
@@ -60,8 +61,12 @@ Scan the source document (PDF or images) page by page:
 1. Extract question statements, KaTeX math expressions, and subquestions `(1)`, `(2)`.
 2. Extract teacher's handwritten notes, marginal problems, or starred problems with `tag: "필기"`.
 3. If subquestions contain long polynomials, fractions, or radicals, they will automatically format in single-column vertical stack (`card__subs--stack`) to prevent formula truncation.
+4. **No Naked LaTeX Rule (생 수식/명령어 누출 절대 금지)**:
+   - 한국어 본문, 소문항, 힌트, 해설 및 볼드체(`**...**`) 내의 모든 LaTeX 명령어(`\mathrm{P}`, `\mathrm{A}`, `\frac`, `\sqrt`, `\pi`, `\le`, `\ge`, `\pm` 등)와 단독 변수는 **반드시** `$...$` 기호로 감싸야 합니다.
+   - ❌ 절대 금지: `점 \mathrm{P}`, `t=2에서의 점 \mathrm{P}`, `**288\pi**`, `**2\sqrt{2}**`, `**-\sqrt{3} < a < \sqrt{3}**`
+   - ⭕ 엄격 준수: `점 $\mathrm{P}$`, `$t=2$에서의 점 $\mathrm{P}$`, `**$288\pi$**`, `**$2\sqrt{2}$**`, `**$-\sqrt{3} < a < \sqrt{3}$**`
 
-- **Completion Criterion**: All target problems and notes from the source are transcribed into LaTeX/KaTeX without syntax errors.
+- **Completion Criterion**: All target problems and notes from the source are transcribed into LaTeX/KaTeX without syntax errors or naked LaTeX leaks.
 
 ---
 
@@ -117,6 +122,8 @@ python3 -m unittest tests/test_problems_data.py
 - **Checks performed**:
   - `len(problems) % 4 == 0`
   - Even count of KaTeX `$` delimiters in all strings (`count % 2 == 0`)
+  - **Zero Naked LaTeX**: 수식 구분자(`$`) 밖으로 누출된 LaTeX 명령어(`\mathrm`, `\frac`, `\sqrt`, `\pi` 등) 전수 검증 (누출 발견 시 즉시 예외 발생)
+  - 3-Step Pedagogy tips contain required mathematical keywords
   - No empty labels or contents
   - Required metadata (`title`, `subtitle`, `date`), and optional `student` (인자 미제공 시 빈 문자열 허용)
 - **Completion Criterion**: Test suite passes with exit code 0 (`PASS: ... is valid`).
@@ -125,12 +132,38 @@ python3 -m unittest tests/test_problems_data.py
 
 ## Step 6: Compile Dual PDFs & Visual Verification
 
-Execute the one-click Headless Chrome builder:
+Execute the modular Headless Chrome PDF builders:
 
 ```bash
-# Build Problem Worksheets and Solution Worksheets
-python3 generate_pdf.py all
+# Specific publisher:
+python3 scripts/pdf/build_<name>.py
+
+# Specific part:
+python3 scripts/pdf/build_<name>.py 1
+
+# All textbooks:
+python3 scripts/pdf/build_all.py  # (or python3 generate_pdf.py all)
 ```
+
+> [!IMPORTANT]
+> **신규 교재/학습지 추가 시 독립 러너 생성 필수 규칙**:
+> **"신규 교재/학습지 추가 시 `scripts/pdf/build_<새교재>.py` 독립 실행 스크립트를 별도 파일로 반드시 생성하고 `scripts/pdf/config.py`에 등록"**
+>
+> **신규 러너 표준 템플릿 (`scripts/pdf/build_<name>.py`)**:
+> ```python
+> #!/usr/bin/env python3
+> import sys
+> from pathlib import Path
+> 
+> PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
+> sys.path.insert(0, str(PROJECT_ROOT))
+> 
+> from scripts.pdf.core import run_group_builder
+> from scripts.pdf.config import <PUBLISHER>_PARTS
+> 
+> if __name__ == "__main__":
+>     run_group_builder("<출판사명>", <PUBLISHER>_PARTS, PROJECT_ROOT)
+> ```
 
 - **Deliverables (`output/`)**:
   - **이름 인자 제공 시**: `<학생명>_<과목>_<단원명>.pdf` / `<학생명>_<과목>_<단원명>_해설지.pdf`
