@@ -28,7 +28,7 @@ window.WORKSHEET_DATA = {
         }
       ],
       "tip": "1단계: 평균변화율 공식 $\\frac{f(b)-f(a)}{b-a}$에 대입하기! 2단계: 대입 후 바로 계산이 되면 그 값이 곧 정답입니다.",
-      "answer": "(1) 5, (2) 4 + \\Delta x",
+      "answer": "(1) 5, (2) $4 + \\Delta x$",
       "solution": {
         "steps": [
           {
@@ -90,12 +90,12 @@ window.WORKSHEET_DATA = {
         }
       ],
       "tip": "1단계: 공식 $\\frac{f(b)-f(a)}{b-a}$에 $a, b$ 대입! 2단계: 분자를 전개한 뒤 $\\Delta x$를 약분하세요.",
-      "answer": "(1) -1, (2) 2a - 2 + \\Delta x",
+      "answer": "(1) -1, (2) $2a - 2 + \\Delta x$",
       "solution": {
         "steps": [
           {
             "label": "(1)",
-            "content": "[공식 대입] $f(3)=3, f(-2)=8$. $\\frac{3-8}{3-(-2)} = \\frac{-5}{5} = -1$ $\\therefore$ **-1**"
+            "content": "[공식 대입] $\\frac{f(3)-f(-2)}{3-(-2)} = \\frac{(9-6)-(4+4)}{5} = \\frac{3-8}{5} = \\frac{-5}{5} = -1$ $\\therefore$ **-1**"
           },
           {
             "label": "(2)",
@@ -120,8 +120,8 @@ window.WORKSHEET_DATA = {
           "formula": "$1$에서 $1+\\Delta x$까지"
         }
       ],
-      "tip": "1단계: 공식 $\\frac{f(b)-f(a)}{b-a}$에 대입! 2단계: 분자 인수분해 및 약분하여 정답 도출!",
-      "answer": "(1) 11, (2) 2\\Delta x + 7",
+      "tip": "1단계: 평균변화율 공식 $\\frac{f(b)-f(a)}{b-a}$에 대입하기! 2단계: 분자를 전개한 뒤 $\\Delta x$로 묶어 약분하세요.",
+      "answer": "(1) 11, (2) $2\\Delta x + 7$",
       "solution": {
         "steps": [
           {
@@ -457,7 +457,7 @@ window.WORKSHEET_DATA = {
       "formula": "",
       "subQuestions": [],
       "tip": "1단계: $x=2$ 대입 시 0으로 연속! 2단계: $x>2$일 때와 $x<2$일 때의 미분계수를 각각 구하세요.",
-      "answer": "연속이지만 미분가능하지 않다 (우미분계수 4 \\ne 좌미분계수 -4)",
+      "answer": "연속이지만 미분가능하지 않다 (우미분계수 $4 \\ne$ 좌미분계수 $-4$)",
       "solution": {
         "steps": [
           {

@@ -11,6 +11,7 @@ import os
 import re
 import sys
 import unittest
+from pathlib import Path
 
 PEDAGOGY_KEYWORDS = [
     "대입",
@@ -154,7 +155,74 @@ def validate_data(data: dict, source_name: str = "<data>") -> dict:
         if "solution" in p:
             validate_solution(p["solution"], pid, source_name)
 
+        # 수식 기호($) 외부로 누출된 생 LaTeX 명령어(\mathrm, \frac, \sqrt, \pi 등) 전수 검사
+        validate_no_naked_latex(p, pid, source_name)
+
     return data
+
+
+def check_no_naked_latex(text: str, field_name: str, pid: int, source_name: str = "<data>"):
+    """
+    수식 구분자($...$, $$...$$, \\(...\\), \\[...\\]) 외부로 노출된 LaTeX 매크로 누출 검증.
+    한국어 문장이나 소문항 등에 \\mathrm{P}, \\frac, \\sqrt 등의 LaTeX 코드가 $ 없이 노출되는 것을 원천 차단합니다.
+    """
+    if not text or not isinstance(text, str):
+        return
+    # 수식 구분자 영역($$...$$, $...$, \(...\), \[...\]) 제거 후 순수 텍스트만 추출
+    outside_text = re.sub(
+        r"\$\$[\s\S]*?\$\$|\$[^\$]+?\$|\\\([\s\S]*?\\\)|\s*\\\[[\s\S]*?\\\]",
+        "",
+        text,
+    )
+    # 백슬래시로 시작하는 LaTeX 명령어 탐색 (줄바꿈/탭 등의 기본 이스케이프 및 공백 매크로 \quad, \qquad 제외)
+    naked_macros = re.findall(r"\\[a-zA-Z]+", outside_text)
+    bad_macros = [
+        m for m in naked_macros if m not in ("\\n", "\\t", "\\r", "\\qquad", "\\quad")
+    ]
+    if bad_macros:
+        raise AssertionError(
+            f"{source_name}: Problem {pid} field '{field_name}' contains naked LaTeX macro(s) {bad_macros} outside math delimiters ($...$). "
+            f"Found in text: '{text}'. All LaTeX commands (e.g. \\mathrm{{P}}, \\frac, \\sqrt, \\pi) MUST be enclosed in '$...$'."
+        )
+
+
+def validate_no_naked_latex(p: dict, pid: int, source_name: str = "<data>"):
+    """문항 내 모든 텍스트 필드에서 수식 기호($) 누락으로 인한 생 LaTeX 명령어 누출 전수 검사."""
+    check_no_naked_latex(p.get("question", ""), "question", pid, source_name)
+
+    # formula 필드는 한글이 섞여있거나 $ 구분이 있는 경우 인라인 수식이므로 검사
+    f_text = p.get("formula", "")
+    if f_text and (re.search(r"[가-힣]", f_text) or "$" in f_text):
+        check_no_naked_latex(f_text, "formula", pid, source_name)
+
+    for s_idx, s in enumerate(p.get("subQuestions", [])):
+        sf = s.get("formula", "")
+        if sf and (re.search(r"[가-힣]", sf) or "$" in sf):
+            check_no_naked_latex(
+                sf, f"subQuestions[{s_idx}].formula", pid, source_name
+            )
+
+    check_no_naked_latex(
+        p.get("qSuffix") or p.get("questionSuffix", ""), "qSuffix", pid, source_name
+    )
+    check_no_naked_latex(p.get("tip", ""), "tip", pid, source_name)
+    check_no_naked_latex(p.get("answer", ""), "answer", pid, source_name)
+
+    for c_idx, c in enumerate(p.get("choices", [])):
+        check_no_naked_latex(c, f"choices[{c_idx}]", pid, source_name)
+
+    sol = p.get("solution")
+    if sol and isinstance(sol, dict):
+        for st_idx, st in enumerate(sol.get("steps", [])):
+            check_no_naked_latex(
+                st.get("label", ""), f"solution.steps[{st_idx}].label", pid, source_name
+            )
+            check_no_naked_latex(
+                st.get("content", ""),
+                f"solution.steps[{st_idx}].content",
+                pid,
+                source_name,
+            )
 
 
 def validate_dataset(filepath: str) -> dict:
@@ -178,6 +246,29 @@ class TestProblemsData(unittest.TestCase):
     def test_nonexistent_file(self):
         with self.assertRaises(FileNotFoundError):
             validate_dataset("data/nonexistent_file_xyz.js")
+
+    def test_ybm_files(self):
+        base_dir = os.path.join(os.path.dirname(__file__), "..", "data")
+        for part in [1, 2, 3]:
+            ybm_path = os.path.join(base_dir, f"ybm_part{part}.js")
+            if os.path.exists(ybm_path):
+                data = validate_dataset(ybm_path)
+                self.assertEqual(len(data["problems"]), 44)
+                self.assertEqual(len(data["problems"]) % 4, 0)
+
+    def test_all_21_datasets_integrity(self):
+        """21개 전 단원 데이터 파일의 스키마, 4의 배수 규격, Zero Naked LaTeX 무결성을 전수 검증."""
+        from scripts.pdf.config import PARTS_CONFIG
+        base_dir = Path(__file__).resolve().parent.parent
+        for key, cfg in PARTS_CONFIG.items():
+            file_path = base_dir / cfg["data_file"]
+            self.assertTrue(file_path.exists(), f"Missing file: {file_path}")
+            data = validate_dataset(str(file_path))
+            self.assertGreater(len(data["problems"]), 0, f"Empty problems in {file_path}")
+            self.assertEqual(
+                len(data["problems"]) % 4, 0,
+                f"4-Grid-Lock failed for {key} ({file_path}): {len(data['problems'])} is not multiple of 4"
+            )
 
     def _get_base_valid_data(self):
         return {
@@ -363,6 +454,59 @@ class TestProblemsData(unittest.TestCase):
                 "steps": [{"label": "[1단계]", "content": "$x=1 대입"}]
             }
             validate_data(bad_data)
+
+    def test_naked_latex_validation(self):
+        r"""수식 기호($) 없이 노출된 생 LaTeX 명령어(\mathrm{P}, \frac 등) 탐지 단위 테스트"""
+        # 1. 문제 질문 내 점 \mathrm{P} 누출 시 예외 발생
+        data = self._get_base_valid_data()
+        data["problems"][0]["question"] = "수직선 위를 움직이는 점 \\mathrm{P}의 위치"
+        with self.assertRaises(AssertionError) as ctx:
+            validate_data(data)
+        self.assertIn("naked LaTeX macro", str(ctx.exception))
+        self.assertIn("\\mathrm", str(ctx.exception))
+
+        # 2. 소문항 내 점 \mathrm{P} 누출 시 예외 발생
+        data = self._get_base_valid_data()
+        data["problems"][0]["subQuestions"] = [
+            {"formula": "t=2에서의 점 \\mathrm{P}의 속도"}
+        ]
+        with self.assertRaises(AssertionError) as ctx:
+            validate_data(data)
+        self.assertIn("naked LaTeX macro", str(ctx.exception))
+
+        # 3. 해설 본문 내 **288\pi** 등 볼드 수식에 $ 누락 시 예외 발생
+        data = self._get_base_valid_data()
+        data["problems"][0]["solution"] = {
+            "steps": [
+                {"label": "[1단계]", "content": "$V(12) = 288\\pi$ $\\therefore$ **288\\pi**"}
+            ]
+        }
+        with self.assertRaises(AssertionError) as ctx:
+            validate_data(data)
+        self.assertIn("naked LaTeX macro", str(ctx.exception))
+        self.assertIn("\\pi", str(ctx.exception))
+
+        # 4. 정답 및 팁 필드 내 생 수식 누출 시 예외 발생
+        data = self._get_base_valid_data()
+        data["problems"][0]["tip"] = "미분 공식 \\frac{df}{dx}를 대입하여 계산합니다."
+        with self.assertRaises(AssertionError) as ctx:
+            validate_data(data)
+        self.assertIn("naked LaTeX macro", str(ctx.exception))
+
+        # 5. 올바르게 $...$로 감싼 수식은 정상 통과
+        valid_data = self._get_base_valid_data()
+        valid_data["problems"][0]["question"] = "수직선 위를 움직이는 점 $\\mathrm{P}$의 위치"
+        valid_data["problems"][0]["subQuestions"] = [
+            {"formula": "$t=2$에서의 점 $\\mathrm{P}$의 속도"}
+        ]
+        valid_data["problems"][0]["solution"] = {
+            "steps": [
+                {"label": "[1단계]", "content": "$V(12) = 288\\pi$ $\\therefore$ **$288\\pi$**"}
+            ]
+        }
+        valid_data["problems"][0]["tip"] = "미분 공식 $\\frac{df}{dx}$를 대입하여 계산합니다."
+        validated = validate_data(valid_data)
+        self.assertEqual(len(validated["problems"]), 4)
 
 
 if __name__ == "__main__":

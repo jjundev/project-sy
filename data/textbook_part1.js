@@ -58,7 +58,7 @@ window.WORKSHEET_DATA = {
         }
       ],
       "tip": "1단계: 선 대입하여 분모와 근호 안의 상태를 확인하세요. $\\frac{1}{+0} = \\infty$이고 근호 안이 양의 무한대로 가면 양의 무한대로 발산합니다.",
-      "answer": "(1) 발산 (\\infty), (2) 발산 (\\infty)",
+      "answer": "(1) 발산 ($\\infty$), (2) 발산 ($\\infty$)",
       "solution": {
         "steps": [
           {
@@ -209,7 +209,7 @@ window.WORKSHEET_DATA = {
         },
         {
           "no": 2,
-          "formula": "\\lim_{x \\to 1-} f(x) \\text{ 및 } \\lim_{x \\to -1} f(x)"
+          "formula": "$\\lim_{x \\to 1-} f(x)$ 및 $\\lim_{x \\to -1} f(x)$"
         }
       ],
       "tip": "우극한은 오른쪽에서 접근할 때의 값, 좌극한은 왼쪽에서 접근할 때의 값입니다. 좌우극한이 일치해야 극한값이 존재합니다.",
@@ -516,7 +516,7 @@ window.WORKSHEET_DATA = {
         }
       ],
       "tip": "다항함수는 모든 실수 $(-\\infty, \\infty)$에서 연속! 무리함수는 근호 안의 식 $\\ge 0$인 구간에서 연속입니다.",
-      "answer": "(1) (-\\infty, \\infty), (2) (-\\infty, 3]",
+      "answer": "(1) $(-\\infty, \\infty)$, (2) $(-\\infty, 3]$",
       "solution": {
         "steps": [
           {
@@ -538,7 +538,7 @@ window.WORKSHEET_DATA = {
       "formula": "",
       "subQuestions": [],
       "tip": "분수함수는 분모가 0이 되는 $x$에서 정의되지 않아 불연속입니다. 분모 $g(x)=0$의 실근을 구해 그 점들을 제외한 구간에서 연속임을 명시하세요.",
-      "answer": "x \\ne -1, x \\ne -2인 모든 실수에서 연속",
+      "answer": "$x \\ne -1, x \\ne -2$인 모든 실수에서 연속",
       "solution": {
         "steps": [
           {

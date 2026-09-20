@@ -75,7 +75,7 @@ window.WORKSHEET_DATA = {
       "formula": "",
       "subQuestions": [],
       "tip": "도함수의 부호 판정: $f'(x) \\ge 0$인 구간에서 증가, $f'(x) \\le 0$인 구간에서 감소합니다. $f'(x)=0$의 두 실근을 구하고 증감표를 작성하세요.",
-      "answer": "구간 (-\\infty, 2], [4, \\infty)에서 증가하고, 닫힌구간 [2, 4]에서 감소한다.",
+      "answer": "구간 $(-\\infty, 2]$, $[4, \\infty)$에서 증가하고, 닫힌구간 $[2, 4]$에서 감소한다.",
       "solution": {
         "steps": [
           {
@@ -236,7 +236,7 @@ window.WORKSHEET_DATA = {
       "formula": "",
       "subQuestions": [],
       "tip": "닫힌구간에서 감소하려면 그 구간의 모든 $x$에서 $f'(x) \\le 0$이어야 합니다! 위로 볼록한 이차함수 $f'(x)$의 최댓값이 0 이하가 되도록 대입하세요.",
-      "answer": "a \\le -3",
+      "answer": "$a \\le -3$",
       "solution": {
         "steps": [
           {
@@ -366,7 +366,7 @@ window.WORKSHEET_DATA = {
       "formula": "",
       "subQuestions": [],
       "tip": "한쪽으로 이항하여 $4x^4-2x^2+k \\ge 0$ 만들기! $g(x)=4x^4-2x^2+k$의 최솟값을 미분 공식으로 구해 $0$ 이상이 되도록 대입하세요.",
-      "answer": "k \\ge 1/4",
+      "answer": "$k \\ge 1/4$",
       "solution": {
         "steps": [
           {
@@ -652,7 +652,7 @@ window.WORKSHEET_DATA = {
       "formula": "",
       "subQuestions": [],
       "tip": "닮음비 활용: 원기둥의 밑면 반지름을 $r$ ($0<r<9$)이라 두면 원기둥의 높이는 $12\\left(1-\\frac{r}{9}\\right)$입니다! 부피 $V(r)=\\pi r^2 h$를 미분하여 대입하세요.",
-      "answer": "144\\pi",
+      "answer": "$144\\pi$",
       "solution": {
         "steps": [
           {
@@ -730,7 +730,7 @@ window.WORKSHEET_DATA = {
       "formula": "",
       "subQuestions": [],
       "tip": "1단계: $x=2$에서의 미분계수로 접선의 방정식 구하기! 2단계: 곡선과 연립하여 인수분해로 점 $B$의 좌표를 구하고 두 점 사이의 거리 공식에 대입하세요.",
-      "answer": "\\sqrt{5}",
+      "answer": "$\\sqrt{5}$",
       "solution": {
         "steps": [
           {

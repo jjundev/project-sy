@@ -173,7 +173,7 @@ window.WORKSHEET_DATA = {
         }
       ],
       "tip": "1단계: 대입 시 $\\frac{1}{+0} = +\\infty$, $-\\frac{1}{+0} = -\\infty$! 제곱과 절댓값은 항상 양수입니다.",
-      "answer": "(1) \\infty (양의 무한대로 발산), (2) -\\infty (음의 무한대로 발산)",
+      "answer": "(1) $\\infty$ (양의 무한대로 발산), (2) $-\\infty$ (음의 무한대로 발산)",
       "solution": {
         "steps": [
           {
@@ -204,16 +204,16 @@ window.WORKSHEET_DATA = {
         }
       ],
       "tip": "1단계: $x \\to \\infty$ 또는 $x \\to -\\infty$를 대입하여 식의 부호 변화를 관찰하세요.",
-      "answer": "(1) -\\infty (발산), (2) \\infty (발산)",
+      "answer": "(1) $-\\infty$ (발산), (2) $\\infty$ (발산)",
       "solution": {
         "steps": [
           {
             "label": "(1)",
-            "content": "$x \\to \\infty$일 때 $2-x \\to 2-\\infty = -\\infty$ $\\therefore$ **$-\\infty$ (발산)**"
+            "content": "$x \\to \\infty$일 때 $2-x \\to -\\infty$ $\\therefore$ **$-\\infty$ (발산)**"
           },
           {
             "label": "(2)",
-            "content": "$x \\to -\\infty$이면 $-x \\to +\\infty$이므로 $\\sqrt{+\\infty+1} \\to \\infty$ $\\therefore$ **$\\infty$ (발산)**"
+            "content": "$x \\to -\\infty$일 때 $-x+1 \\to +\\infty$이므로 $\\sqrt{-x+1} \\to \\infty$ $\\therefore$ **$\\infty$ (발산)**"
           }
         ]
       }
@@ -226,7 +226,7 @@ window.WORKSHEET_DATA = {
       "formula": "\\lim_{x \\to \\infty} (2+x)",
       "subQuestions": [],
       "tip": "$x \\to \\infty$ 대입! $2+\\infty = +\\infty$ 양의 무한대로 발산합니다.",
-      "answer": "\\infty (발산)",
+      "answer": "$\\infty$ (발산)",
       "solution": {
         "steps": [
           {
@@ -279,7 +279,7 @@ window.WORKSHEET_DATA = {
       "formula": "",
       "subQuestions": [],
       "tip": "극한값이 존재하려면 (우극한) = (좌극한)이어야 합니다. $x \\to 0+$, $x \\to 0-$를 각각 구하세요.",
-      "answer": "존재하지 않는다 (우극한 1 \\ne 좌극한 0)",
+      "answer": "존재하지 않는다 (우극한 $1 \\ne$ 좌극한 $0$)",
       "solution": {
         "steps": [
           {
@@ -314,7 +314,7 @@ window.WORKSHEET_DATA = {
         }
       ],
       "tip": "★서영이 필수 공식: 절댓값은 반드시 구간별로 분리! $x>a$이면 $+$, $x<a$이면 $-$ 부호 붙이기!",
-      "answer": "(1) 존재하지 않음 (우극한 1 \\ne 좌극한 -1), (2) 0 (우극한 0 = 좌극한 0)",
+      "answer": "(1) 존재하지 않음 (우극한 $1 \\ne$ 좌극한 $-1$), (2) 0 (우극한 0 = 좌극한 0)",
       "solution": {
         "steps": [
           {
@@ -878,7 +878,7 @@ window.WORKSHEET_DATA = {
       "source": "농고 찍어준 문제 (교과서 29p 중단원 13번)",
       "tag": "교과서출제",
       "question": "다항함수 $f(x)$가 다음 조건을 만족시킬 때, $f(5)$의 값을 구하시오.",
-      "formula": "(가)\\; \\lim_{x \\to \\infty} \\frac{f(x)}{x^2} = 1, \\quad (나)\\; \\lim_{x \\to 2} \\frac{f(x)}{x-2} = -1",
+      "formula": "(가) $\\lim_{x \\to \\infty} \\frac{f(x)}{x^2} = 1$, (나) $\\lim_{x \\to 2} \\frac{f(x)}{x-2} = -1$",
       "subQuestions": [],
       "tip": "1단계: 분모에 대입하면 0이므로 분자 $f(2)=0$! $f(x)=(x-2)(x-k)$로 두고 식에 대입하여 약분하세요.",
       "answer": "6",
