@@ -172,5 +172,41 @@ class TestPdfCore(unittest.TestCase):
             mock_build.assert_called_once()
 
 
+class TestPdfRunners(unittest.TestCase):
+    def setUp(self):
+        self.project_root = Path(__file__).resolve().parent.parent
+        self.pdf_scripts_dir = self.project_root / "scripts" / "pdf"
+        self.runner_names = [
+            "build_print.py",
+            "build_tb.py",
+            "build_donga.py",
+            "build_miraen.py",
+            "build_visang.py",
+            "build_jihaksa.py",
+            "build_ybm.py",
+            "build_all.py",
+        ]
+
+    def test_all_runners_exist(self):
+        for name in self.runner_names:
+            script_path = self.pdf_scripts_dir / name
+            self.assertTrue(script_path.exists(), f"Runner script missing: {script_path}")
+
+    def test_all_runners_help_exit_zero(self):
+        import subprocess
+        import sys
+        for name in self.runner_names:
+            script_path = self.pdf_scripts_dir / name
+            res = subprocess.run(
+                [sys.executable, str(script_path), "--help"],
+                capture_output=True,
+                text=True,
+                check=True,
+            )
+            self.assertEqual(res.returncode, 0)
+            self.assertIn("usage:", res.stdout.lower())
+
+
 if __name__ == "__main__":
     unittest.main()
+
