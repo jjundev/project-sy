@@ -207,6 +207,90 @@ class TestPdfRunners(unittest.TestCase):
             self.assertIn("usage:", res.stdout.lower())
 
 
+class TestRootGeneratePdf(unittest.TestCase):
+    def setUp(self):
+        self.project_root = Path(__file__).resolve().parent.parent
+        self.root_script = self.project_root / "generate_pdf.py"
+
+    def test_root_script_exists(self):
+        self.assertTrue(self.root_script.exists())
+
+    def test_root_help_exit_zero(self):
+        import subprocess
+        import sys
+        res = subprocess.run(
+            [sys.executable, str(self.root_script), "--help"],
+            capture_output=True,
+            text=True,
+            check=True,
+        )
+        self.assertEqual(res.returncode, 0)
+        self.assertIn("usage:", res.stdout.lower())
+
+    def test_root_target_choices_include_legacy_targets(self):
+        import generate_pdf
+        parser = generate_pdf.build_parser()
+        target_action = None
+        for action in parser._actions:
+            if action.dest == "target":
+                target_action = action
+                break
+        self.assertIsNotNone(target_action, "target positional argument missing")
+        choices = set(target_action.choices)
+        legacy_targets = [
+            "part1", "1", "part2", "2",
+            "tb1", "tb2", "tb3", "tb", "textbook",
+            "donga1", "donga2", "donga3", "donga4", "donga", "donga_all",
+            "miraen1", "miraen2", "miraen3", "miraen", "mirae", "miraen_all",
+            "visang1", "visang2", "visang3", "visang", "visang_all",
+            "jihaksa1", "jihaksa2", "jihaksa3", "jihaksa", "jihaksa_all",
+            "ybm1", "ybm2", "ybm3", "ybm", "ybm_all",
+            "solution", "solutions", "all",
+        ]
+        for t in legacy_targets:
+            self.assertIn(t, choices, f"Legacy target '{t}' missing from generate_pdf.py choices")
+
+    def test_root_target_mapping(self):
+        import generate_pdf
+        mapping = generate_pdf.TARGET_MAP
+        self.assertEqual(mapping["part1"], [1])
+        self.assertEqual(mapping["1"], [1])
+        self.assertEqual(mapping["part2"], [2])
+        self.assertEqual(mapping["2"], [2])
+        self.assertEqual(mapping["tb"], ["tb1", "tb2", "tb3"])
+        self.assertEqual(mapping["textbook"], ["tb1", "tb2", "tb3"])
+        self.assertEqual(mapping["donga"], ["donga1", "donga2", "donga3", "donga4"])
+        self.assertEqual(mapping["donga_all"], ["donga1", "donga2", "donga3", "donga4"])
+        self.assertEqual(mapping["miraen"], ["miraen1", "miraen2", "miraen3"])
+        self.assertEqual(mapping["mirae"], ["miraen1", "miraen2", "miraen3"])
+        self.assertEqual(mapping["miraen_all"], ["miraen1", "miraen2", "miraen3"])
+        self.assertEqual(mapping["visang"], ["visang1", "visang2", "visang3"])
+        self.assertEqual(mapping["visang_all"], ["visang1", "visang2", "visang3"])
+        self.assertEqual(mapping["jihaksa"], ["jihaksa1", "jihaksa2", "jihaksa3"])
+        self.assertEqual(mapping["jihaksa_all"], ["jihaksa1", "jihaksa2", "jihaksa3"])
+        self.assertEqual(mapping["ybm"], ["ybm1", "ybm2", "ybm3"])
+        self.assertEqual(mapping["ybm_all"], ["ybm1", "ybm2", "ybm3"])
+
+    def test_root_main_mocked_build(self):
+        from unittest.mock import patch
+        import generate_pdf
+        with patch("generate_pdf.build_pdf") as mock_build, patch("sys.stdout"):
+            mock_build.return_value = {
+                "part": "donga1",
+                "with_answers": False,
+                "is_solution": False,
+                "tag": "문제지",
+                "filename": "test.pdf",
+                "path": "/fake/test.pdf",
+                "size": 1024,
+                "pages": "2",
+            }
+            results = generate_pdf.main(["donga1", "--no-answers"])
+            self.assertEqual(len(results), 1)
+            self.assertEqual(results[0]["part"], "donga1")
+            mock_build.assert_called_once()
+
+
 if __name__ == "__main__":
     unittest.main()
 
