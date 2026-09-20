@@ -48,5 +48,129 @@ class TestPdfConfig(unittest.TestCase):
                 self.assertEqual(v, PARTS_CONFIG[k], f"Config for {k} in {group} does not match PARTS_CONFIG")
 
 
+
+class TestPdfCore(unittest.TestCase):
+    def setUp(self):
+        self.project_root = Path(__file__).resolve().parent.parent
+
+    def test_get_part_filenames(self):
+        from scripts.pdf.core import get_part_filenames
+        cfg = {
+            "part_key": "1",
+            "title": "Part 1 (함수의 극한과 연속 - 프린트)",
+            "data_file": "data/problems_part1.js",
+            "base_filename": "수학II_Part1_함수의극한과연속",
+        }
+        # 1. student_arg provided
+        res = get_part_filenames(cfg, self.project_root, student_arg="홍길동")
+        self.assertEqual(res["without_answers"], "홍길동_수학II_Part1_함수의극한과연속.pdf")
+        self.assertEqual(res["with_answers"], "홍길동_수학II_Part1_함수의극한과연속_정답포함.pdf")
+        self.assertEqual(res["solution"], "홍길동_수학II_Part1_함수의극한과연속_해설지.pdf")
+
+        # 2. no_student=True
+        res_no_student = get_part_filenames(cfg, self.project_root, no_student=True)
+        self.assertEqual(res_no_student["without_answers"], "수학II_Part1_함수의극한과연속.pdf")
+        self.assertEqual(res_no_student["with_answers"], "수학II_Part1_함수의극한과연속_정답포함.pdf")
+        self.assertEqual(res_no_student["solution"], "수학II_Part1_함수의극한과연속_해설지.pdf")
+
+        # 3. Default from file (data/problems_part1.js has "오서영" -> "서영이")
+        res_default = get_part_filenames(cfg, self.project_root)
+        self.assertEqual(res_default["without_answers"], "서영이_수학II_Part1_함수의극한과연속.pdf")
+        self.assertEqual(res_default["with_answers"], "서영이_수학II_Part1_함수의극한과연속_정답포함.pdf")
+        self.assertEqual(res_default["solution"], "서영이_수학II_Part1_함수의극한과연속_해설지.pdf")
+
+    def test_create_base_argparser(self):
+        from scripts.pdf.core import create_base_argparser
+        parser = create_base_argparser("Test description")
+
+        # Mutually exclusive flags
+        args = parser.parse_args(["--with-answers"])
+        self.assertTrue(args.with_answers)
+        self.assertFalse(args.no_answers)
+        self.assertFalse(args.solution)
+
+        args = parser.parse_args(["--no-answers"])
+        self.assertTrue(args.no_answers)
+        self.assertFalse(args.with_answers)
+        self.assertFalse(args.solution)
+
+        args = parser.parse_args(["--solution"])
+        self.assertTrue(args.solution)
+        self.assertFalse(args.with_answers)
+        self.assertFalse(args.no_answers)
+
+        # Mutually exclusive constraint
+        from unittest.mock import patch
+        import io
+        with patch("sys.stderr", new_callable=io.StringIO):
+            with self.assertRaises(SystemExit):
+                parser.parse_args(["--with-answers", "--solution"])
+
+        # Student argument
+        args = parser.parse_args(["--student", "홍길동"])
+        self.assertEqual(args.student, "홍길동")
+
+        args = parser.parse_args(["--name", "이순신"])
+        self.assertEqual(args.student, "이순신")
+
+        args = parser.parse_args(["--no-student"])
+        self.assertTrue(args.no_student)
+
+    def test_format_bytes(self):
+        from scripts.pdf.core import format_bytes
+        self.assertEqual(format_bytes(500), "500 B")
+        self.assertEqual(format_bytes(1024), "1.0 KB")
+        self.assertEqual(format_bytes(1024 * 1024), "1.0 MB")
+        self.assertEqual(format_bytes(1024 * 1024 * 1024), "1.0 GB")
+
+    def test_extract_student_from_file(self):
+        import tempfile
+        from scripts.pdf.core import extract_student_from_file
+
+        part1_path = self.project_root / "data" / "problems_part1.js"
+        if part1_path.exists():
+            self.assertEqual(extract_student_from_file(part1_path), "서영이")
+
+        # Non-existent file
+        self.assertEqual(extract_student_from_file(Path("/non/existent/file.js")), "")
+
+        # Custom temp file
+        with tempfile.NamedTemporaryFile("w", suffix=".js", delete=False) as f:
+            f.write('const meta = { "student": "테스트학생" };\n')
+            temp_path = Path(f.name)
+        try:
+            self.assertEqual(extract_student_from_file(temp_path), "테스트학생")
+        finally:
+            temp_path.unlink()
+
+    def test_run_group_builder(self):
+        from unittest.mock import patch
+        from scripts.pdf.config import DONGA_PARTS
+        from scripts.pdf.core import run_group_builder
+
+        with patch("scripts.pdf.core.build_pdf") as mock_build, patch("sys.stdout"):
+            mock_build.return_value = {
+                "part": "donga1",
+                "with_answers": False,
+                "is_solution": False,
+                "tag": "문제지",
+                "filename": "test.pdf",
+                "path": "/fake/test.pdf",
+                "size": 1024,
+                "pages": "2",
+            }
+            results = run_group_builder(
+                group_name="동아 교과서",
+                parts_config=DONGA_PARTS,
+                base_dir=self.project_root,
+                argv=["1", "--no-answers"],
+            )
+            self.assertEqual(len(results), 1)
+            self.assertEqual(results[0]["part"], "donga1")
+            self.assertFalse(results[0]["with_answers"])
+            self.assertFalse(results[0]["is_solution"])
+            mock_build.assert_called_once()
+
+
 if __name__ == "__main__":
     unittest.main()
