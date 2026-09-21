@@ -1,5 +1,5 @@
 /*
- * 문제지 데이터 — WORKSHEET_DESIGN_SPEC.md 5장 스키마 (problems.json) 그대로.
+ * 문제지 데이터 — docs/WORKSHEET_DESIGN_SPEC.md 5장 스키마 (problems.json) 그대로.
  * 브라우저에서 template/worksheet.html 을 직접 열어도(file://) 읽히도록 JSON 을 전역 변수에 담는다.
  * Python 파이프라인은 JSON 본문 앞에 `window.WORKSHEET_DATA = ` 한 줄만 붙여 이 파일을 출력하면 된다.
  * 수식(formula)은 KaTeX 문법이며, question / tip 안에서는 $...$ 로 인라인 수식을 쓸 수 있다.

@@ -138,6 +138,42 @@ PARTS_CONFIG: Dict[PartKey, Dict[str, Any]] = {
         "data_file": "data/ybm_part3.js",
         "base_filename": "미적분I_YBM_Part3_적분",
     },
+    "chunjae1": {
+        "part_key": "chunjae1",
+        "title": "천재(홍) 교과서 Part 1 (I. 함수의 극한과 연속)",
+        "data_file": "data/chunjae_part1.js",
+        "base_filename": "미적분I_천재홍_Part1_함수의극한과연속",
+    },
+    "chunjae2": {
+        "part_key": "chunjae2",
+        "title": "천재(홍) 교과서 Part 2 (II. 미분)",
+        "data_file": "data/chunjae_part2.js",
+        "base_filename": "미적분I_천재홍_Part2_미분",
+    },
+    "chunjae3": {
+        "part_key": "chunjae3",
+        "title": "천재(홍) 교과서 Part 3 (III. 적분)",
+        "data_file": "data/chunjae_part3.js",
+        "base_filename": "미적분I_천재홍_Part3_적분",
+    },
+    "common2_chunjae1": {
+        "part_key": "common2_chunjae1",
+        "title": "공통수학2 천재(홍) Part 1 (I. 도형의 방정식)",
+        "data_file": "data/common2_chunjae_part1.js",
+        "base_filename": "공통수학2_천재홍_Part1_도형의방정식",
+    },
+    "common2_chunjae2": {
+        "part_key": "common2_chunjae2",
+        "title": "공통수학2 천재(홍) Part 2 (II. 집합과 명제)",
+        "data_file": "data/common2_chunjae_part2.js",
+        "base_filename": "공통수학2_천재홍_Part2_집합과명제",
+    },
+    "common2_chunjae3": {
+        "part_key": "common2_chunjae3",
+        "title": "공통수학2 천재(홍) Part 3 (III. 함수와 그래프)",
+        "data_file": "data/common2_chunjae_part3.js",
+        "base_filename": "공통수학2_천재홍_Part3_함수와그래프",
+    },
 }
 
 PUBLISHER_GROUPS: Dict[str, List[PartKey]] = {
@@ -148,6 +184,8 @@ PUBLISHER_GROUPS: Dict[str, List[PartKey]] = {
     "visang": ["visang1", "visang2", "visang3"],
     "jihaksa": ["jihaksa1", "jihaksa2", "jihaksa3"],
     "ybm": ["ybm1", "ybm2", "ybm3"],
+    "chunjae": ["chunjae1", "chunjae2", "chunjae3"],
+    "common2_chunjae": ["common2_chunjae1", "common2_chunjae2", "common2_chunjae3"],
 }
 
 # Individual publisher subsets
@@ -158,3 +196,5 @@ MIRAEN_PARTS: Dict[PartKey, Dict[str, Any]] = {k: PARTS_CONFIG[k] for k in PUBLI
 VISANG_PARTS: Dict[PartKey, Dict[str, Any]] = {k: PARTS_CONFIG[k] for k in PUBLISHER_GROUPS["visang"]}
 JIHAKSA_PARTS: Dict[PartKey, Dict[str, Any]] = {k: PARTS_CONFIG[k] for k in PUBLISHER_GROUPS["jihaksa"]}
 YBM_PARTS: Dict[PartKey, Dict[str, Any]] = {k: PARTS_CONFIG[k] for k in PUBLISHER_GROUPS["ybm"]}
+CHUNJAE_PARTS: Dict[PartKey, Dict[str, Any]] = {k: PARTS_CONFIG[k] for k in PUBLISHER_GROUPS["chunjae"]}
+COMMON2_CHUNJAE_PARTS: Dict[PartKey, Dict[str, Any]] = {k: PARTS_CONFIG[k] for k in PUBLISHER_GROUPS["common2_chunjae"]}

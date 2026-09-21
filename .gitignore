@@ -8,3 +8,6 @@ __pycache__/
 
 # Temporary / Scratch
 scratch/
+scratch_*.txt
+*.tmp
+*.zip

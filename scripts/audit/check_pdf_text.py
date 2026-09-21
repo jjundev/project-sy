@@ -1,6 +1,8 @@
+from pathlib import Path
 import fitz
 
-doc = fitz.open('프린트/농고 찍어준거.pdf')
+ROOT = Path(__file__).resolve().parents[2]
+doc = fitz.open(ROOT / '프린트/농고 찍어준거.pdf')
 
 def is_mint(c):
     if c and len(c) >= 3:

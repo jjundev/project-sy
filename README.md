@@ -8,18 +8,20 @@
 generate_pdf.py                문제지/해설지 PDF 일괄 빌더 CLI (호환성 래퍼)
 scripts/pdf/                   모듈형 PDF 빌더 파이프라인
   ├── core.py                  Chrome 헤드리스 PDF 렌더링 코어 로직
-  ├── config.py                교재별 메타데이터 및 단원 설정
-  ├── build_<출판사>.py         출판사/교재별 독립 PDF 빌더 (donga, miraen, visang 등)
-  └── build_all.py             전체 교재/단원 일괄 빌더
+  ├── config.py                교재별 메타데이터 및 27개 단원 설정
+  ├── build_<출판사>.py         출판사/교재별 독립 PDF 빌더 (donga, miraen, chunjae 등)
+  └── build_all.py             전체 27개 단원 일괄 빌더
+scripts/generators/            단원별 문제 데이터셋(JS) 및 SVG 생성 스크립트
+scripts/tools/                 교과서 PDF 단원별 분할 유틸리티
+scripts/audit/                 교재/프린트 데이터 검증 및 파싱 유틸리티
 template/worksheet.html        문제지 본체 — 브라우저로 바로 열기
 template/style.css             A4 인쇄 스타일시트 (치수·색상은 맨 위 :root 변수에서 수정)
 template/vendor/katex/         KaTeX 0.16.11 — 수식 렌더러, 오프라인 동봉 (MIT)
 template/vendor/pretendard/    Pretendard 가변 폰트, 오프라인 동봉 (SIL OFL 1.1)
 data/                          단원별 문제 데이터 (sample_problems.js, problems_*.js, *_part*.js)
 docs/                          설계 명세서(WORKSHEET_DESIGN_SPEC.md) 및 보고서
-scripts/audit/                 교재/프린트 데이터 검증 및 파싱 유틸리티
-tests/                         문제 데이터 무결성 검증 테스트 스위트
-프린트/                         원본 프린트 PDF
+tests/                         문제 데이터 무결성 및 PDF 빌더 단위 테스트 스위트
+프린트/                         원본 교과서/프린트 PDF
 output/                        생성된 문제지 및 해설지 PDF
 ```
 
@@ -29,20 +31,22 @@ output/                        생성된 문제지 및 해설지 PDF
 
 ```bash
 # 특정 출판사/교재 전체 빌드
-python3 scripts/pdf/build_donga.py      # 동아 교과서 전체 Part
-python3 scripts/pdf/build_miraen.py     # 미래엔 교과서 전체 Part
-python3 scripts/pdf/build_visang.py     # 비상 교과서 전체 Part
-python3 scripts/pdf/build_jihaksa.py    # 지학사 교과서 전체 Part
-python3 scripts/pdf/build_ybm.py        # YBM 교과서 전체 Part
-python3 scripts/pdf/build_tb.py         # 천재홍 교과서 전체 Part
-python3 scripts/pdf/build_print.py      # 학교 프린트 전체 Part
+python3 scripts/pdf/build_donga.py           # 동아 교과서 전체 Part
+python3 scripts/pdf/build_miraen.py          # 미래엔 교과서 전체 Part
+python3 scripts/pdf/build_visang.py          # 비상 교과서 전체 Part
+python3 scripts/pdf/build_jihaksa.py         # 지학사 교과서 전체 Part
+python3 scripts/pdf/build_ybm.py             # YBM 교과서 전체 Part
+python3 scripts/pdf/build_chunjae.py         # 천재홍 미적분I 교과서 전체 Part
+python3 scripts/pdf/build_common2_chunjae.py # 천재홍 공통수학2 교과서 전체 Part
+python3 scripts/pdf/build_tb.py              # 천재홍 교과서 본문 전체 Part
+python3 scripts/pdf/build_print.py           # 학교 프린트 전체 Part
 
 # 특정 단원 개별 빌드 (예: Part 1)
 python3 scripts/pdf/build_donga.py 1
 python3 scripts/pdf/build_donga.py 1 --no-answers  # 문제지만 빌드
 python3 scripts/pdf/build_donga.py 1 --solution    # 해설지만 빌드
 
-# 전체 21개 단원 (42종 PDF) 일괄 빌드
+# 전체 27개 단원 (54종 PDF) 일괄 빌드
 python3 scripts/pdf/build_all.py
 
 # 루트 호환성 래퍼 CLI (기존 명령어 지원)

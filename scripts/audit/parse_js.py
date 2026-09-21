@@ -1,5 +1,8 @@
+from pathlib import Path
 import re
 import json
+
+ROOT = Path(__file__).resolve().parents[2]
 
 def extract_sources(filename):
     with open(filename, 'r', encoding='utf-8') as f:
@@ -26,13 +29,13 @@ def extract_sources(filename):
     return results
 
 print("=== PART 1 ===")
-p1 = extract_sources('data/problems_part1.js')
+p1 = extract_sources(ROOT / 'data/problems_part1.js')
 for id, tag, src in p1:
     print(f"[{id}] {tag} : {src}")
 print(f"Total: {len(p1)}")
 
 print("\n=== PART 2 ===")
-p2 = extract_sources('data/problems_part2.js')
+p2 = extract_sources(ROOT / 'data/problems_part2.js')
 for id, tag, src in p2:
     print(f"[{id}] {tag} : {src}")
 print(f"Total: {len(p2)}")

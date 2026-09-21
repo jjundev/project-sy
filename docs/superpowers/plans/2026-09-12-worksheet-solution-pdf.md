@@ -8,7 +8,7 @@
 
 **Tech Stack:** JavaScript (ES6), HTML5/CSS Paged Media, KaTeX 0.16.11, Python 3, Headless Google Chrome, pdftoppm (검증용)
 
-**Spec:** [WORKSHEET_DESIGN_SPEC.md](file:///Users/hyunjun_macbook_pro/Documents/Private/project-sy/WORKSHEET_DESIGN_SPEC.md), 이전 회차 `/grill-yourself` 확정 설계안
+**Spec:** [WORKSHEET_DESIGN_SPEC.md](file:///Users/hyunjun_macbook_pro/Documents/Private/project-sy/docs/WORKSHEET_DESIGN_SPEC.md), 이전 회차 `/grill-yourself` 확정 설계안
 
 ## Global Constraints
 

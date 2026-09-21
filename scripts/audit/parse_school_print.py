@@ -1,7 +1,9 @@
+from pathlib import Path
 import fitz
 import re
 
-doc = fitz.open('프린트/오서영 프린트 종합.pdf')
+ROOT = Path(__file__).resolve().parents[2]
+doc = fitz.open(ROOT / '프린트/오서영 프린트 종합.pdf')
 
 for i in range(len(doc)):
     page = doc[i]

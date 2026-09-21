@@ -9,11 +9,11 @@ Usage:
     python3 generate_pdf.py part2               # Part 2 문제지 PDF 생성
     python3 generate_pdf.py part2 --with-answers # Part 2 정답표 포함 PDF 생성
     python3 generate_pdf.py part2 --solution    # Part 2 해설지 PDF 생성
-    python3 generate_pdf.py solution            # 전체 21종 해설지 PDF 생성
-    python3 generate_pdf.py all                 # 전체 21종 문제지 및 해설지 PDF 42종 일괄 생성
-    python3 generate_pdf.py all --with-answers  # 전체 21종 정답표 포함 PDF 생성
-    python3 generate_pdf.py all --no-answers    # 전체 21종 문제지 PDF 생성
-    python3 generate_pdf.py all --solution      # 전체 21종 해설지 PDF 생성
+    python3 generate_pdf.py solution            # 전체 27종 해설지 PDF 생성
+    python3 generate_pdf.py all                 # 전체 27종 문제지 및 해설지 PDF 54종 일괄 생성
+    python3 generate_pdf.py all --with-answers  # 전체 27종 정답표 포함 PDF 생성
+    python3 generate_pdf.py all --no-answers    # 전체 27종 문제지 PDF 생성
+    python3 generate_pdf.py all --solution      # 전체 27종 해설지 PDF 생성
 """
 
 import sys
@@ -21,6 +21,8 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional, Union
 
 from scripts.pdf.config import (
+    CHUNJAE_PARTS,
+    COMMON2_CHUNJAE_PARTS,
     DONGA_PARTS,
     JIHAKSA_PARTS,
     MIRAEN_PARTS,
@@ -64,6 +66,13 @@ TARGET_MAP: Dict[str, List[Union[int, str]]] = {
     # YBM Textbook
     "ybm": PUBLISHER_GROUPS["ybm"],
     "ybm_all": PUBLISHER_GROUPS["ybm"],
+    # Chunjae (Hong) Calculus I
+    "chunjae": PUBLISHER_GROUPS["chunjae"],
+    "chunjae_all": PUBLISHER_GROUPS["chunjae"],
+    # Common Math 2 Chunjae (Hong)
+    "common2_chunjae": PUBLISHER_GROUPS["common2_chunjae"],
+    "common2": PUBLISHER_GROUPS["common2_chunjae"],
+    "common2_all": PUBLISHER_GROUPS["common2_chunjae"],
 }
 
 # Add individual part keys
@@ -87,10 +96,10 @@ def build_parser():
   python3 generate_pdf.py part2 --with-answers  # Part 2 정답표 포함 PDF 생성
   python3 generate_pdf.py part2 --solution     # Part 2 해설지 PDF 생성
   python3 generate_pdf.py solution             # 전체 해설지 PDF 생성
-  python3 generate_pdf.py all                  # 전체 21종 문제지 및 해설지 PDF 일괄 생성
-  python3 generate_pdf.py all --with-answers   # 전체 21종 정답표 포함 PDF 생성
-  python3 generate_pdf.py all --no-answers     # 전체 21종 문제지 PDF 생성
-  python3 generate_pdf.py all --solution       # 전체 21종 해설지 PDF 생성
+  python3 generate_pdf.py all                  # 전체 27종 문제지 및 해설지 PDF 일괄 생성
+  python3 generate_pdf.py all --with-answers   # 전체 27종 정답표 포함 PDF 생성
+  python3 generate_pdf.py all --no-answers     # 전체 27종 문제지 PDF 생성
+  python3 generate_pdf.py all --solution       # 전체 27종 해설지 PDF 생성
 """
     parser = create_base_argparser(description=description, epilog=epilog)
     parser.add_argument(
@@ -98,7 +107,7 @@ def build_parser():
         nargs="?",
         default="tb",
         choices=TARGET_CHOICES,
-        help="생성할 대상: part1, part2, tb1~tb3, donga1~donga4, miraen1~miraen3, visang1~visang3, jihaksa1~jihaksa3, ybm1~ybm3, ybm, all (기본값: tb)",
+        help="생성할 대상: part1, part2, tb, donga, miraen, visang, jihaksa, ybm, chunjae, common2_chunjae, all (기본값: tb)",
     )
     return parser
 

@@ -256,8 +256,26 @@ class TestProblemsData(unittest.TestCase):
                 self.assertEqual(len(data["problems"]), 44)
                 self.assertEqual(len(data["problems"]) % 4, 0)
 
-    def test_all_21_datasets_integrity(self):
-        """21개 전 단원 데이터 파일의 스키마, 4의 배수 규격, Zero Naked LaTeX 무결성을 전수 검증."""
+    def test_chunjae_files(self):
+        base_dir = os.path.join(os.path.dirname(__file__), "..", "data")
+        for part in [1, 2, 3]:
+            chunjae_path = os.path.join(base_dir, f"chunjae_part{part}.js")
+            if os.path.exists(chunjae_path):
+                data = validate_dataset(chunjae_path)
+                self.assertEqual(len(data["problems"]), 44)
+                self.assertEqual(len(data["problems"]) % 4, 0)
+
+    def test_common2_chunjae_files(self):
+        base_dir = os.path.join(os.path.dirname(__file__), "..", "data")
+        for part in [1, 2, 3]:
+            path = os.path.join(base_dir, f"common2_chunjae_part{part}.js")
+            self.assertTrue(os.path.exists(path), f"File {path} does not exist")
+            data = validate_dataset(path)
+            self.assertEqual(len(data["problems"]), 44)
+            self.assertEqual(len(data["problems"]) % 4, 0)
+
+    def test_all_datasets_integrity(self):
+        """전 단원 데이터 파일의 스키마, 4의 배수 규격, Zero Naked LaTeX 무결성을 전수 검증."""
         from scripts.pdf.config import PARTS_CONFIG
         base_dir = Path(__file__).resolve().parent.parent
         for key, cfg in PARTS_CONFIG.items():

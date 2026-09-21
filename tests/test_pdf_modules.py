@@ -6,14 +6,24 @@ class TestPdfConfig(unittest.TestCase):
     def setUp(self):
         self.project_root = Path(__file__).resolve().parent.parent
 
-    def test_config_registry_contains_all_21_parts(self):
+    def test_config_registry_contains_all_27_parts(self):
         from scripts.pdf.config import PARTS_CONFIG, PUBLISHER_GROUPS
-        self.assertEqual(len(PARTS_CONFIG), 21)
-        expected_groups = {"print", "tb", "donga", "miraen", "visang", "jihaksa", "ybm"}
+        self.assertEqual(len(PARTS_CONFIG), 27)
+        expected_groups = {
+            "print",
+            "tb",
+            "donga",
+            "miraen",
+            "visang",
+            "jihaksa",
+            "ybm",
+            "chunjae",
+            "common2_chunjae",
+        }
         self.assertEqual(set(PUBLISHER_GROUPS.keys()), expected_groups)
-        # Verify total parts across groups equals 21
+        # Verify total parts across groups equals 27
         total_parts_in_groups = sum(len(parts) for parts in PUBLISHER_GROUPS.values())
-        self.assertEqual(total_parts_in_groups, 21)
+        self.assertEqual(total_parts_in_groups, 27)
 
     def test_all_data_files_exist(self):
         from scripts.pdf.config import PARTS_CONFIG
@@ -23,13 +33,15 @@ class TestPdfConfig(unittest.TestCase):
 
     def test_publisher_subsets_match(self):
         from scripts.pdf.config import (
+            CHUNJAE_PARTS,
+            COMMON2_CHUNJAE_PARTS,
+            DONGA_PARTS,
+            JIHAKSA_PARTS,
+            MIRAEN_PARTS,
             PARTS_CONFIG,
             PRINT_PARTS,
             TB_PARTS,
-            DONGA_PARTS,
-            MIRAEN_PARTS,
             VISANG_PARTS,
-            JIHAKSA_PARTS,
             YBM_PARTS,
         )
         subsets = {
@@ -40,6 +52,8 @@ class TestPdfConfig(unittest.TestCase):
             "visang": (VISANG_PARTS, 3),
             "jihaksa": (JIHAKSA_PARTS, 3),
             "ybm": (YBM_PARTS, 3),
+            "chunjae": (CHUNJAE_PARTS, 3),
+            "common2_chunjae": (COMMON2_CHUNJAE_PARTS, 3),
         }
         for group, (subset, expected_len) in subsets.items():
             self.assertEqual(len(subset), expected_len, f"Subset {group} length mismatch")
