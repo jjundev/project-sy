@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 150" width="220" height="150" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Pretendard', sans-serif;">
+  <defs>
+    <marker id="arr-x" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#18181b"/>
+    </marker>
+    <marker id="arr-y" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#18181b"/>
+    </marker>
+    
+  </defs>
+
+  <line x1="12" y1="85" x2="200" y2="85" stroke="#18181b" stroke-width="1.2" marker-end="url(#arr-x)"/>
+  <line x1="45" y1="140" x2="45" y2="15" stroke="#18181b" stroke-width="1.2" marker-end="url(#arr-y)"/>
+  <text x="204" y="89" font-size="11" font-style="italic" fill="#18181b">x</text>
+  <text x="37" y="12" font-size="11" font-style="italic" fill="#18181b">y</text>
+  <text x="36" y="96" font-size="10" fill="#18181b">O</text>
+
+  <line x1="45" y1="41" x2="140" y2="41" stroke="#64748b" stroke-width="1" stroke-dasharray="3,2"/>
+  <text x="36" y="45" font-size="10" fill="#18181b">2</text>
+
+  <path d="M 16.5,119.2 L 17.8,113.9 L 19.1,108.8 L 20.4,103.9 L 21.7,99.1 L 23.0,94.6 L 24.4,90.2 L 25.7,86.0 L 27.0,82.0 L 28.3,78.2 L 29.6,74.6 L 30.9,71.2 L 32.2,67.9 L 33.5,64.8 L 34.8,62.0 L 36.1,59.3 L 37.4,56.8 L 38.8,54.4 L 40.1,52.3 L 41.4,50.3 L 42.7,48.6 L 44.0,47.0 L 45.3,45.6 L 46.6,44.4 L 47.9,43.3 L 49.2,42.5 L 50.5,41.8 L 51.8,41.4 L 53.2,41.1 L 54.5,41.0 L 55.8,41.1 L 57.1,41.4 L 58.4,41.8 L 59.7,42.5 L 61.0,43.3 L 62.3,44.3 L 63.6,45.5 L 64.9,46.9 L 66.3,48.5 L 67.6,50.2 L 68.9,52.2 L 70.2,54.3 L 71.5,56.6 L 72.8,59.1 L 74.1,61.8 L 75.4,64.7 L 76.7,67.8 L 78.0,71.0 L 79.3,74.4 L 80.7,78.1 L 82.0,81.9 L 83.3,85.7 L 84.6,89.3 L 85.9,92.8 L 87.2,96.2 L 88.5,99.5 L 89.8,102.6 L 91.1,105.5 L 92.4,108.2 L 93.7,110.6 L 95.1,112.7 L 96.4,114.5 L 97.7,115.9 L 99.0,117.0 L 100.3,117.7 L 101.6,118.0 L 102.9,117.9 L 104.2,117.4 L 105.5,116.6 L 106.8,115.4 L 108.1,113.8 L 109.5,111.9 L 110.8,109.7 L 112.1,107.2 L 113.4,104.4 L 114.7,101.4 L 116.0,98.2 L 117.3,94.9 L 118.6,91.4 L 119.9,87.9 L 121.2,83.9 L 122.5,78.1 L 123.9,72.8 L 125.2,67.8 L 126.5,63.3 L 127.8,59.2 L 129.1,55.5 L 130.4,52.2 L 131.7,49.4 L 133.0,46.9 L 134.3,44.9 L 135.6,43.3 L 137.0,42.1 L 138.3,41.4 L 139.6,41.0 L 140.9,41.1 L 142.2,41.6 L 143.5,42.5 L 144.8,43.8 L 146.1,45.6 L 147.4,47.7 L 148.7,50.3 L 150.0,53.3 L 151.4,56.7 L 152.7,60.5 L 154.0,64.8 L 155.3,69.5 L 156.6,74.5 L 157.9,80.0 L 159.2,86.0 L 160.5,92.3 L 161.8,99.1 L 163.1,106.2 L 164.4,113.8 L 165.8,121.8 L 167.1,130.3 L 168.4,139.1 L 169.7,148.4 L 171.0,158.1 L 172.3,168.2" fill="none" stroke="#09090b" stroke-width="1.8" stroke-linecap="round"/>
+
+  <text x="20" y="97" font-size="9.5" fill="#18181b">-1</text>
+  <text x="81" y="97" font-size="9.5" fill="#18181b">2</text>
+  <text x="100" y="81" font-size="9.5" fill="#18181b">3</text>
+  <text x="119" y="97" font-size="9.5" fill="#18181b">4</text>
+  <text x="138" y="97" font-size="9.5" fill="#18181b">5</text>
+  <text x="157" y="97" font-size="9.5" fill="#18181b">6</text>
+  <text x="124.8" y="30.0" font-size="10.5" font-style="italic" fill="#09090b">y=f'(x)</text>
+</svg>

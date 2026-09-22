@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 155" width="220" height="155" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Pretendard', sans-serif;">
+  <defs>
+    <marker id="arr-x" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#18181b"/>
+    </marker>
+    <marker id="arr-y" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#18181b"/>
+    </marker>
+    
+  </defs>
+
+  <line x1="28" y1="12" x2="28" y2="135" stroke="#e2e8f0" stroke-width="0.7"/><line x1="46" y1="12" x2="46" y2="135" stroke="#e2e8f0" stroke-width="0.7"/><line x1="64" y1="12" x2="64" y2="135" stroke="#e2e8f0" stroke-width="0.7"/><line x1="82" y1="12" x2="82" y2="135" stroke="#e2e8f0" stroke-width="0.7"/><line x1="100" y1="12" x2="100" y2="135" stroke="#e2e8f0" stroke-width="0.7"/><line x1="118" y1="12" x2="118" y2="135" stroke="#e2e8f0" stroke-width="0.7"/><line x1="136" y1="12" x2="136" y2="135" stroke="#e2e8f0" stroke-width="0.7"/><line x1="154" y1="12" x2="154" y2="135" stroke="#e2e8f0" stroke-width="0.7"/><line x1="172" y1="12" x2="172" y2="135" stroke="#e2e8f0" stroke-width="0.7"/><line x1="20" y1="116" x2="180" y2="116" stroke="#e2e8f0" stroke-width="0.7"/><line x1="20" y1="98" x2="180" y2="98" stroke="#e2e8f0" stroke-width="0.7"/><line x1="20" y1="80" x2="180" y2="80" stroke="#e2e8f0" stroke-width="0.7"/><line x1="20" y1="62" x2="180" y2="62" stroke="#e2e8f0" stroke-width="0.7"/><line x1="20" y1="44" x2="180" y2="44" stroke="#e2e8f0" stroke-width="0.7"/><line x1="20" y1="26" x2="180" y2="26" stroke="#e2e8f0" stroke-width="0.7"/>
+  <line x1="15" y1="80" x2="195" y2="80" stroke="#18181b" stroke-width="1.2" marker-end="url(#arr-x)"/>
+  <line x1="100" y1="142" x2="100" y2="10" stroke="#18181b" stroke-width="1.2" marker-end="url(#arr-y)"/>
+
+  <text x="198" y="84" font-size="11" font-style="italic" fill="#18181b">x</text>
+  <text x="92" y="10" font-size="11" font-style="italic" fill="#18181b">y</text>
+  <text x="91" y="91" font-size="9.5" fill="#18181b">O</text>
+
+  <path d="M 82.0,62.0 L 100.0,98.0 L 118.0,62.0 L 118.0,62.0 L 117.1,63.8 L 116.2,65.5 L 115.2,67.1 L 114.3,68.6 L 113.4,70.0 L 112.5,71.4 L 111.5,72.6 L 110.6,73.7 L 109.7,74.8 L 108.8,75.7 L 107.8,76.6 L 106.9,77.3 L 106.0,78.0 L 105.1,78.6 L 104.2,79.0 L 103.2,79.4 L 102.3,79.7 L 101.4,79.9 L 100.5,80.0 L 99.5,80.0 L 98.6,79.9 L 97.7,79.7 L 96.8,79.4 L 95.8,79.0 L 94.9,78.6 L 94.0,78.0 L 93.1,77.3 L 92.2,76.6 L 91.2,75.7 L 90.3,74.8 L 89.4,73.7 L 88.5,72.6 L 87.5,71.4 L 86.6,70.0 L 85.7,68.6 L 84.8,67.1 L 83.8,65.5 L 82.9,63.8 L 82.0,62.0 Z" fill="#e2e8f0" stroke="#94a3b8" stroke-width="0.8"/>
+  <text x="96" y="83" font-size="11" font-weight="600" font-style="italic" fill="#1e293b">A</text>
+
+  <line x1="94.6" y1="108.8" x2="127.0" y2="44.0" stroke="#475569" stroke-width="1.2"/>
+  <line x1="105.4" y1="108.8" x2="73.0" y2="44.0" stroke="#475569" stroke-width="1.2"/>
+
+  <path d="M 69.4,28.0 L 70.4,31.4 L 71.5,34.8 L 72.5,38.0 L 73.5,41.1 L 74.6,44.1 L 75.6,47.0 L 76.7,49.7 L 77.7,52.4 L 78.7,54.9 L 79.8,57.3 L 80.8,59.5 L 81.8,61.7 L 82.9,63.7 L 83.9,65.6 L 85.0,67.4 L 86.0,69.1 L 87.0,70.7 L 88.1,72.1 L 89.1,73.4 L 90.1,74.6 L 91.2,75.7 L 92.2,76.6 L 93.3,77.5 L 94.3,78.2 L 95.3,78.8 L 96.4,79.3 L 97.4,79.6 L 98.4,79.9 L 99.5,80.0 L 100.5,80.0 L 101.6,79.9 L 102.6,79.6 L 103.6,79.3 L 104.7,78.8 L 105.7,78.2 L 106.7,77.5 L 107.8,76.6 L 108.8,75.7 L 109.9,74.6 L 110.9,73.4 L 111.9,72.1 L 113.0,70.7 L 114.0,69.1 L 115.0,67.4 L 116.1,65.6 L 117.1,63.7 L 118.2,61.7 L 119.2,59.5 L 120.2,57.3 L 121.3,54.9 L 122.3,52.4 L 123.3,49.7 L 124.4,47.0 L 125.4,44.1 L 126.5,41.1 L 127.5,38.0 L 128.5,34.8 L 129.6,31.4 L 130.6,28.0" fill="none" stroke="#09090b" stroke-width="1.8" stroke-linecap="round"/>
+
+  <text x="134" y="91" font-size="9" fill="#18181b">2</text>
+  <text x="60" y="91" font-size="9" fill="#18181b">-2</text>
+  <text x="170" y="91" font-size="9" fill="#18181b">4</text>
+  <text x="24" y="91" font-size="9" fill="#18181b">-4</text>
+  <text x="104" y="47" font-size="9" fill="#18181b">2</text>
+  <text x="104" y="101" font-size="9" fill="#18181b">-1</text>
+  <circle cx="100" cy="98" r="2" fill="#18181b"/>
+  <text x="121.6" y="31.4" font-size="10.5" font-style="italic" fill="#09090b">y=x²</text>
+</svg>

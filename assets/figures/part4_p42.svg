@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 150" width="220" height="150" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Pretendard', sans-serif;">
+  <defs>
+    <marker id="arr-x" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#18181b"/>
+    </marker>
+    <marker id="arr-y" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#18181b"/>
+    </marker>
+    
+  </defs>
+
+  <line x1="15" y1="80" x2="195" y2="80" stroke="#18181b" stroke-width="1.2" marker-end="url(#arr-x)"/>
+  <line x1="95" y1="135" x2="95" y2="15" stroke="#18181b" stroke-width="1.2" marker-end="url(#arr-y)"/>
+  <text x="198" y="84" font-size="11" font-style="italic" fill="#18181b">x</text>
+  <text x="87" y="12" font-size="11" font-style="italic" fill="#18181b">y</text>
+  <text x="98" y="91" font-size="10" fill="#18181b">O</text>
+
+  <path d="M 62.0,80.0 L 62.0,42.0 L 63.1,42.7 L 64.3,43.5 L 65.4,44.4 L 66.6,45.3 L 67.7,46.3 L 68.8,47.4 L 70.0,48.5 L 71.1,49.7 L 72.2,51.0 L 73.4,52.3 L 74.5,53.6 L 75.7,55.0 L 76.8,56.4 L 77.9,57.9 L 79.1,59.4 L 80.2,60.9 L 81.3,62.4 L 82.5,63.9 L 83.6,65.4 L 84.8,66.9 L 85.9,68.5 L 87.0,70.0 L 88.2,71.5 L 89.3,73.0 L 90.4,74.4 L 91.6,75.9 L 92.7,77.3 L 93.9,78.7 L 95.0,80.0 L 95.0,80.0 Z" fill="#e2e8f0" stroke="#94a3b8" stroke-width="0.8"/>
+  <path d="M 95.0,80.0 L 95.0,80.0 L 96.1,81.3 L 97.3,82.5 L 98.4,83.7 L 99.6,84.8 L 100.7,85.9 L 101.8,86.9 L 103.0,87.8 L 104.1,88.6 L 105.2,89.4 L 106.4,90.1 L 107.5,90.6 L 108.7,91.1 L 109.8,91.5 L 110.9,91.8 L 112.1,91.9 L 113.2,92.0 L 114.3,91.9 L 115.5,91.7 L 116.6,91.4 L 117.8,90.9 L 118.9,90.3 L 120.0,89.6 L 121.2,88.7 L 122.3,87.7 L 123.4,86.5 L 124.6,85.1 L 125.7,83.6 L 126.9,81.9 L 128.0,80.0 L 128.0,80.0 Z" fill="#e2e8f0" stroke="#94a3b8" stroke-width="0.8"/>
+
+  <line x1="62" y1="36.300000000000004" x2="62" y2="80" stroke="#64748b" stroke-width="1" stroke-dasharray="3,2"/>
+  <line x1="128" y1="80" x2="128" y2="123.69999999999999" stroke="#64748b" stroke-width="1" stroke-dasharray="3,2"/>
+
+  <path d="M 22.4,106.8 L 23.9,99.9 L 25.4,93.6 L 26.9,87.6 L 28.4,82.1 L 29.9,76.9 L 31.4,72.1 L 32.9,67.7 L 34.4,63.7 L 35.9,60.1 L 37.4,56.7 L 38.9,53.8 L 40.4,51.1 L 41.9,48.7 L 43.5,46.7 L 45.0,44.9 L 46.5,43.5 L 48.0,42.3 L 49.5,41.3 L 51.0,40.6 L 52.5,40.1 L 54.0,39.9 L 55.5,39.9 L 57.0,40.1 L 58.5,40.4 L 60.0,41.0 L 61.5,41.7 L 63.0,42.6 L 64.5,43.7 L 66.0,44.8 L 67.5,46.1 L 69.0,47.6 L 70.5,49.1 L 72.0,50.7 L 73.5,52.5 L 75.0,54.3 L 76.5,56.1 L 78.0,58.0 L 79.5,60.0 L 81.0,62.0 L 82.6,64.0 L 84.1,66.0 L 85.6,68.0 L 87.1,70.0 L 88.6,72.0 L 90.1,74.0 L 91.6,75.9 L 93.1,77.7 L 94.6,79.5 L 96.1,81.2 L 97.6,82.9 L 99.1,84.4 L 100.6,85.8 L 102.1,87.1 L 103.6,88.3 L 105.1,89.3 L 106.6,90.2 L 108.1,90.9 L 109.6,91.5 L 111.1,91.8 L 112.6,92.0 L 114.1,91.9 L 115.6,91.7 L 117.1,91.2 L 118.6,90.5 L 120.1,89.5 L 121.7,88.3 L 123.2,86.8 L 124.7,85.0 L 126.2,82.9 L 127.7,80.6 L 129.2,77.9 L 130.7,74.9 L 132.2,71.5 L 133.7,67.8 L 135.2,63.8 L 136.7,59.4 L 138.2,54.6 L 139.7,49.4 L 141.2,43.8" fill="none" stroke="#09090b" stroke-width="1.8" stroke-linecap="round"/>
+
+  <text x="23" y="92" font-size="9.5" fill="#18181b">-2</text>
+  <text x="58" y="92" font-size="9.5" fill="#18181b">-1</text>
+  <text x="127" y="92" font-size="9.5" fill="#18181b">1</text>
+  <text x="98.3" y="34.4" font-size="10.5" font-style="italic" fill="#09090b">y=x(x-1)(x+2)</text>
+</svg>

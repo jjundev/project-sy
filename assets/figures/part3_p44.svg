@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 150" width="220" height="150" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Pretendard', sans-serif;">
+  <defs>
+    <marker id="arr-x" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#18181b"/>
+    </marker>
+    <marker id="arr-y" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#18181b"/>
+    </marker>
+    
+  </defs>
+
+  <line x1="15" y1="65" x2="195" y2="65" stroke="#18181b" stroke-width="1.2" marker-end="url(#arr-x)"/>
+  <line x1="55" y1="140" x2="55" y2="15" stroke="#18181b" stroke-width="1.2" marker-end="url(#arr-y)"/>
+  <text x="198" y="69" font-size="11" font-style="italic" fill="#18181b">x</text>
+  <text x="47" y="12" font-size="11" font-style="italic" fill="#18181b">y</text>
+  <text x="46" y="77" font-size="10" fill="#18181b">O</text>
+
+  <path d="M 37.4,-4.1 L 39.0,2.9 L 40.5,9.8 L 42.1,16.5 L 43.6,23.0 L 45.2,29.3 L 46.8,35.5 L 48.3,41.5 L 49.9,47.3 L 51.4,52.9 L 53.0,58.3 L 54.6,63.5 L 56.1,68.6 L 57.7,73.5 L 59.2,78.2 L 60.8,82.7 L 62.4,87.1 L 63.9,91.2 L 65.5,95.2 L 67.0,99.0 L 68.6,102.6 L 70.1,106.0 L 71.7,109.3 L 73.3,112.4 L 74.8,115.3 L 76.4,118.0 L 77.9,120.5 L 79.5,122.9 L 81.1,125.0 L 82.6,127.0 L 84.2,128.8 L 85.7,130.5 L 87.3,131.9 L 88.9,133.2 L 90.4,134.3 L 92.0,135.2 L 93.5,135.9 L 95.1,136.4 L 96.7,136.8 L 98.2,137.0 L 99.8,137.0 L 101.3,136.8 L 102.9,136.4 L 104.5,135.9 L 106.0,135.2 L 107.6,134.3 L 109.1,133.2 L 110.7,131.9 L 112.3,130.5 L 113.8,128.8 L 115.4,127.0 L 116.9,125.0 L 118.5,122.9 L 120.1,120.5 L 121.6,118.0 L 123.2,115.3 L 124.7,112.4 L 126.3,109.3 L 127.9,106.0 L 129.4,102.6 L 131.0,99.0 L 132.5,95.2 L 134.1,91.2 L 135.6,87.1 L 137.2,82.7 L 138.8,78.2 L 140.3,73.5 L 141.9,68.6 L 143.4,63.5 L 145.0,58.3 L 146.6,52.9 L 148.1,47.3 L 149.7,41.5 L 151.2,35.5 L 152.8,29.3 L 154.4,23.0 L 155.9,16.5 L 157.5,9.8 L 159.0,2.9 L 160.6,-4.1" fill="none" stroke="#09090b" stroke-width="1.8" stroke-linecap="round"/>
+
+  <text x="141" y="77" font-size="10" fill="#18181b">4</text>
+  <text x="125.4" y="-3.3999999999999915" font-size="11" font-style="italic" fill="#09090b">y=f'(x)</text>
+</svg>

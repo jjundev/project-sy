@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 165" width="220" height="165" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Pretendard', sans-serif;">
+  <defs>
+    <marker id="arr-x" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#18181b"/>
+    </marker>
+    <marker id="arr-y" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#18181b"/>
+    </marker>
+    
+  </defs>
+
+  <line x1="15" y1="95" x2="200" y2="95" stroke="#18181b" stroke-width="1.2" marker-end="url(#arr-x)"/>
+  <line x1="105" y1="155" x2="105" y2="15" stroke="#18181b" stroke-width="1.2" marker-end="url(#arr-y)"/>
+  <text x="204" y="99" font-size="11" font-style="italic" fill="#18181b">x</text>
+  <text x="97" y="12" font-size="11" font-style="italic" fill="#18181b">y</text>
+  <text x="96" y="107" font-size="10" fill="#18181b">O</text>
+
+  <line x1="49" y1="95" x2="49" y2="163.0" stroke="#64748b" stroke-width="1" stroke-dasharray="3,2"/>
+  <line x1="49" y1="163.0" x2="105" y2="163.0" stroke="#64748b" stroke-width="1" stroke-dasharray="3,2"/>
+  <circle cx="49" cy="163.0" r="2" fill="#18181b"/>
+
+  <line x1="133" y1="95" x2="133" y2="48.25" stroke="#64748b" stroke-width="1" stroke-dasharray="3,2"/>
+  <line x1="105" y1="48.25" x2="133" y2="48.25" stroke="#64748b" stroke-width="1" stroke-dasharray="3,2"/>
+  <circle cx="133" cy="48.25" r="2" fill="#18181b"/>
+
+  <path d="M 15.4,93.2 L 16.7,98.9 L 17.9,104.3 L 19.2,109.5 L 20.5,114.3 L 21.8,118.9 L 23.0,123.3 L 24.3,127.4 L 25.6,131.2 L 26.8,134.8 L 28.1,138.2 L 29.4,141.3 L 30.6,144.2 L 31.9,146.8 L 33.2,149.3 L 34.5,151.5 L 35.7,153.5 L 37.0,155.3 L 38.3,156.9 L 39.5,158.3 L 40.8,159.5 L 42.1,160.5 L 43.4,161.4 L 44.6,162.0 L 45.9,162.5 L 47.2,162.8 L 48.4,163.0 L 49.7,163.0 L 51.0,162.8 L 52.2,162.5 L 53.5,162.0 L 54.8,161.4 L 56.1,160.7 L 57.3,159.8 L 58.6,158.8 L 59.9,157.7 L 61.1,156.5 L 62.4,155.2 L 63.7,153.7 L 65.0,152.2 L 66.2,150.5 L 67.5,148.8 L 68.8,146.9 L 70.0,145.0 L 71.3,143.0 L 72.6,141.0 L 73.8,138.8 L 75.1,136.6 L 76.4,134.4 L 77.7,132.0 L 78.9,129.7 L 80.2,127.3 L 81.5,124.8 L 82.7,122.3 L 84.0,119.8 L 85.3,117.3 L 86.6,114.7 L 87.8,112.1 L 89.1,109.5 L 90.4,106.9 L 91.6,104.3 L 92.9,101.7 L 94.2,99.1 L 95.4,96.5 L 96.7,94.0 L 98.0,91.4 L 99.3,88.9 L 100.5,86.4 L 101.8,84.0 L 103.1,81.6 L 104.3,79.2 L 105.6,76.9 L 106.9,74.6 L 108.2,72.4 L 109.4,70.3 L 110.7,68.2 L 112.0,66.2 L 113.2,64.3 L 114.5,62.5 L 115.8,60.7 L 117.0,59.1 L 118.3,57.5 L 119.6,56.1 L 120.9,54.7 L 122.1,53.5 L 123.4,52.4 L 124.7,51.4 L 125.9,50.5 L 127.2,49.8 L 128.5,49.2 L 129.8,48.8 L 131.0,48.4 L 132.3,48.3 L 133.6,48.3 L 134.8,48.4 L 136.1,48.7 L 137.4,49.2 L 138.6,49.9 L 139.9,50.7 L 141.2,51.7 L 142.5,52.9 L 143.7,54.3 L 145.0,55.9 L 146.3,57.7 L 147.5,59.8 L 148.8,62.0 L 150.1,64.4 L 151.4,67.1 L 152.6,70.0 L 153.9,73.1 L 155.2,76.4 L 156.4,80.0 L 157.7,83.9 L 159.0,88.0 L 160.2,92.3 L 161.5,96.9 L 162.8,101.8 L 164.1,106.9 L 165.3,112.3 L 166.6,118.0" fill="none" stroke="#09090b" stroke-width="1.8" stroke-linecap="round"/>
+
+  <text x="44" y="91" font-size="10" fill="#18181b">-2</text>
+  <text x="109" y="167.0" font-size="10" fill="#18181b">-8</text>
+  <text x="131" y="108" font-size="10" fill="#18181b">1</text>
+  <text x="80" y="52.25" font-size="10" fill="#18181b">11/2</text>
+  <text x="141" y="45.25" font-size="11" font-style="italic" font-weight="500" fill="#09090b">y=f(x)</text>
+</svg>

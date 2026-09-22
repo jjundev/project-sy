@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 120" width="220" height="120" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Pretendard', sans-serif;">
+  <defs>
+    <marker id="arr-x" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#18181b"/>
+    </marker>
+    <marker id="arr-y" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#18181b"/>
+    </marker>
+  </defs>
+
+  <!-- Axes -->
+  <line x1="20" y1="60" x2="200" y2="60" stroke="#18181b" stroke-width="1.2" marker-end="url(#arr-x)"/>
+  <line x1="30" y1="112" x2="30" y2="12" stroke="#18181b" stroke-width="1.2" marker-end="url(#arr-y)"/>
+  <text x="204" y="64" font-size="11" font-style="italic" fill="#18181b">t</text>
+  <text x="14" y="14" font-size="11" font-style="italic" fill="#18181b">v(t)</text>
+  <text x="18" y="73" font-size="10" fill="#18181b">O</text>
+
+  <!-- Dotted projection lines -->
+  <line x1="30" y1="20" x2="138" y2="20" stroke="#71717a" stroke-width="1" stroke-dasharray="3,2"/>
+  <line x1="138" y1="20" x2="138" y2="60" stroke="#71717a" stroke-width="1" stroke-dasharray="3,2"/>
+  <line x1="30" y1="100" x2="66" y2="100" stroke="#71717a" stroke-width="1" stroke-dasharray="3,2"/>
+  <line x1="66" y1="60" x2="66" y2="100" stroke="#71717a" stroke-width="1" stroke-dasharray="3,2"/>
+
+  <!-- Graph line -->
+  <path d="M 30 60 L 66 100 L 138 20 L 174 60" fill="none" stroke="#09090b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Labels -->
+  <text x="63" y="55" font-size="10" fill="#18181b">2</text>
+  <text x="99" y="73" font-size="10" fill="#18181b">4</text>
+  <text x="135" y="73" font-size="10" fill="#18181b">6</text>
+  <text x="171" y="73" font-size="10" fill="#18181b">8</text>
+  <text x="18" y="24" font-size="10" fill="#18181b">2</text>
+  <text x="13" y="104" font-size="10" fill="#18181b">-2</text>
+</svg>

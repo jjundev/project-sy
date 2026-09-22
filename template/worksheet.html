@@ -72,7 +72,28 @@
       <a href="worksheet.html?part=2" class="ws-toolbar__btn" id="btn-part2">프린트 2 (미분)</a>
       <a href="worksheet.html?part=tb1" class="ws-toolbar__btn" id="btn-tb1">교과서 1 (극한/연속)</a>
       <a href="worksheet.html?part=tb2" class="ws-toolbar__btn" id="btn-tb2">교과서 2 (미분계수/도함수)</a>
-      <a href="worksheet.html?part=tb3" class="ws-toolbar__btn" id="btn-tb3">교과서 3 (도함수 활용)</a>
+      <a href="worksheet.html?part=donga1" class="ws-toolbar__btn" id="btn-donga1">동아 1 (극한/연속)</a>
+      <a href="worksheet.html?part=donga2" class="ws-toolbar__btn" id="btn-donga2">동아 2 (미분)</a>
+      <a href="worksheet.html?part=donga3" class="ws-toolbar__btn" id="btn-donga3">동아 3 (미분활용)</a>
+      <a href="worksheet.html?part=donga4" class="ws-toolbar__btn" id="btn-donga4">동아 4 (적분)</a>
+      <a href="worksheet.html?part=miraen1" class="ws-toolbar__btn" id="btn-miraen1">미래엔 1 (극한/연속)</a>
+      <a href="worksheet.html?part=miraen2" class="ws-toolbar__btn" id="btn-miraen2">미래엔 2 (미분)</a>
+      <a href="worksheet.html?part=miraen3" class="ws-toolbar__btn" id="btn-miraen3">미래엔 3 (적분)</a>
+      <a href="worksheet.html?part=visang1" class="ws-toolbar__btn" id="btn-visang1">비상 1 (극한/연속)</a>
+      <a href="worksheet.html?part=visang2" class="ws-toolbar__btn" id="btn-visang2">비상 2 (미분)</a>
+      <a href="worksheet.html?part=visang3" class="ws-toolbar__btn" id="btn-visang3">비상 3 (적분)</a>
+      <a href="worksheet.html?part=jihaksa1" class="ws-toolbar__btn" id="btn-jihaksa1">지학사 1 (극한/연속)</a>
+      <a href="worksheet.html?part=jihaksa2" class="ws-toolbar__btn" id="btn-jihaksa2">지학사 2 (미분)</a>
+      <a href="worksheet.html?part=jihaksa3" class="ws-toolbar__btn" id="btn-jihaksa3">지학사 3 (적분)</a>
+      <a href="worksheet.html?part=ybm1" class="ws-toolbar__btn" id="btn-ybm1">YBM 1 (극한/연속)</a>
+      <a href="worksheet.html?part=ybm2" class="ws-toolbar__btn" id="btn-ybm2">YBM 2 (미분)</a>
+      <a href="worksheet.html?part=ybm3" class="ws-toolbar__btn" id="btn-ybm3">YBM 3 (적분)</a>
+      <a href="worksheet.html?part=chunjae1" class="ws-toolbar__btn" id="btn-chunjae1">천재 1 (미적I)</a>
+      <a href="worksheet.html?part=chunjae2" class="ws-toolbar__btn" id="btn-chunjae2">천재 2 (미적I)</a>
+      <a href="worksheet.html?part=chunjae3" class="ws-toolbar__btn" id="btn-chunjae3">천재 3 (미적I)</a>
+      <a href="worksheet.html?part=common2_chunjae1" class="ws-toolbar__btn" id="btn-common2-chunjae1">공통수학2 천재 1</a>
+      <a href="worksheet.html?part=common2_chunjae2" class="ws-toolbar__btn" id="btn-common2-chunjae2">공통수학2 천재 2</a>
+      <a href="worksheet.html?part=common2_chunjae3" class="ws-toolbar__btn" id="btn-common2-chunjae3">공통수학2 천재 3</a>
     </div>
     <div class="ws-toolbar__sep" aria-hidden="true"></div>
     <div class="ws-toolbar__group">
@@ -123,6 +144,50 @@
     scriptSrc = '../data/textbook_part2.js';
   } else if (part === 'tb3' || part === 'textbook3' || part === 'tbpart3') {
     scriptSrc = '../data/textbook_part3.js';
+  } else if (part === 'donga1' || part === 'donga_part1' || part === 'donga') {
+    scriptSrc = '../data/donga_part1.js';
+  } else if (part === 'donga2' || part === 'donga_part2') {
+    scriptSrc = '../data/donga_part2.js';
+  } else if (part === 'donga3' || part === 'donga_part3') {
+    scriptSrc = '../data/donga_part3.js';
+  } else if (part === 'donga4' || part === 'donga_part4') {
+    scriptSrc = '../data/donga_part4.js';
+  } else if (part === 'miraen1' || part === 'mirae1' || part === 'miraen') {
+    scriptSrc = '../data/miraen_part1.js';
+  } else if (part === 'miraen2' || part === 'mirae2') {
+    scriptSrc = '../data/miraen_part2.js';
+  } else if (part === 'miraen3' || part === 'mirae3') {
+    scriptSrc = '../data/miraen_part3.js';
+  } else if (part === 'visang1' || part === 'visang_part1' || part === 'visang') {
+    scriptSrc = '../data/visang_part1.js';
+  } else if (part === 'visang2' || part === 'visang_part2') {
+    scriptSrc = '../data/visang_part2.js';
+  } else if (part === 'visang3' || part === 'visang_part3') {
+    scriptSrc = '../data/visang_part3.js';
+  } else if (part === 'jihaksa1' || part === 'jihaksa_part1' || part === 'jihaksa') {
+    scriptSrc = '../data/jihaksa_part1.js';
+  } else if (part === 'jihaksa2' || part === 'jihaksa_part2') {
+    scriptSrc = '../data/jihaksa_part2.js';
+  } else if (part === 'jihaksa3' || part === 'jihaksa_part3') {
+    scriptSrc = '../data/jihaksa_part3.js';
+  } else if (part === 'ybm1' || part === 'ybm_part1' || part === 'ybm') {
+    scriptSrc = '../data/ybm_part1.js';
+  } else if (part === 'ybm2' || part === 'ybm_part2') {
+    scriptSrc = '../data/ybm_part2.js';
+  } else if (part === 'ybm3' || part === 'ybm_part3') {
+    scriptSrc = '../data/ybm_part3.js';
+  } else if (part === 'chunjae1' || part === 'chunjae_part1' || part === 'chunjae') {
+    scriptSrc = '../data/chunjae_part1.js';
+  } else if (part === 'chunjae2' || part === 'chunjae_part2') {
+    scriptSrc = '../data/chunjae_part2.js';
+  } else if (part === 'chunjae3' || part === 'chunjae_part3') {
+    scriptSrc = '../data/chunjae_part3.js';
+  } else if (part === 'common2_chunjae1' || part === 'common2_part1' || part === 'common2_1') {
+    scriptSrc = '../data/common2_chunjae_part1.js';
+  } else if (part === 'common2_chunjae2' || part === 'common2_part2' || part === 'common2_2') {
+    scriptSrc = '../data/common2_chunjae_part2.js';
+  } else if (part === 'common2_chunjae3' || part === 'common2_part3' || part === 'common2_3') {
+    scriptSrc = '../data/common2_chunjae_part3.js';
   }
   document.write('<script src="' + scriptSrc + '"><\/script>');
 })();
@@ -140,6 +205,26 @@
     { left: '\\(', right: '\\)', display: false },
     { left: '$', right: '$', display: false }
   ];
+
+  /* 한국 수학 시험/교과서 표준: 인라인/디스플레이 구분 없이 \lim 아래에 첨자 배치 */
+  var KATEX_MACROS = {
+    "\\lim": "\\mathop{\\mathrm{lim}}\\limits"
+  };
+
+  /* LaTeX 수식 구분자($...$) 외부의 누출된 LaTeX 명령어(\mathrm{P}, \frac 등) 자동 복구 및 \quad 공백 안전 변환 */
+  function sanitizeMathText(str) {
+    if (!str) return '';
+    var s = String(str).replace(/\\n(?![a-zA-Z])/g, '\n');
+    var parts = s.split(/(\$\$[\s\S]*?\$\$|\$[^\$]+?\$|\\\([\s\S]*?\\\))/g);
+    for (var i = 0; i < parts.length; i += 2) {
+      if (parts[i]) {
+        parts[i] = parts[i].replace(/\\qquad/g, '\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0').replace(/\\quad/g, '\u00a0\u00a0\u00a0\u00a0');
+        // 수식 기호($) 외부로 누출된 LaTeX 매크로(\mathrm{P}, \sqrt{...}, \frac{...}{...}, \pi 등) 자동 복구
+        parts[i] = parts[i].replace(/(\\[a-zA-Z]+(?:\{[^{}]*(?:\{[^{}]*\}[^{}]*)*\}|\[[^\]]*\])*(?:[_^](?:\{[^{}]*\}|[a-zA-Z0-9]))*)/g, '$$$1$$');
+      }
+    }
+    return parts.join('');
+  }
 
   /* 자가진단 기호: ○ 맞음 · △ 질문/애매함 · ✕ 틀림 */
   var CHECKS = [
@@ -164,6 +249,28 @@
   var btnTb1 = document.getElementById('btn-tb1');
   var btnTb2 = document.getElementById('btn-tb2');
   var btnTb3 = document.getElementById('btn-tb3');
+  var btnDonga1 = document.getElementById('btn-donga1');
+  var btnDonga2 = document.getElementById('btn-donga2');
+  var btnDonga3 = document.getElementById('btn-donga3');
+  var btnDonga4 = document.getElementById('btn-donga4');
+  var btnMiraen1 = document.getElementById('btn-miraen1');
+  var btnMiraen2 = document.getElementById('btn-miraen2');
+  var btnMiraen3 = document.getElementById('btn-miraen3');
+  var btnVisang1 = document.getElementById('btn-visang1');
+  var btnVisang2 = document.getElementById('btn-visang2');
+  var btnVisang3 = document.getElementById('btn-visang3');
+  var btnJihaksa1 = document.getElementById('btn-jihaksa1');
+  var btnJihaksa2 = document.getElementById('btn-jihaksa2');
+  var btnJihaksa3 = document.getElementById('btn-jihaksa3');
+  var btnYbm1 = document.getElementById('btn-ybm1');
+  var btnYbm2 = document.getElementById('btn-ybm2');
+  var btnYbm3 = document.getElementById('btn-ybm3');
+  var btnChunjae1 = document.getElementById('btn-chunjae1');
+  var btnChunjae2 = document.getElementById('btn-chunjae2');
+  var btnChunjae3 = document.getElementById('btn-chunjae3');
+  var btnCommon2Chunjae1 = document.getElementById('btn-common2-chunjae1');
+  var btnCommon2Chunjae2 = document.getElementById('btn-common2-chunjae2');
+  var btnCommon2Chunjae3 = document.getElementById('btn-common2-chunjae3');
   var btnModeProblem = document.getElementById('btn-mode-problem');
   var btnModeSolution = document.getElementById('btn-mode-solution');
   var toggleAnswers = document.getElementById('toggle-answers');
@@ -179,6 +286,50 @@
     if (btnTb2) btnTb2.classList.add('is-active');
   } else if (part === 'tb3' || part === 'textbook3') {
     if (btnTb3) btnTb3.classList.add('is-active');
+  } else if (part === 'donga1' || part === 'donga') {
+    if (btnDonga1) btnDonga1.classList.add('is-active');
+  } else if (part === 'donga2') {
+    if (btnDonga2) btnDonga2.classList.add('is-active');
+  } else if (part === 'donga3') {
+    if (btnDonga3) btnDonga3.classList.add('is-active');
+  } else if (part === 'donga4') {
+    if (btnDonga4) btnDonga4.classList.add('is-active');
+  } else if (part === 'miraen1' || part === 'mirae1' || part === 'miraen') {
+    if (btnMiraen1) btnMiraen1.classList.add('is-active');
+  } else if (part === 'miraen2' || part === 'mirae2') {
+    if (btnMiraen2) btnMiraen2.classList.add('is-active');
+  } else if (part === 'miraen3' || part === 'mirae3') {
+    if (btnMiraen3) btnMiraen3.classList.add('is-active');
+  } else if (part === 'visang1' || part === 'visang') {
+    if (btnVisang1) btnVisang1.classList.add('is-active');
+  } else if (part === 'visang2') {
+    if (btnVisang2) btnVisang2.classList.add('is-active');
+  } else if (part === 'visang3') {
+    if (btnVisang3) btnVisang3.classList.add('is-active');
+  } else if (part === 'jihaksa1' || part === 'jihaksa') {
+    if (btnJihaksa1) btnJihaksa1.classList.add('is-active');
+  } else if (part === 'jihaksa2') {
+    if (btnJihaksa2) btnJihaksa2.classList.add('is-active');
+  } else if (part === 'jihaksa3') {
+    if (btnJihaksa3) btnJihaksa3.classList.add('is-active');
+  } else if (part === 'ybm1' || part === 'ybm') {
+    if (btnYbm1) btnYbm1.classList.add('is-active');
+  } else if (part === 'ybm2') {
+    if (btnYbm2) btnYbm2.classList.add('is-active');
+  } else if (part === 'ybm3') {
+    if (btnYbm3) btnYbm3.classList.add('is-active');
+  } else if (part === 'chunjae1' || part === 'chunjae') {
+    if (btnChunjae1) btnChunjae1.classList.add('is-active');
+  } else if (part === 'chunjae2') {
+    if (btnChunjae2) btnChunjae2.classList.add('is-active');
+  } else if (part === 'chunjae3') {
+    if (btnChunjae3) btnChunjae3.classList.add('is-active');
+  } else if (part === 'common2_chunjae1' || part === 'common2_part1' || part === 'common2_1') {
+    if (btnCommon2Chunjae1) btnCommon2Chunjae1.classList.add('is-active');
+  } else if (part === 'common2_chunjae2' || part === 'common2_part2' || part === 'common2_2') {
+    if (btnCommon2Chunjae2) btnCommon2Chunjae2.classList.add('is-active');
+  } else if (part === 'common2_chunjae3' || part === 'common2_part3' || part === 'common2_3') {
+    if (btnCommon2Chunjae3) btnCommon2Chunjae3.classList.add('is-active');
   } else {
     if (btnSample) btnSample.classList.add('is-active');
   }
@@ -195,6 +346,28 @@
     if (part === 'tb1' || part === 'textbook1') return 'tb1';
     if (part === 'tb2' || part === 'textbook2') return 'tb2';
     if (part === 'tb3' || part === 'textbook3') return 'tb3';
+    if (part === 'donga1' || part === 'donga') return 'donga1';
+    if (part === 'donga2') return 'donga2';
+    if (part === 'donga3') return 'donga3';
+    if (part === 'donga4') return 'donga4';
+    if (part === 'miraen1' || part === 'mirae1' || part === 'miraen') return 'miraen1';
+    if (part === 'miraen2' || part === 'mirae2') return 'miraen2';
+    if (part === 'miraen3' || part === 'mirae3') return 'miraen3';
+    if (part === 'visang1' || part === 'visang') return 'visang1';
+    if (part === 'visang2') return 'visang2';
+    if (part === 'visang3') return 'visang3';
+    if (part === 'jihaksa1' || part === 'jihaksa') return 'jihaksa1';
+    if (part === 'jihaksa2') return 'jihaksa2';
+    if (part === 'jihaksa3') return 'jihaksa3';
+    if (part === 'ybm1' || part === 'ybm') return 'ybm1';
+    if (part === 'ybm2') return 'ybm2';
+    if (part === 'ybm3') return 'ybm3';
+    if (part === 'chunjae1' || part === 'chunjae') return 'chunjae1';
+    if (part === 'chunjae2') return 'chunjae2';
+    if (part === 'chunjae3') return 'chunjae3';
+    if (part === 'common2_chunjae1' || part === 'common2_part1' || part === 'common2_1') return 'common2_chunjae1';
+    if (part === 'common2_chunjae2' || part === 'common2_part2' || part === 'common2_2') return 'common2_chunjae2';
+    if (part === 'common2_chunjae3' || part === 'common2_part3' || part === 'common2_3') return 'common2_chunjae3';
     return '';
   }
 
@@ -215,6 +388,28 @@
     if (btnTb1) btnTb1.href = makeUrl('tb1', isSolution, hasAnswers);
     if (btnTb2) btnTb2.href = makeUrl('tb2', isSolution, hasAnswers);
     if (btnTb3) btnTb3.href = makeUrl('tb3', isSolution, hasAnswers);
+    if (btnDonga1) btnDonga1.href = makeUrl('donga1', isSolution, hasAnswers);
+    if (btnDonga2) btnDonga2.href = makeUrl('donga2', isSolution, hasAnswers);
+    if (btnDonga3) btnDonga3.href = makeUrl('donga3', isSolution, hasAnswers);
+    if (btnDonga4) btnDonga4.href = makeUrl('donga4', isSolution, hasAnswers);
+    if (btnMiraen1) btnMiraen1.href = makeUrl('miraen1', isSolution, hasAnswers);
+    if (btnMiraen2) btnMiraen2.href = makeUrl('miraen2', isSolution, hasAnswers);
+    if (btnMiraen3) btnMiraen3.href = makeUrl('miraen3', isSolution, hasAnswers);
+    if (btnVisang1) btnVisang1.href = makeUrl('visang1', isSolution, hasAnswers);
+    if (btnVisang2) btnVisang2.href = makeUrl('visang2', isSolution, hasAnswers);
+    if (btnVisang3) btnVisang3.href = makeUrl('visang3', isSolution, hasAnswers);
+    if (btnJihaksa1) btnJihaksa1.href = makeUrl('jihaksa1', isSolution, hasAnswers);
+    if (btnJihaksa2) btnJihaksa2.href = makeUrl('jihaksa2', isSolution, hasAnswers);
+    if (btnJihaksa3) btnJihaksa3.href = makeUrl('jihaksa3', isSolution, hasAnswers);
+    if (btnYbm1) btnYbm1.href = makeUrl('ybm1', isSolution, hasAnswers);
+    if (btnYbm2) btnYbm2.href = makeUrl('ybm2', isSolution, hasAnswers);
+    if (btnYbm3) btnYbm3.href = makeUrl('ybm3', isSolution, hasAnswers);
+    if (btnChunjae1) btnChunjae1.href = makeUrl('chunjae1', isSolution, hasAnswers);
+    if (btnChunjae2) btnChunjae2.href = makeUrl('chunjae2', isSolution, hasAnswers);
+    if (btnChunjae3) btnChunjae3.href = makeUrl('chunjae3', isSolution, hasAnswers);
+    if (btnCommon2Chunjae1) btnCommon2Chunjae1.href = makeUrl('common2_chunjae1', isSolution, hasAnswers);
+    if (btnCommon2Chunjae2) btnCommon2Chunjae2.href = makeUrl('common2_chunjae2', isSolution, hasAnswers);
+    if (btnCommon2Chunjae3) btnCommon2Chunjae3.href = makeUrl('common2_chunjae3', isSolution, hasAnswers);
     if (btnModeProblem) btnModeProblem.href = makeUrl(cPart, false, hasAnswers);
     if (btnModeSolution) btnModeSolution.href = makeUrl(cPart, true, hasAnswers);
   }
@@ -317,13 +512,19 @@
       try {
         window.katex.render(tex, target, {
           displayMode: displayMode,
-          throwOnError: false,
+          throwOnError: true,
           errorColor: TEX_ERROR_COLOR,
-          strict: 'ignore'
+          strict: 'ignore',
+          macros: KATEX_MACROS
         });
         fixKaTeXSvgOverflow(target);
         return;
-      } catch (err) { /* 아래 원본 LaTeX 로 대체 */ }
+      } catch (err) {
+        /* KaTeX 파싱 오류 시 인라인 렌더러로 안전 폴백 */
+        target.textContent = tex;
+        renderInlineMath(target);
+        return;
+      }
     }
     target.textContent = '';
     target.appendChild(el('code', 'tex-fallback', tex));
@@ -335,7 +536,8 @@
       delimiters: MATH_DELIMITERS,
       throwOnError: false,
       errorColor: TEX_ERROR_COLOR,
-      strict: 'ignore'
+      strict: 'ignore',
+      macros: KATEX_MACROS
     });
     fixKaTeXSvgOverflow(node);
   }
@@ -403,16 +605,21 @@
 
   function renderStepContent(target, text) {
     if (!text) return;
-    var regex = /(\$\$[\s\S]*?\$\$|\*\*[\s\S]*?\*\*|\$[^\$]+?\$|\\{2,})/g;
+    text = sanitizeMathText(text);
+    var regex = /(\$\$[\s\S]*?\$\$|\*\*[\s\S]*?\*\*|\$[^\$]+?\$|\\{2,}|\n)/g;
     var parts = text.split(regex);
     parts.forEach(function (part) {
       if (!part) return;
       if (part.startsWith('**') && part.endsWith('**') && part.length >= 4) {
         var strong = document.createElement('strong');
-        strong.textContent = part.slice(2, -2);
+        var inner = part.slice(2, -2).trim();
+        if (inner.indexOf('$') === -1 && (/\\[a-zA-Z]+|[<>=]|[\^_]/.test(inner))) {
+          inner = '$' + inner + '$';
+        }
+        strong.textContent = inner;
         renderInlineMath(strong);
         target.appendChild(strong);
-      } else if (part === '\\\\' || /^\\{2,}$/.test(part)) {
+      } else if (part === '\\\\' || /^\\{2,}$/.test(part) || part === '\n') {
         target.appendChild(document.createElement('br'));
       } else {
         var textNode = document.createTextNode(part);
@@ -457,16 +664,47 @@
 
     /* 2. 문제 제시부 */
     var body = el('div', 'card__body');
+    if (p.image) {
+      var fig = el('div', 'card__fig');
+      var img = el('img', 'card__img');
+      img.src = p.image;
+      img.alt = p.imageAlt || (no + '번 문제 그림');
+      fig.appendChild(img);
+      body.appendChild(fig);
+    }
     if (p.question) {
-      var qText = String(p.question || '').replace(/\\n(?![a-zA-Z])/g, '\n');
+      var qText = sanitizeMathText(p.question);
       var q = el('p', 'card__question', qText);
       renderInlineMath(q);
       body.appendChild(q);
     }
     if (p.formula) {
       var f = el('div', 'card__formula');
-      renderFormula(f, p.formula, true);
+      var rawFormula = p.formula;
+      var hasDelim = rawFormula.indexOf('$') !== -1;
+      var hasNewline = rawFormula.indexOf('\n') !== -1;
+      if (hasDelim || (hasNewline && /[가-힣•\(\)\-]/.test(rawFormula))) {
+        var formText = sanitizeMathText(rawFormula);
+        f.className = 'card__formula card__formula--box';
+        var lines = formText.split('\n');
+        lines.forEach(function (line, idx) {
+          if (idx > 0) f.appendChild(document.createElement('br'));
+          var lineSpan = document.createElement('span');
+          lineSpan.className = 'card__formula-line';
+          lineSpan.textContent = line;
+          renderInlineMath(lineSpan);
+          f.appendChild(lineSpan);
+        });
+      } else {
+        renderFormula(f, rawFormula, true);
+      }
       body.appendChild(f);
+    }
+    if (p.qSuffix || p.questionSuffix) {
+      var qsText = sanitizeMathText(p.qSuffix || p.questionSuffix);
+      var qs = el('p', 'card__question card__question--suffix', qsText);
+      renderInlineMath(qs);
+      body.appendChild(qs);
     }
     var subs = Array.isArray(p.subQuestions) ? p.subQuestions : [];
     if (subs.length) {
@@ -480,12 +718,13 @@
         var item = el('li', 'sub');
         item.appendChild(el('span', 'sub__no', '(' + (s.no != null ? s.no : i + 1) + ')'));
         var sf = el('div', 'sub__formula');
-        var formText = s.formula || '';
-        if (formText.indexOf('$') !== -1 || /[가-힣]/.test(formText)) {
+        var rawFormula = s.formula || '';
+        if (rawFormula.indexOf('$') !== -1 || /[가-힣]/.test(rawFormula)) {
+          var formText = sanitizeMathText(rawFormula);
           sf.textContent = formText;
           renderInlineMath(sf);
         } else {
-          renderFormula(sf, formText, true);
+          renderFormula(sf, rawFormula, true);
         }
         item.appendChild(sf);
         list.appendChild(item);
@@ -508,7 +747,7 @@
     var tip = el('p', 'card__tip');
     if (p.tip) {
       tip.appendChild(el('span', 'card__tip-label', '💡 Tip:'));
-      tip.appendChild(document.createTextNode(' ' + p.tip));
+      tip.appendChild(document.createTextNode(' ' + sanitizeMathText(p.tip)));
       renderInlineMath(tip);
     }
     actions.appendChild(tip);
@@ -572,7 +811,7 @@
       renderInlineMath(target);
       return;
     }
-    if (/\\(lim|frac|sqrt|left|right|text|sum)\b/.test(s)) {
+    if (/\\[a-zA-Z]+/.test(s)) {
       var converted = s.replace(/\(([^)]*\\[a-zA-Z]+[^)]*)\)/g, '($$$1$$)');
       if (converted === s) {
         converted = '$' + s + '$';
@@ -587,7 +826,8 @@
           displayMode: false,
           throwOnError: false,
           errorColor: TEX_ERROR_COLOR,
-          strict: 'ignore'
+          strict: 'ignore',
+          macros: KATEX_MACROS
         });
         return;
       } catch (err) {}

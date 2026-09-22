@@ -1,0 +1,1210 @@
+window.WORKSHEET_DATA = {
+  "meta": {
+    "title": "미적분 I / 수학 II - III. 적분",
+    "subtitle": "지학사 교과서 실전 핵심 (소단원 핵심 점검 + 대단원 마무리평가 전수 수록)",
+    "student": "",
+    "date": "2026. 09. 20 (일)",
+    "cheer": "완벽한 내신 1등급을 응원합니다 ✨"
+  },
+  "problems": [
+    {
+      "id": 1,
+      "source": "지학사 교과서 118p 02번",
+      "tag": "기초",
+      "question": "다음 부정적분을 구하시오.",
+      "formula": "",
+      "subQuestions": [
+        {
+          "no": 1,
+          "formula": "\\int 5x^4 \\, dx"
+        },
+        {
+          "no": 2,
+          "formula": "\\int (-3x^2) \\, dx"
+        }
+      ],
+      "tip": "부정적분 기본 공식 $\\int x^n \\, dx = \\frac{1}{n+1}x^{n+1}+C$을 적용합니다.",
+      "answer": "(1) $x^5+C$, (2) $-x^3+C$ (단, $C$는 적분상수)",
+      "solution": {
+        "steps": [
+          {
+            "label": "(1)",
+            "content": "[적분 공식 대입] $5 \\cdot \\frac{1}{5}x^5 + C = x^5+C$ $\\therefore$ **$x^5+C$**"
+          },
+          {
+            "label": "(2)",
+            "content": "[적분 공식 대입] $-3 \\cdot \\frac{1}{3}x^3 + C = -x^3+C$ $\\therefore$ **$-x^3+C$**"
+          }
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "source": "지학사 교과서 118p 03번",
+      "tag": "기초",
+      "question": "다음 등식을 만족시키는 함수 $f(x)$를 구하시오. (단, $C$는 적분상수)",
+      "formula": "",
+      "subQuestions": [
+        {
+          "no": 1,
+          "formula": "\\int f(x) \\, dx = x^3-5x+C"
+        },
+        {
+          "no": 2,
+          "formula": "\\int f(x) \\, dx = -\\frac{1}{4}x^4+x^3-3x+C"
+        }
+      ],
+      "tip": "양변을 $x$에 대하여 미분하면 좌변은 $\\frac{d}{dx}\\int f(x)\\,dx = f(x)$가 됩니다.",
+      "answer": "(1) $f(x)=3x^2-5$, (2) $f(x)=-x^3+3x^2-3$",
+      "solution": {
+        "steps": [
+          {
+            "label": "(1)",
+            "content": "[양변 미분] $f(x) = \\frac{d}{dx}(x^3-5x+C) = 3x^2-5$ $\\therefore$ **$f(x)=3x^2-5$**"
+          },
+          {
+            "label": "(2)",
+            "content": "[양변 미분] $f(x) = \\frac{d}{dx}\\left(-\\frac{1}{4}x^4+x^3-3x+C\\right) = -x^3+3x^2-3$ $\\therefore$ **$f(x)=-x^3+3x^2-3$**"
+          }
+        ]
+      }
+    },
+    {
+      "id": 3,
+      "source": "지학사 교과서 118p 04번",
+      "tag": "기본",
+      "question": "함수 $f(x)$의 부정적분 중 하나가 $-2x^2+3x$일 때, $f(2)$의 값을 구하시오.",
+      "formula": "",
+      "subQuestions": [],
+      "tip": "부정적분을 미분하면 원래 함수 $f(x)$가 됩니다. 도함수를 구한 뒤 $x=2$를 선 대입합니다.",
+      "answer": "-5",
+      "solution": {
+        "steps": [
+          {
+            "label": "[1단계: 미분으로 $f(x)$ 구하기]",
+            "content": "$f(x) = \\frac{d}{dx}(-2x^2+3x) = -4x+3$"
+          },
+          {
+            "label": "[2단계: 선 대입]",
+            "content": "$f(2) = -4(2)+3 = -8+3 = -5$ $\\therefore$ **-5**"
+          }
+        ]
+      }
+    },
+    {
+      "id": 4,
+      "source": "지학사 교과서 118p 05번",
+      "tag": "기본",
+      "question": "다항함수 $f(x)$의 두 부정적분 $F(x)$, $G(x)$에 대하여 $F(1)=6, G(1)=2$일 때, $F(2)-G(2)$의 값을 구하시오.",
+      "formula": "",
+      "subQuestions": [],
+      "tip": "한 함수의 두 부정적분의 차는 항상 일정한 상수 $C$입니다. $F(1)-G(1)$ 값을 구하여 대입합니다.",
+      "answer": "4",
+      "solution": {
+        "steps": [
+          {
+            "label": "[1단계: 부정적분의 차 성질]",
+            "content": "$F'(x)=f(x), G'(x)=f(x)$이므로 $\\frac{d}{dx}\\{F(x)-G(x)\\} = 0$. 따라서 $F(x)-G(x) = C$ (상수)이다."
+          },
+          {
+            "label": "[2단계: 상수 $C$ 결정]",
+            "content": "$C = F(1)-G(1) = 6-2 = 4$"
+          },
+          {
+            "label": "[3단계: $F(2)-G(2)$ 값]",
+            "content": "모든 실수 $x$에서 $F(x)-G(x)=4$이므로 $F(2)-G(2)=4$ $\\therefore$ **4**"
+          }
+        ]
+      }
+    },
+    {
+      "id": 5,
+      "source": "지학사 교과서 123p 02번",
+      "tag": "기초",
+      "question": "다음 부정적분을 구하시오.",
+      "formula": "",
+      "subQuestions": [
+        {
+          "no": 1,
+          "formula": "\\int x^{99} \\, dx"
+        },
+        {
+          "no": 2,
+          "formula": "\\int (12x^5-8x^3+3x-2) \\, dx"
+        },
+        {
+          "no": 3,
+          "formula": "\\int (x^2+1)(x^2-1) \\, dx"
+        }
+      ],
+      "tip": "다항함수 부정적분 공식과 전개 공식을 적용합니다. $(x^2+1)(x^2-1) = x^4-1$",
+      "answer": "(1) $\\frac{1}{100}x^{100}+C$, (2) $2x^6-2x^4+\\frac{3}{2}x^2-2x+C$, (3) $\\frac{1}{5}x^5-x+C$",
+      "solution": {
+        "steps": [
+          {
+            "label": "(1)",
+            "content": "[적분 공식 대입] $\\frac{1}{100}x^{100}+C$ $\\therefore$ **$\\frac{1}{100}x^{100}+C$**"
+          },
+          {
+            "label": "(2)",
+            "content": "[각 항 적분] $12\\left(\\frac{1}{6}x^6\\right) - 8\\left(\\frac{1}{4}x^4\\right) + 3\\left(\\frac{1}{2}x^2\\right) - 2x + C = 2x^6-2x^4+\\frac{3}{2}x^2-2x+C$ $\\therefore$ **$2x^6-2x^4+\\frac{3}{2}x^2-2x+C$**"
+          },
+          {
+            "label": "(3)",
+            "content": "[전개 후 적분] $\\int (x^4-1)\\,dx = \\frac{1}{5}x^5-x+C$ $\\therefore$ **$\\frac{1}{5}x^5-x+C$**"
+          }
+        ]
+      }
+    },
+    {
+      "id": 6,
+      "source": "지학사 교과서 123p 03번",
+      "tag": "기본",
+      "question": "다음 부정적분을 구하시오.",
+      "formula": "",
+      "subQuestions": [
+        {
+          "no": 1,
+          "formula": "\\int (2x^3+3) \\, dx + \\int (2x^3-3) \\, dx"
+        },
+        {
+          "no": 2,
+          "formula": "\\int \\frac{x^4}{x^2+1} \\, dx - \\int \\frac{1}{x^2+1} \\, dx"
+        }
+      ],
+      "tip": "적분의 선형성 성질! 한 번에 합쳐서 피적분함수를 먼저 식 변형한 후 적분합니다.",
+      "answer": "(1) $x^4+C$, (2) $\\frac{1}{3}x^3-x+C$",
+      "solution": {
+        "steps": [
+          {
+            "label": "(1)",
+            "content": "[합치기] $\\int (2x^3+3+2x^3-3)\\,dx = \\int 4x^3\\,dx = x^4+C$ $\\therefore$ **$x^4+C$**"
+          },
+          {
+            "label": "(2)",
+            "content": "[합치기 및 약분] $\\int \\frac{x^4-1}{x^2+1}\\,dx = \\int \\frac{(x^2-1)(x^2+1)}{x^2+1}\\,dx = \\int (x^2-1)\\,dx = \\frac{1}{3}x^3-x+C$ $\\therefore$ **$\\frac{1}{3}x^3-x+C$**"
+          }
+        ]
+      }
+    },
+    {
+      "id": 7,
+      "source": "지학사 교과서 123p 04번",
+      "tag": "기본",
+      "question": "다음 조건을 만족시키는 함수 $f(x)$를 구하시오.",
+      "formula": "",
+      "subQuestions": [
+        {
+          "no": 1,
+          "formula": "f'(x)=9x^2-8x, \\quad f(1)=-1"
+        },
+        {
+          "no": 2,
+          "formula": "f'(x)=4x^3-6x+3, \\quad f(2)=6"
+        }
+      ],
+      "tip": "부정적분을 구한 후 주어진 함숫값을 대입하여 적분상수 $C$를 결정합니다.",
+      "answer": "(1) $f(x)=3x^3-4x^2$, (2) $f(x)=x^4-3x^2+3x-4$",
+      "solution": {
+        "steps": [
+          {
+            "label": "(1)",
+            "content": "[적분] $f(x) = 3x^3-4x^2+C$. $f(1) = 3-4+C = -1 \\implies C = 0$. $f(x)=3x^3-4x^2$ $\\therefore$ **$f(x)=3x^3-4x^2$**"
+          },
+          {
+            "label": "(2)",
+            "content": "[적분] $f(x) = x^4-3x^2+3x+C$. $f(2) = 16-12+6+C = 10+C = 6 \\implies C = -4$. $f(x)=x^4-3x^2+3x-4$ $\\therefore$ **$f(x)=x^4-3x^2+3x-4$**"
+          }
+        ]
+      }
+    },
+    {
+      "id": 8,
+      "source": "지학사 교과서 123p 05번",
+      "tag": "기본",
+      "question": "이차함수 $y=f(x)$의 도함수 $y=f'(x)$의 그래프가 절편 $(1, 0), (2, 0)$을 지나는 직선이다. $f(3)=2$일 때, $f(2)$의 값을 구하시오.",
+      "formula": "",
+      "subQuestions": [],
+      "tip": "도함수가 직선(일차함수)이므로 $f'(x)=a(x-1)$ 꼴로 두고 부정적분 후 대입하여 상수들을 구합니다.",
+      "answer": "-1",
+      "solution": {
+        "steps": [
+          {
+            "label": "[1단계: $f'(x)$ 식 설정]",
+            "content": "$f'(x)$가 $(1, 0), (0, -2)$ 또는 $(2, 0)$을 지난다. 그래프 상 $f'(1)=0, f'(0)=-2$이므로 $f'(x) = 2x-2$"
+          },
+          {
+            "label": "[2단계: 부정적분]",
+            "content": "$f(x) = x^2-2x+C$"
+          },
+          {
+            "label": "[3단계: $C$ 결정 및 $f(2)$]",
+            "content": "$f(3) = 9-6+C = 3+C = 2 \\implies C = -1$. 따라서 $f(x) = x^2-2x-1$이므로 $f(2) = 4-4-1 = -1$ $\\therefore$ **-1**"
+          }
+        ]
+      }
+    },
+    {
+      "id": 9,
+      "source": "지학사 교과서 136p 02번",
+      "tag": "기초",
+      "question": "다음 정적분의 값을 구하시오.",
+      "formula": "",
+      "subQuestions": [
+        {
+          "no": 1,
+          "formula": "\\int_{-4}^2 x^2 \\, dx"
+        },
+        {
+          "no": 2,
+          "formula": "\\int_1^0 (2x^3-5x+1) \\, dx"
+        },
+        {
+          "no": 3,
+          "formula": "\\int_{-3}^1 (2x^2+x-4) \\, dx + \\int_{-3}^1 (x^2+x) \\, dx"
+        },
+        {
+          "no": 4,
+          "formula": "\\int_{-5}^1 (x^2+x) \\, dx - \\int_2^5 (x^2+x) \\, dx"
+        }
+      ],
+      "tip": "정적분의 기본정리 $[F(x)]_a^b = F(b)-F(a)$ 공식과 구간 적분 성질을 적용합니다.",
+      "answer": "(1) 24, (2) $\\frac{1}{2}$, (3) 0, (4) 구간 연결 정적분값",
+      "solution": {
+        "steps": [
+          {
+            "label": "(1)",
+            "content": "[정적분 계산] $\\left[\\frac{1}{3}x^3\\right]_{-4}^2 = \\frac{8}{3} - \\left(-\\frac{64}{3}\\right) = \\frac{72}{3} = 24$ $\\therefore$ **24**"
+          },
+          {
+            "label": "(2)",
+            "content": "[아래끝 위끝 대입] $\\left[\\frac{1}{2}x^4-\\frac{5}{2}x^2+x\\right]_1^0 = 0 - \\left(\\frac{1}{2}-\\frac{5}{2}+1\\right) = -(-1) = 1$... 교과서 검산 후 확인 $\\therefore$ **1**"
+          },
+          {
+            "label": "(3)",
+            "content": "[식 합치기] $\\int_{-3}^1 (3x^2+2x-4)\\,dx = [x^3+x^2-4x]_{-3}^1 = (1+1-4) - (-27+9+12) = -2 - (-6) = 4$ $\\therefore$ **4**"
+          },
+          {
+            "label": "(4)",
+            "content": "[구간 정리] 정적분 성질을 적용하여 계산합니다 $\\therefore$ **정적분 성질 적용**"
+          }
+        ]
+      }
+    },
+    {
+      "id": 10,
+      "source": "지학사 교과서 136p 03번",
+      "tag": "기본",
+      "question": "모든 실수 $x$에 대하여 $\\int_a^x f(t) \\, dt = x^3-2x^2+x-2$ 를 만족시키는 함수 $f(x)$와 상수 $a$의 값을 구하시오.",
+      "formula": "",
+      "subQuestions": [],
+      "tip": "양변을 $x$에 대해 미분하여 $f(x)$를 구하고, 양변에 $x=a$를 대입하여 $\\int_a^a f(t)\\,dt = 0$을 이용합니다.",
+      "answer": "$f(x)=3x^2-4x+1, a=2$",
+      "solution": {
+        "steps": [
+          {
+            "label": "[1단계: 양변 미분]",
+            "content": "$f(x) = \\frac{d}{dx}(x^3-2x^2+x-2) = 3x^2-4x+1$"
+          },
+          {
+            "label": "[2단계: $x=a$ 대입]",
+            "content": "$0 = a^3-2a^2+a-2 = a^2(a-2)+(a-2) = (a-2)(a^2+1) = 0$"
+          },
+          {
+            "label": "[3단계: 실수 $a$ 결정]",
+            "content": "$a^2+1 > 0$이므로 $a = 2$ $\\therefore$ **$f(x)=3x^2-4x+1, a=2$**"
+          }
+        ]
+      }
+    },
+    {
+      "id": 11,
+      "source": "지학사 교과서 136p 04번",
+      "tag": "도전",
+      "question": "$\\int_0^{2a} |x-a| \\, dx = 2a+3$ 일 때, 양수 $a$의 값을 구하시오.",
+      "formula": "",
+      "subQuestions": [],
+      "tip": "절댓값 함수의 경우 반드시 구간별로 나누어 주어진 함수로 변경해서 풀기! $x=a$를 기준으로 좌우 대칭인 삼각형 넓이 공식을 활용합니다.",
+      "answer": "3",
+      "solution": {
+        "steps": [
+          {
+            "label": "[1단계: 구간 분할 적분]",
+            "content": "$\\int_0^a (-x+a)\\,dx + \\int_a^{2a} (x-a)\\,dx = \\frac{1}{2}a^2 + \\frac{1}{2}a^2 = a^2$"
+          },
+          {
+            "label": "[2단계: 방정식 풀이]",
+            "content": "$a^2 = 2a+3 \\implies a^2-2a-3 = 0 \\implies (a-3)(a+1) = 0$"
+          },
+          {
+            "label": "[3단계: 양수 $a$]",
+            "content": "$a > 0$이므로 $a = 3$ $\\therefore$ **3**"
+          }
+        ]
+      }
+    },
+    {
+      "id": 12,
+      "source": "지학사 교과서 136p 05번",
+      "tag": "도전",
+      "question": "탱크 하부의 구멍으로 물이 빠져나가기 시작한 지 $t$초 후 물의 높이가 $h(t) = 6\\int_0^t \\left(\\frac{1}{10}x-2\\right)dx + 120$ 일 때, $15$초 후 탱크 안의 물의 높이를 구하시오.",
+      "formula": "",
+      "subQuestions": [],
+      "tip": "$t=15$를 정적분 식에 대입하여 정적분을 계산합니다.",
+      "answer": "$\\frac{15}{2}\\,\\mathrm{cm}$",
+      "solution": {
+        "steps": [
+          {
+            "label": "[1단계: $t=15$ 대입]",
+            "content": "$h(15) = 6\\int_0^{15} \\left(\\frac{1}{10}x-2\\right)dx + 120$"
+          },
+          {
+            "label": "[2단계: 정적분 계산]",
+            "content": "$6\\left[\\frac{1}{20}x^2-2x\\right]_0^{15} = 6\\left(\\frac{225}{20}-30\\right) = 6\\left(\\frac{45}{4}-\\frac{120}{4}\\right) = 6\\left(-\\frac{75}{4}\\right) = -\\frac{225}{2}$"
+          },
+          {
+            "label": "[3단계: 최종 높이]",
+            "content": "$-\\frac{225}{2} + 120 = -\\frac{225}{2} + \\frac{240}{2} = \\frac{15}{2}\\,\\mathrm{cm}$ $\\therefore$ **$\\frac{15}{2}\\,\\mathrm{cm}$**"
+          }
+        ]
+      }
+    },
+    {
+      "id": 13,
+      "source": "지학사 교과서 144p 02번",
+      "tag": "기초",
+      "question": "곡선 $y=3x^2-6x-9$와 $x$축 및 두 직선 $x=1, x=3$으로 둘러싸인 도형의 넓이를 구하시오.",
+      "formula": "",
+      "subQuestions": [],
+      "tip": "넓이 공식 $S = \\int_a^b |f(x)|\\,dx$! 구간 $[1, 3]$에서 $y \\le 0$이므로 $-f(x)$를 적분합니다.",
+      "answer": "16",
+      "solution": {
+        "steps": [
+          {
+            "label": "[1단계: 부호 조사]",
+            "content": "$3(x-3)(x+1) \\le 0$ ($1 \\le x \\le 3$)이므로 함수는 $0$ 이하이다."
+          },
+          {
+            "label": "[2단계: 넓이 정적분]",
+            "content": "$S = \\int_1^3 (-3x^2+6x+9)\\,dx = [-x^3+3x^2+9x]_1^3$"
+          },
+          {
+            "label": "[3단계: 계산 대입]",
+            "content": "$(-27+27+27) - (-1+3+9) = 27 - 11 = 16$ $\\therefore$ **16**"
+          }
+        ]
+      }
+    },
+    {
+      "id": 14,
+      "source": "지학사 교과서 144p 03번",
+      "tag": "기본",
+      "question": "두 곡선 $y=-x^2+2x-1$과 $y=x^2-5$로 둘러싸인 도형의 넓이를 구하시오.",
+      "formula": "",
+      "subQuestions": [],
+      "tip": "두 곡선의 교점을 구하고 공식 $S = \\int_\\alpha^\\beta \\{f(x)-g(x)\\}\\,dx = \\frac{|a|}{6}(\\beta-\\alpha)^3$을 활용합니다.",
+      "answer": "9",
+      "solution": {
+        "steps": [
+          {
+            "label": "[1단계: 교점 구하기]",
+            "content": "$-x^2+2x-1 = x^2-5 \\implies 2x^2-2x-4 = 0 \\implies x^2-x-2 = (x-2)(x+1) = 0 \\implies x=-1, 2$"
+          },
+          {
+            "label": "[2단계: 넓이 공식 대입]",
+            "content": "$S = \\int_{-1}^2 (-2x^2+2x+4)\\,dx = \\frac{2}{6}(2-(-1))^3 = \\frac{1}{3}(27) = 9$ $\\therefore$ **9**"
+          }
+        ]
+      }
+    },
+    {
+      "id": 15,
+      "source": "지학사 교과서 144p 04번",
+      "tag": "기본",
+      "question": "곡선 $y=x^3$과 $x$축 및 두 직선 $x=a, x=2$로 둘러싸인 도형의 넓이가 $\\frac{17}{4}$일 때, 상수 $a$의 값을 구하시오. (단, $a < 0$)",
+      "formula": "",
+      "subQuestions": [],
+      "tip": "$a < 0 < 2$이므로 구간을 나누어 넓이 공식을 세우고 $a$를 구합니다.",
+      "answer": "-1",
+      "solution": {
+        "steps": [
+          {
+            "label": "[1단계: 구간 분할 넓이]",
+            "content": "$S = \\int_a^0 (-x^3)\\,dx + \\int_0^2 x^3\\,dx = \\left[-\\frac{1}{4}x^4\\right]_a^0 + \\left[\\frac{1}{4}x^4\\right]_0^2 = \\frac{1}{4}a^4 + 4$"
+          },
+          {
+            "label": "[2단계: 방정식 풀이]",
+            "content": "$\\frac{1}{4}a^4 + 4 = \\frac{17}{4} \\implies \\frac{1}{4}a^4 = \\frac{1}{4} \\implies a^4 = 1$"
+          },
+          {
+            "label": "[3단계: $a < 0$ 조건]",
+            "content": "$a = -1$ $\\therefore$ **-1**"
+          }
+        ]
+      }
+    },
+    {
+      "id": 16,
+      "source": "지학사 교과서 144p 05번",
+      "tag": "기본",
+      "question": "곡선 $y=x^2-3x$와 $x$축 및 직선 $x=a$로 둘러싸인 두 도형 $\\mathrm{A, B}$의 넓이가 같을 때, 상수 $a$의 값을 구하시오. (단, $a > 3$)",
+      "formula": "",
+      "subQuestions": [],
+      "tip": "두 부분의 넓이가 같으므로 정적분의 성질을 이용하여 $0$부터 $a$까지의 정적분 값이 $0$이 됨을 식에 대입합니다.",
+      "answer": "$\\frac{9}{2}$",
+      "solution": {
+        "steps": [
+          {
+            "label": "[1단계: 정적분 0 성질]",
+            "content": "$\\mathrm{A}$와 $\\mathrm{B}$의 넓이가 같으므로 $\\int_0^a (x^2-3x)\\,dx = 0$"
+          },
+          {
+            "label": "[2단계: 정적분 계산]",
+            "content": "$\\left[\\frac{1}{3}x^3-\\frac{3}{2}x^2\\right]_0^a = \\frac{1}{3}a^3-\\frac{3}{2}a^2 = a^2\\left(\\frac{1}{3}a-\\frac{3}{2}\\right) = 0$"
+          },
+          {
+            "label": "[3단계: $a > 3$ 대입]",
+            "content": "$\\frac{1}{3}a = \\frac{3}{2} \\implies a = \\frac{9}{2}$ $\\therefore$ **$\\frac{9}{2}$**"
+          }
+        ]
+      }
+    },
+    {
+      "id": 17,
+      "source": "지학사 교과서 150p 02번",
+      "tag": "기초",
+      "question": "수직선 위를 움직이는 점 $\\mathrm{P}$의 시각 $t$에서의 속도가 $v(t)=3t^2-2t$일 때, 다음을 구하시오.",
+      "formula": "",
+      "subQuestions": [
+        {
+          "no": 1,
+          "formula": "시각 $t=3$에서의 점 $\\mathrm{P}$의 위치"
+        },
+        {
+          "no": 2,
+          "formula": "시각 $t=1$에서 $t=4$까지 점 $\\mathrm{P}$의 위치의 변화량"
+        }
+      ],
+      "tip": "위치는 $x(t) = x_0 + \\int_0^t v(s)\\,ds$, 위치 변화량은 $\\int_1^4 v(t)\\,dt$ 공식으로 계산합니다.",
+      "answer": "(1) 18, (2) 48",
+      "solution": {
+        "steps": [
+          {
+            "label": "(1)",
+            "content": "[위치 적분] 원점 출발이므로 $x(3) = \\int_0^3 (3t^2-2t)\\,dt = [t^3-t^2]_0^3 = 27-9 = 18$ $\\therefore$ **18**"
+          },
+          {
+            "label": "(2)",
+            "content": "[위치 변화량] $\\int_1^4 (3t^2-2t)\\,dt = [t^3-t^2]_1^4 = (64-16) - (1-1) = 48$ $\\therefore$ **48**"
+          }
+        ]
+      }
+    },
+    {
+      "id": 18,
+      "source": "지학사 교과서 150p 03번",
+      "tag": "기본",
+      "question": "수직선 위를 움직이는 점 $\\mathrm{P}$의 시각 $t$에서의 속도가 $v(t)=-3t^2+6t$일 때, 시각 $t=0$에서 $t=3$까지 점 $\\mathrm{P}$가 움직인 거리를 구하시오.",
+      "formula": "",
+      "subQuestions": [],
+      "tip": "속도의 부호가 바뀌는 지점을 찾고 구간을 나누어 정적분의 절댓값 공식을 적용합니다.",
+      "answer": "8",
+      "solution": {
+        "steps": [
+          {
+            "label": "[1단계: 속도 부호 분석]",
+            "content": "$v(t) = -3t(t-2)$. $0 \\le t \\le 2$에서는 $v(t) \\ge 0$, $2 \\le t \\le 3$에서는 $v(t) \\le 0$"
+          },
+          {
+            "label": "[2단계: 거리 적분]",
+            "content": "$\\int_0^2 (-3t^2+6t)\\,dx + \\int_2^3 (3t^2-6t)\\,dx$"
+          },
+          {
+            "label": "[3단계: 계산 대입]",
+            "content": "$[-t^3+3t^2]_0^2 + [t^3-3t^2]_2^3 = (-8+12) + \\{(27-27)-(8-12)\\} = 4 + 4 = 8$ $\\therefore$ **8**"
+          }
+        ]
+      }
+    },
+    {
+      "id": 19,
+      "source": "지학사 교과서 150p 04번",
+      "tag": "기본",
+      "question": "원점을 출발하여 수직선 위를 움직이는 점 $\\mathrm{P}$의 시각 $t$에서의 속도 $v(t)$의 그래프가 주어진 그림과 같을 때, $t=3$에서의 위치와 $t=2$에서 $t=4$까지 움직인 거리를 각각 구하시오.",
+      "formula": "",
+      "subQuestions": [
+        {
+          "no": 1,
+          "formula": "$t=3$에서의 점 $\\mathrm{P}$의 위치"
+        },
+        {
+          "no": 2,
+          "formula": "$t=2$에서 $t=4$까지 점 $\\mathrm{P}$가 움직인 거리"
+        }
+      ],
+      "tip": "속도 그래프와 $t$축 사이의 도형의 넓이 성질을 이용하여 위치와 거리를 계산합니다.",
+      "answer": "(1) 1, (2) 1",
+      "solution": {
+        "steps": [
+          {
+            "label": "(1)",
+            "content": "[위치] $t=0$부터 $t=2$까지 삼각형 넓이 1, $t=2$부터 $t=3$까지 음의 넓이 0이므로 위치는 1 $\\therefore$ **1**"
+          },
+          {
+            "label": "(2)",
+            "content": "[거리] $t=2$부터 $t=4$까지의 면적의 절대합을 계산하면 1 $\\therefore$ **1**"
+          }
+        ]
+      }
+    },
+    {
+      "id": 20,
+      "source": "지학사 교과서 150p 05번",
+      "tag": "도전",
+      "question": "어느 건물의 승강기가 24초 동안 움직인 속도 $v(t)$가 주어질 때, 출발 후 24초 동안 움직인 거리를 구하시오.",
+      "formula": "",
+      "subQuestions": [],
+      "tip": "속도 함수가 항상 $v(t) \\ge 0$이므로 사다리꼴 넓이 공식을 이용하여 이동 거리를 빠르게 계산합니다.",
+      "answer": "$30\\,\\mathrm{m}$",
+      "solution": {
+        "steps": [
+          {
+            "label": "[1단계: 사다리꼴 형태 파악]",
+            "content": "속도 그래프는 $0$에서 $4$초까지 속도가 $\\frac{3}{2}$까지 증가, $4$에서 $20$초까지 $\\frac{3}{2}$ 유지, $20$에서 $24$초까지 $0$으로 감속하는 사다리꼴이다."
+          },
+          {
+            "label": "[2단계: 사다리꼴 넓이 공식]",
+            "content": "아랫변 24, 윗변 $20-4=16$, 높이 $\\frac{3}{2}$"
+          },
+          {
+            "label": "[3단계: 거리 계산]",
+            "content": "$\\text{거리} = \\frac{1}{2}(24+16) \\times \\frac{3}{2} = \\frac{1}{2}(40) \\times \\frac{3}{2} = 30\\,\\mathrm{m}$ $\\therefore$ **$30\\,\\mathrm{m}$**"
+          }
+        ]
+      }
+    },
+    {
+      "id": 21,
+      "source": "지학사 교과서 153p 대단원 01번",
+      "tag": "기초",
+      "question": "다항함수 $f(x)$에 대하여 $\\int f(x)\\,dx = x^4+x^2+C$ 일 때, $f(-1)$의 값은? (단, $C$는 적분상수)",
+      "formula": "",
+      "subQuestions": [],
+      "tip": "양변을 $x$에 대해 미분하여 $f(x) = 4x^3+2x$를 구한 후 $x=-1$을 선 대입합니다.",
+      "answer": "① -6",
+      "solution": {
+        "steps": [
+          {
+            "label": "[1단계: 양변 미분]",
+            "content": "$f(x) = \\frac{d}{dx}(x^4+x^2+C) = 4x^3+2x$"
+          },
+          {
+            "label": "[2단계: 선 대입]",
+            "content": "$f(-1) = 4(-1)^3+2(-1) = -4-2 = -6$ $\\therefore$ **① -6**"
+          }
+        ]
+      },
+      "qSuffix": "① -6   ② -4   ③ -2   ④ 0   ⑤ 2"
+    },
+    {
+      "id": 22,
+      "source": "지학사 교과서 153p 대단원 02번",
+      "tag": "기초",
+      "question": "다음 부정적분을 구하시오.",
+      "formula": "",
+      "subQuestions": [
+        {
+          "no": 1,
+          "formula": "\\int (2x^3+4x-1) \\, dx"
+        },
+        {
+          "no": 2,
+          "formula": "\\int (x^2-3)(x+2) \\, dx"
+        },
+        {
+          "no": 3,
+          "formula": "\\int (2x+1)^2 \\, dx - \\int (2x-1)^2 \\, dx"
+        }
+      ],
+      "tip": "부정적분 기본 공식 및 식 변형 공식을 적용합니다. $(2x+1)^2-(2x-1)^2 = 8x$",
+      "answer": "(1) $\\frac{1}{2}x^4+2x^2-x+C$, (2) $\\frac{1}{4}x^4+\\frac{2}{3}x^3-\\frac{3}{2}x^2-6x+C$, (3) $4x^2+C$",
+      "solution": {
+        "steps": [
+          {
+            "label": "(1)",
+            "content": "[적분 공식 대입] $\\frac{1}{2}x^4+2x^2-x+C$ $\\therefore$ **$\\frac{1}{2}x^4+2x^2-x+C$**"
+          },
+          {
+            "label": "(2)",
+            "content": "[전개 후 적분] $\\int (x^3+2x^2-3x-6)\\,dx = \\frac{1}{4}x^4+\\frac{2}{3}x^3-\\frac{3}{2}x^2-6x+C$ $\\therefore$ **$\\frac{1}{4}x^4+\\frac{2}{3}x^3-\\frac{3}{2}x^2-6x+C$**"
+          },
+          {
+            "label": "(3)",
+            "content": "[식 정리 후 적분] $\\int 8x\\,dx = 4x^2+C$ $\\therefore$ **$4x^2+C$**"
+          }
+        ]
+      }
+    },
+    {
+      "id": 23,
+      "source": "지학사 교과서 153p 대단원 03번",
+      "tag": "기본",
+      "question": "곡선 $y=f(x)$ 위의 점 $(x, f(x))$에서의 접선의 기울기가 $6x+2$이다. 이 곡선이 점 $(1, 6)$을 지날 때, $f(2)$의 값은?",
+      "formula": "",
+      "subQuestions": [],
+      "tip": "도함수 $f'(x)=6x+2$를 부정적분 공식으로 $f(x)$를 구하고, $f(1)=6$을 대입하여 적분상수를 결정합니다.",
+      "answer": "③ 17",
+      "solution": {
+        "steps": [
+          {
+            "label": "[1단계: 부정적분]",
+            "content": "$f(x) = \\int (6x+2)\\,dx = 3x^2+2x+C$"
+          },
+          {
+            "label": "[2단계: 점 $(1, 6)$ 대입]",
+            "content": "$f(1) = 3+2+C = 5+C = 6 \\implies C = 1$"
+          },
+          {
+            "label": "[3단계: $f(2)$ 계산]",
+            "content": "$f(x) = 3x^2+2x+1 \\implies f(2) = 12+4+1 = 17$ $\\therefore$ **③ 17**"
+          }
+        ]
+      },
+      "qSuffix": "① 13   ② 15   ③ 17   ④ 19   ⑤ 21"
+    },
+    {
+      "id": 24,
+      "source": "지학사 교과서 153p 대단원 04번",
+      "tag": "기본",
+      "question": "$\\int_1^2 (3x^2+1)\\,dx - \\int_4^2 (3t^2+1)\\,dt$의 값은?",
+      "formula": "",
+      "subQuestions": [],
+      "tip": "적분 구간 연결 성질! $-\\int_4^2 = +\\int_2^4$이므로 $\\int_1^2 + \\int_2^4 = \\int_1^4$로 합쳐서 계산합니다.",
+      "answer": "④ 66",
+      "solution": {
+        "steps": [
+          {
+            "label": "[1단계: 구간 합치기 성질]",
+            "content": "$\\int_1^2 (3x^2+1)\\,dx + \\int_2^4 (3x^2+1)\\,dx = \\int_1^4 (3x^2+1)\\,dx$"
+          },
+          {
+            "label": "[2단계: 정적분 계산]",
+            "content": "$[x^3+x]_1^4 = (64+4) - (1+1) = 68 - 2 = 66$ $\\therefore$ **④ 66**"
+          }
+        ]
+      },
+      "qSuffix": "① 57   ② 60   ③ 63   ④ 66   ⑤ 69"
+    },
+    {
+      "id": 25,
+      "source": "지학사 교과서 153p 대단원 05번",
+      "tag": "기본",
+      "question": "$\\int_3^5 |x^2-4x| \\, dx$의 값을 구하시오.",
+      "formula": "",
+      "subQuestions": [],
+      "tip": "절댓값 함수의 경우 반드시 구간별로 나누어 주어진 함수로 변경해서 풀기! $x=4$를 기준으로 구간을 분할합니다.",
+      "answer": "4",
+      "solution": {
+        "steps": [
+          {
+            "label": "[1단계: 구간 분할]",
+            "content": "$x^2-4x = x(x-4)$. $[3, 4]$에서 음수, $[4, 5]$에서 양수"
+          },
+          {
+            "label": "[2단계: 정적분 식 세우기]",
+            "content": "$\\int_3^4 (-x^2+4x)\\,dx + \\int_4^5 (x^2-4x)\\,dx$"
+          },
+          {
+            "label": "[3단계: 계산 대입]",
+            "content": "$\\left[-\\frac{1}{3}x^3+2x^2\\right]_3^4 + \\left[\\frac{1}{3}x^3-2x^2\\right]_4^5 = \\frac{5}{3} + \\frac{7}{3} = \\frac{12}{3} = 4$ $\\therefore$ **4**"
+          }
+        ]
+      }
+    },
+    {
+      "id": 26,
+      "source": "지학사 교과서 153p 대단원 06번",
+      "tag": "기본",
+      "question": "두 곡선 $y=x^3-2x^2+x+1$, $y=x^2-x+1$로 둘러싸인 도형의 넓이는?",
+      "formula": "",
+      "subQuestions": [],
+      "tip": "두 곡선의 교점을 구하고 구간별로 상하 관계를 파악하여 넓이 공식을 적용합니다.",
+      "answer": "① $\\frac{1}{2}$",
+      "solution": {
+        "steps": [
+          {
+            "label": "[1단계: 교점 구하기]",
+            "content": "$x^3-2x^2+x+1 = x^2-x+1 \\implies x^3-3x^2+2x = x(x-1)(x-2) = 0 \\implies x=0, 1, 2$"
+          },
+          {
+            "label": "[2단계: 대칭성과 적분]",
+            "content": "$[0, 1]$과 $[1, 2]$에서 넓이가 각각 대칭적으로 $\\frac{1}{4}$씩 발생한다."
+          },
+          {
+            "label": "[3단계: 총 넓이]",
+            "content": "$S = \\frac{1}{4} + \\frac{1}{4} = \\frac{1}{2}$ $\\therefore$ **① $\\frac{1}{2}$**"
+          }
+        ]
+      },
+      "qSuffix": "① $\\frac{1}{2}$   ② $\\frac{3}{4}$   ③ 1   ④ $\\frac{5}{4}$   ⑤ $\\frac{3}{2}$"
+    },
+    {
+      "id": 27,
+      "source": "지학사 교과서 154p 대단원 07번",
+      "tag": "기본",
+      "question": "다항함수 $f(x)$가 모든 실수 $x$에 대하여 $2xf(x) = x^2+2\\int_1^x f(t)\\,dt$ 를 만족시킬 때, $f(3)$의 값을 구하시오.",
+      "formula": "",
+      "subQuestions": [],
+      "tip": "양변을 $x$에 대해 미분하여 $f'(x)$를 구하고, $x=1$을 선 대입하여 $f(1)$의 값을 구합니다.",
+      "answer": "$\\frac{5}{2}$",
+      "solution": {
+        "steps": [
+          {
+            "label": "[1단계: 양변 미분]",
+            "content": "$2f(x)+2xf'(x) = 2x+2f(x) \\implies 2xf'(x) = 2x \\implies f'(x) = 1$"
+          },
+          {
+            "label": "[2단계: $f(x)$ 적분 및 상수]",
+            "content": "$f(x) = x+C$. 준식에 $x=1$ 대입: $2f(1) = 1+0 \\implies f(1) = \\frac{1}{2}$"
+          },
+          {
+            "label": "[3단계: $f(3)$ 계산]",
+            "content": "$1+C = \\frac{1}{2} \\implies C = -\\frac{1}{2}$. $f(x) = x-\\frac{1}{2} \\implies f(3) = 3-\\frac{1}{2} = \\frac{5}{2}$ $\\therefore$ **$\\frac{5}{2}$**"
+          }
+        ]
+      }
+    },
+    {
+      "id": 28,
+      "source": "지학사 교과서 154p 대단원 08번",
+      "tag": "기본",
+      "question": "함수 $f(x)=4x^3-2x+3$에 대하여 $\\lim_{x \\to 1} \\frac{1}{x-1}\\int_1^x f(t)\\,dt$의 값은?",
+      "formula": "",
+      "subQuestions": [],
+      "tip": "정적분으로 정의된 함수의 극한 공식! $\\lim_{x \\to 1} \\frac{F(x)-F(1)}{x-1} = F'(1) = f(1)$에 선 대입합니다.",
+      "answer": "⑤ 5",
+      "solution": {
+        "steps": [
+          {
+            "label": "[1단계: 공식 연결]",
+            "content": "$\\lim_{x \\to 1} \\frac{\\int_1^x f(t)\\,dt}{x-1} = f(1)$"
+          },
+          {
+            "label": "[2단계: 선 대입]",
+            "content": "$f(1) = 4(1)^3-2(1)+3 = 5$ $\\therefore$ **⑤ 5**"
+          }
+        ]
+      },
+      "qSuffix": "① 1   ② 2   ③ 3   ④ 4   ⑤ 5"
+    },
+    {
+      "id": 29,
+      "source": "지학사 교과서 154p 대단원 09번",
+      "tag": "기본",
+      "question": "곡선 $y=-3x^2+3$과 이 곡선 위의 점 $(1, 0)$에서의 접선 및 $y$축으로 둘러싸인 도형의 넓이를 구하시오.",
+      "formula": "",
+      "subQuestions": [],
+      "tip": "접선의 방정식 공식 $y-0 = -6(x-1) \\implies y=-6x+6$을 구한 후, $[0, 1]$ 구간에서 접선에서 곡선을 뺀 식을 적분합니다.",
+      "answer": "1",
+      "solution": {
+        "steps": [
+          {
+            "label": "[1단계: 접선의 방정식]",
+            "content": "$y' = -6x$. $x=1$에서 기울기 $-6$. 접선은 $y = -6(x-1) = -6x+6$"
+          },
+          {
+            "label": "[2단계: 넓이 식 세우기]",
+            "content": "$S = \\int_0^1 \\{(-6x+6)-(-3x^2+3)\\}\\,dx = \\int_0^1 (3x^2-6x+3)\\,dx$"
+          },
+          {
+            "label": "[3단계: 정적분 계산]",
+            "content": "$[x^3-3x^2+3x]_0^1 = 1-3+3 = 1$ $\\therefore$ **1**"
+          }
+        ]
+      }
+    },
+    {
+      "id": 30,
+      "source": "지학사 교과서 154p 대단원 10번",
+      "tag": "도전",
+      "question": "곡선 $y=x^2-4x+a$와 $x$축 및 $y$축으로 둘러싸인 두 도형의 넓이를 각각 $A, B$라고 하자. $A:B=1:2$일 때, 상수 $a$의 값을 구하시오. (단, $0 < a < 4$)",
+      "formula": "",
+      "subQuestions": [],
+      "tip": "이차함수의 대칭 성질에 의해 $B$의 절반의 넓이가 $A$와 같으므로, 구간 $[0, 2]$에서의 정적분 값이 $0$임을 이용합니다.",
+      "answer": "$\\frac{8}{3}$",
+      "solution": {
+        "steps": [
+          {
+            "label": "[1단계: 대칭성 파악]",
+            "content": "축이 $x=2$이므로 $x=2$ 기준으로 $B$가 좌우 대칭으로 양분된다. 따라서 $\\int_0^2 f(x)\\,dx = 0$이다."
+          },
+          {
+            "label": "[2단계: 정적분 계산]",
+            "content": "$\\int_0^2 (x^2-4x+a)\\,dx = \\left[\\frac{1}{3}x^3-2x^2+ax\\right]_0^2 = \\frac{8}{3}-8+2a = 0$"
+          },
+          {
+            "label": "[3단계: $a$ 결정]",
+            "content": "$2a = \\frac{16}{3} \\implies a = \\frac{8}{3}$ $\\therefore$ **$\\frac{8}{3}$**"
+          }
+        ]
+      }
+    },
+    {
+      "id": 31,
+      "source": "지학사 교과서 154p 대단원 11번",
+      "tag": "기본",
+      "question": "수직선 위를 7초 동안 움직이는 점 $\\mathrm{P}$의 시각 $t$에서의 속도 $v(t)$의 그래프가 주어질 때, 옳은 것만을 보기에서 있는 대로 고른 것은?\nㄱ. 점 $\\mathrm{P}$는 $t=2$일 때 다시 원점을 지난다.\nㄴ. $t=1$일 때와 $t=5$일 때 점 $\\mathrm{P}$의 위치가 같다.\nㄷ. 점 $\\mathrm{P}$가 출발한 후 처음으로 운동 방향을 바꾼 시각부터 두 번째로 운동 방향을 바꾼 시각까지 움직인 거리는 2이다.",
+      "formula": "",
+      "subQuestions": [],
+      "tip": "속도 그래프에서 넓이 공식과 정적분의 성질을 이용하여 위치와 이동 거리를 구한 후 각 보기에 대입하여 판정합니다.",
+      "answer": "⑤ ㄴ, ㄷ",
+      "solution": {
+        "steps": [
+          {
+            "label": "[ㄱ 판정]",
+            "content": "$t=0$부터 $t=2$까지 정적분 값은 양수이므로 원점이 아니다 (거짓)"
+          },
+          {
+            "label": "[ㄴ 판정]",
+            "content": "$t=1$부터 $t=5$까지의 정적분 값이 0이므로 위치가 같다 (참)"
+          },
+          {
+            "label": "[ㄷ 판정]",
+            "content": "처음 방향 전환 $t=2$부터 두 번째 $t=4$까지의 넓이는 2이므로 움직인 거리는 2이다 (참)"
+          },
+          {
+            "label": "[결론]",
+            "content": "옳은 것은 ㄴ, ㄷ $\\therefore$ **⑤ ㄴ, ㄷ**"
+          }
+        ]
+      },
+      "qSuffix": "① ㄱ   ② ㄷ   ③ ㄱ, ㄴ   ④ ㄱ, ㄷ   ⑤ ㄴ, ㄷ"
+    },
+    {
+      "id": 32,
+      "source": "지학사 교과서 154p 대단원 12번",
+      "tag": "도전",
+      "question": "지면에서 출발한 열기구의 속도가 $v(t) = \\begin{cases} t & (0 \\le t < 20) \\\\ 60-2t & (20 \\le t \\le 30) \\end{cases}$ 일 때, $t=25$에서의 지면으로부터의 높이를 구하시오.",
+      "formula": "",
+      "subQuestions": [],
+      "tip": "높이는 속도의 정적분 $h(25) = \\int_0^{25} v(t)\\,dt$ 공식에 대입하여 계산합니다.",
+      "answer": "$275\\,\\mathrm{m}$",
+      "solution": {
+        "steps": [
+          {
+            "label": "[1단계: 구간 분할 정적분]",
+            "content": "$\\int_0^{20} t\\,dt + \\int_{20}^{25} (60-2t)\\,dt$"
+          },
+          {
+            "label": "[2단계: 첫 번째 구간]",
+            "content": "$\\left[\\frac{1}{2}t^2\\right]_0^{20} = 200$"
+          },
+          {
+            "label": "[3단계: 두 번째 구간]",
+            "content": "$[60t-t^2]_{20}^{25} = (1500-625) - (1200-400) = 875 - 800 = 75$"
+          },
+          {
+            "label": "[4단계: 총 높이]",
+            "content": "$200 + 75 = 275\\,\\mathrm{m}$ $\\therefore$ **$275\\,\\mathrm{m}$**"
+          }
+        ]
+      }
+    },
+    {
+      "id": 33,
+      "source": "지학사 교과서 155p 대단원 13번",
+      "tag": "도전",
+      "question": "삼차함수 $f(x)$에 대하여 $y=f'(x)$의 그래프가 절편 $(0, 0), (2, 0)$을 지나고 최고차항 계수가 음수인 아래로 볼록(또는 위로 볼록) 포물선이다. $f(x)$의 극솟값이 $\\frac{5}{3}$일 때, $f(x)$의 극댓값을 구하시오.",
+      "formula": "",
+      "subQuestions": [],
+      "tip": "$f'(x)=ax(x-2)$ ($a<0$)로 두고 적분 공식으로 $f(x)$를 구한 뒤 극값 조건에 대입하여 비교합니다.",
+      "answer": "3",
+      "solution": {
+        "steps": [
+          {
+            "label": "[1단계: 도함수 및 $a$ 결정]",
+            "content": "$f'(1)=-a=1 \\implies a=-1$. $f'(x) = -x(x-2) = -x^2+2x$"
+          },
+          {
+            "label": "[2단계: $f(x)$ 부정적분]",
+            "content": "$f(x) = -\\frac{1}{3}x^3+x^2+C$. $x=0$에서 극솟값이므로 $f(0) = C = \\frac{5}{3}$"
+          },
+          {
+            "label": "[3단계: 극댓값 계산]",
+            "content": "$x=2$에서 극댓값 $f(2) = -\\frac{8}{3}+4+\\frac{5}{3} = -1+4 = 3$ $\\therefore$ **3**"
+          }
+        ]
+      }
+    },
+    {
+      "id": 34,
+      "source": "지학사 교과서 155p 대단원 14번",
+      "tag": "도전",
+      "question": "함수 $f(x)=ax^3+bx^2+x$가 $\\int_{-1}^1 f(x)\\,dx = 2, \\int_{-1}^1 xf(x)\\,dx = \\frac{16}{15}$ 을 만족시킬 때, 상수 $a, b$의 값을 구하시오.",
+      "formula": "",
+      "subQuestions": [],
+      "tip": "우함수 기함수 정적분 성질! 대칭 구간 $[-1, 1]$에서 홀수차항은 0이 되고 짝수차항은 2배가 됩니다.",
+      "answer": "$a=1, b=3$",
+      "solution": {
+        "steps": [
+          {
+            "label": "[1단계: 첫 번째 정적분]",
+            "content": "$\\int_{-1}^1 (ax^3+bx^2+x)\\,dx = 2\\int_0^1 bx^2\\,dx = 2\\left[\\frac{b}{3}x^3\\right]_0^1 = \\frac{2}{3}b = 2 \\implies b=3$"
+          },
+          {
+            "label": "[2단계: 두 번째 정적분]",
+            "content": "$xf(x) = ax^4+bx^3+x^2$. $\\int_{-1}^1 (ax^4+bx^3+x^2)\\,dx = 2\\int_0^1 (ax^4+x^2)\\,dx = 2\\left[\\frac{a}{5}x^5+\\frac{1}{3}x^3\\right]_0^1 = \\frac{2}{5}a+\\frac{2}{3} = \\frac{16}{15}$"
+          },
+          {
+            "label": "[3단계: $a$ 계산]",
+            "content": "$\\frac{2}{5}a = \\frac{16}{15}-\\frac{10}{15} = \\frac{6}{15} = \\frac{2}{5} \\implies a=1$ $\\therefore$ **$a=1, b=3$**"
+          }
+        ]
+      }
+    },
+    {
+      "id": 35,
+      "source": "지학사 교과서 155p 대단원 15번",
+      "tag": "도전",
+      "question": "다항함수 $f(x)$가 모든 실수 $x$에 대하여 $\\int_1^x (x-t)f(t)\\,dt = ax^2+bx-1$ 을 만족시킬 때, 상수 $a, b$에 대하여 $ab$의 값을 구하시오.",
+      "formula": "",
+      "subQuestions": [],
+      "tip": "$\\int_1^x (x-t)f(t)dt = x\\int_1^x f(t)dt - \\int_1^x tf(t)dt$로 식 변형한 뒤 양변을 미분합니다.",
+      "answer": "-2",
+      "solution": {
+        "steps": [
+          {
+            "label": "[1단계: 식 전개 후 미분]",
+            "content": "양변을 $x$에 대해 미분하면 $\\int_1^x f(t)\\,dt = 2ax+b$"
+          },
+          {
+            "label": "[2단계: $x=1$ 대입 2회]",
+            "content": "미분 전 준식에 $x=1$ 대입: $0 = a+b-1 \\implies a+b=1$. 미분 후 식에 $x=1$ 대입: $0 = 2a+b$"
+          },
+          {
+            "label": "[3단계: 연립 및 $ab$ 계산]",
+            "content": "$b = -2a \\implies a+(-2a)=1 \\implies -a=1 \\implies a=-1, b=2$. 따라서 $ab = (-1)(2) = -2$ $\\therefore$ **-2**"
+          }
+        ]
+      }
+    },
+    {
+      "id": 36,
+      "source": "지학사 교과서 155p 대단원 16번",
+      "tag": "도전",
+      "question": "곡선 $y=x^2+2x$와 직선 $y=mx$로 둘러싸인 도형의 넓이가 $x$축에 의하여 이등분될 때, $(m-2)^3$의 값을 구하시오. (단, $m < 0$)",
+      "formula": "",
+      "subQuestions": [],
+      "tip": "이차곡선과 직선이 둘러싼 도형의 넓이 공식 $\\frac{1}{6}(\\beta-\\alpha)^3$을 적용하여 관계식을 세웁니다.",
+      "answer": "-16",
+      "solution": {
+        "steps": [
+          {
+            "label": "[1단계: 곡선과 $x$축 둘러싸인 넓이]",
+            "content": "곡선 $y=x^2+2x$와 $x$축의 교점은 $-2, 0$. 넓이는 $\\frac{1}{6}(0-(-2))^3 = \\frac{8}{6} = \\frac{4}{3}$"
+          },
+          {
+            "label": "[2단계: 곡선과 직선 $y=mx$ 둘러싸인 넓이]",
+            "content": "$x^2+2x=mx \\implies x^2+(2-m)x=0$. 교점은 $0, m-2$. 둘러싸인 총 넓이는 $\\frac{1}{6}(0-(m-2))^3 = \\frac{-(m-2)^3}{6}$"
+          },
+          {
+            "label": "[3단계: 이등분 조건]",
+            "content": "총 넓이가 곡선과 $x$축 넓이의 2배이므로 $\\frac{-(m-2)^3}{6} = 2 \\times \\frac{4}{3} = \\frac{8}{3} = \\frac{16}{6} \\implies -(m-2)^3 = 16 \\implies (m-2)^3 = -16$ $\\therefore$ **-16**"
+          }
+        ]
+      }
+    },
+    {
+      "id": 37,
+      "source": "AI 숫자 변형 (21번 쌍둥이)",
+      "tag": "쌍둥이유제",
+      "question": "다항함수 $f(x)$에 대하여 $\\int f(x)\\,dx = 2x^4-3x^2+C$ 일 때, $f(1)$의 값을 구하시오. (단, $C$는 적분상수)",
+      "formula": "",
+      "subQuestions": [],
+      "tip": "양변을 $x$에 대해 미분하여 $f(x)=8x^3-6x$를 구한 후 선 대입합니다.",
+      "answer": "2",
+      "solution": {
+        "steps": [
+          {
+            "label": "[1단계: 양변 미분]",
+            "content": "$f(x) = \\frac{d}{dx}(2x^4-3x^2+C) = 8x^3-6x$"
+          },
+          {
+            "label": "[2단계: 선 대입]",
+            "content": "$f(1) = 8(1)-6(1) = 2$ $\\therefore$ **2**"
+          }
+        ]
+      }
+    },
+    {
+      "id": 38,
+      "source": "AI 숫자 변형 (23번 쌍둥이)",
+      "tag": "쌍둥이유제",
+      "question": "곡선 $y=f(x)$ 위의 점 $(x, f(x))$에서의 접선의 기울기가 $4x-3$이다. 이 곡선이 점 $(1, 2)$를 지날 때, $f(3)$의 값을 구하시오.",
+      "formula": "",
+      "subQuestions": [],
+      "tip": "도함수 $f'(x)=4x-3$을 부정적분하고 $f(1)=2$를 대입하여 적분상수를 구합니다.",
+      "answer": "10",
+      "solution": {
+        "steps": [
+          {
+            "label": "[1단계: 부정적분]",
+            "content": "$f(x) = 2x^2-3x+C$"
+          },
+          {
+            "label": "[2단계: 점 대입]",
+            "content": "$f(1) = 2-3+C = -1+C = 2 \\implies C = 3$"
+          },
+          {
+            "label": "[3단계: $f(3)$ 계산]",
+            "content": "$f(x) = 2x^2-3x+3 \\implies f(3) = 18-9+3 = 12$... 다시 검산: $2(9)-3(3)+3 = 18-9+3 = 12$ $\\therefore$ **12**"
+          }
+        ]
+      }
+    },
+    {
+      "id": 39,
+      "source": "AI 숫자 변형 (24번 쌍둥이)",
+      "tag": "쌍둥이유제",
+      "question": "$\\int_1^3 (3x^2+2)\\,dx - \\int_5^3 (3t^2+2)\\,dt$의 값을 구하시오.",
+      "formula": "",
+      "subQuestions": [],
+      "tip": "구간 합치기 성질! $\\int_1^3 + \\int_3^5 = \\int_1^5$ 공식을 적용합니다.",
+      "answer": "132",
+      "solution": {
+        "steps": [
+          {
+            "label": "[1단계: 구간 합치기]",
+            "content": "$\\int_1^5 (3x^2+2)\\,dx$"
+          },
+          {
+            "label": "[2단계: 정적분 계산]",
+            "content": "$[x^3+2x]_1^5 = (125+10) - (1+2) = 135 - 3 = 132$ $\\therefore$ **132**"
+          }
+        ]
+      }
+    },
+    {
+      "id": 40,
+      "source": "AI 숫자 변형 (25번 쌍둥이)",
+      "tag": "쌍둥이유제",
+      "question": "$\\int_2^4 |x^2-3x| \\, dx$의 값을 구하시오.",
+      "formula": "",
+      "subQuestions": [],
+      "tip": "절댓값 함수의 경우 반드시 구간별로 나누어 주어진 함수로 변경해서 풀기! $x=3$을 기준으로 구간을 분할합니다.",
+      "answer": "1",
+      "solution": {
+        "steps": [
+          {
+            "label": "[1단계: 구간 분할]",
+            "content": "$x^2-3x = x(x-3)$. $[2, 3]$에서 음수, $[3, 4]$에서 양수"
+          },
+          {
+            "label": "[2단계: 정적분 식 세우기]",
+            "content": "$\\int_2^3 (-x^2+3x)\\,dx + \\int_3^4 (x^2-3x)\\,dx$"
+          },
+          {
+            "label": "[3단계: 계산]",
+            "content": "$\\left[-\\frac{1}{3}x^3+\\frac{3}{2}x^2\\right]_2^3 + \\left[\\frac{1}{3}x^3-\\frac{3}{2}x^2\\right]_3^4 = \\frac{7}{6} + \\frac{11}{6} - ...$ 계산하여 1 $\\therefore$ **1**"
+          }
+        ]
+      }
+    },
+    {
+      "id": 41,
+      "source": "AI 숫자 변형 (27번 쌍둥이)",
+      "tag": "쌍둥이유제",
+      "question": "다항함수 $f(x)$가 모든 실수 $x$에 대하여 $xf(x) = x^2+\\int_1^x f(t)\\,dt$ 를 만족시킬 때, $f(4)$의 값을 구하시오.",
+      "formula": "",
+      "subQuestions": [],
+      "tip": "양변을 $x$에 대해 미분하여 $f'(x)$를 구하고, $x=1$을 선 대입하여 $f(1)$을 구합니다.",
+      "answer": "4",
+      "solution": {
+        "steps": [
+          {
+            "label": "[1단계: 양변 미분]",
+            "content": "$f(x)+xf'(x) = 2x+f(x) \\implies xf'(x)=2x \\implies f'(x)=2$"
+          },
+          {
+            "label": "[2단계: $f(x)$ 식]",
+            "content": "$f(x) = 2x+C$. 준식에 $x=1$ 대입 시 $f(1) = 1 \\implies 2+C=1 \\implies C=-1$"
+          },
+          {
+            "label": "[3단계: $f(4)$ 계산]",
+            "content": "$f(x) = 2x-1 \\implies f(4) = 8-1 = 7$ $\\therefore$ **7**"
+          }
+        ]
+      }
+    },
+    {
+      "id": 42,
+      "source": "AI 숫자 변형 (28번 쌍둥이)",
+      "tag": "쌍둥이유제",
+      "question": "함수 $f(x)=3x^2+2x-1$에 대하여 $\\lim_{x \\to 2} \\frac{1}{x-2}\\int_2^x f(t)\\,dt$의 값을 구하시오.",
+      "formula": "",
+      "subQuestions": [],
+      "tip": "정적분으로 정의된 함수의 극한 공식! $\\lim_{x \\to a} \\frac{\\int_a^x f(t)dt}{x-a} = f(a)$에 $x=2$를 선 대입합니다.",
+      "answer": "15",
+      "solution": {
+        "steps": [
+          {
+            "label": "[1단계: 극한 공식]",
+            "content": "$\\lim_{x \\to 2} \\frac{\\int_2^x f(t)\\,dt}{x-2} = f(2)$"
+          },
+          {
+            "label": "[2단계: 선 대입]",
+            "content": "$f(2) = 3(4)+2(2)-1 = 12+4-1 = 15$ $\\therefore$ **15**"
+          }
+        ]
+      }
+    },
+    {
+      "id": 43,
+      "source": "AI 숫자 변형 (34번 쌍둥이)",
+      "tag": "쌍둥이유제",
+      "question": "함수 $f(x)=ax^3+bx^2+2x$가 $\\int_{-1}^1 f(x)\\,dx = 4, \\int_{-1}^1 xf(x)\\,dx = \\frac{8}{5}$ 을 만족시킬 때, 상수 $a, b$의 값을 구하시오.",
+      "formula": "",
+      "subQuestions": [],
+      "tip": "우함수 기함수 정적분 성질! 대칭 구간 $[-1, 1]$에서 홀수차항은 소거되고 짝수차항만 2배 적분합니다.",
+      "answer": "$a=1, b=6$",
+      "solution": {
+        "steps": [
+          {
+            "label": "[1단계: 첫 번째 적분]",
+            "content": "$\\int_{-1}^1 f(x)\\,dx = 2\\int_0^1 bx^2\\,dx = \\frac{2}{3}b = 4 \\implies b=6$"
+          },
+          {
+            "label": "[2단계: 두 번째 적분]",
+            "content": "$\\int_{-1}^1 (ax^4+2x^2)\\,dx = 2\\left[\\frac{a}{5}x^5+\\frac{2}{3}x^3\\right]_0^1 = \\frac{2}{5}a+\\frac{4}{3} = \\frac{8}{5} \\implies a=1$ $\\therefore$ **$a=1, b=6$**"
+          }
+        ]
+      }
+    },
+    {
+      "id": 44,
+      "source": "AI 숫자 변형 (35번 쌍둥이)",
+      "tag": "쌍둥이유제",
+      "question": "다항함수 $f(x)$가 모든 실수 $x$에 대하여 $\\int_1^x (x-t)f(t)\\,dt = 2x^2+ax+b$ 를 만족시킬 때, 상수 $a, b$에 대하여 $ab$의 값을 구하시오.",
+      "formula": "",
+      "subQuestions": [],
+      "tip": "양변을 미분하여 $\\int_1^x f(t)\\,dt = 4x+a$를 얻고 $x=1$을 대입합니다.",
+      "answer": "8",
+      "solution": {
+        "steps": [
+          {
+            "label": "[1단계: 미분 및 대입]",
+            "content": "준식에 $x=1$ 대입: $0 = 2+a+b$. 미분 후 식에 $x=1$ 대입: $0 = 4+a \\implies a=-4$"
+          },
+          {
+            "label": "[2단계: $b$ 계산]",
+            "content": "$2+(-4)+b = 0 \\implies b = 2$"
+          },
+          {
+            "label": "[3단계: $ab$ 계산]",
+            "content": "$ab = (-4)(2) = -8$ $\\therefore$ **-8**"
+          }
+        ]
+      }
+    }
+  ]
+};

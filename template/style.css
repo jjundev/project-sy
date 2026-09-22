@@ -1,6 +1,6 @@
 /* =====================================================================
    서영이 수학 문제지 — A4 인쇄 스타일시트
-   기준 문서: WORKSHEET_DESIGN_SPEC.md 2장(페이지) · 3장(카드) · 4장(디자인)
+   기준 문서: docs/WORKSHEET_DESIGN_SPEC.md 2장(페이지) · 3장(카드) · 4장(디자인)
    치수·색상·글자 크기는 모두 :root 변수에서 한 번만 선언한다.
    ===================================================================== */
 
@@ -299,15 +299,63 @@ p, ol { margin: 0; padding: 0; }
   color: var(--c-ink);
 }
 
+.card__body::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.card__fig {
+  float: right;
+  width: 36mm;
+  height: 26mm;
+  margin-left: 2.5mm;
+  margin-bottom: 1.5mm;
+  text-align: center;
+}
+
+.card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+}
+
 .card__question {
   word-break: keep-all;
   overflow-wrap: anywhere;
   white-space: pre-line;
 }
 
+.card__question--suffix {
+  margin-top: 1.5mm;
+}
+
+.card__question .katex-display {
+  margin: 1.5mm 0;
+  text-align: center;
+}
+
 .card__formula {
   margin-top: 1.5mm;
   overflow: visible;
+}
+
+.card__formula--box {
+  background: #f8fafc;
+  border: 0.5pt solid #cbd5e1;
+  border-radius: 4px;
+  padding: 1.5mm 2.5mm;
+  margin-top: 1.5mm;
+  font-size: 8pt;
+  line-height: 1.55;
+  color: var(--c-ink);
+}
+
+.card__formula-line {
+  display: inline-block;
+  width: 100%;
 }
 
 .card__formula .katex-display { margin: 0; }
